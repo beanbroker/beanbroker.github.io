@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Hello pkj"/>
+        <meta property="og:title" content="Spring Test 1"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Hello pkj - beanbroker blog</title>
+    <title>Spring Test 1 - beanbroker blog</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -124,8 +124,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">Hello pkj</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-07-26</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Spring Test 1</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-07-28</p>
         </div>
     </div>
 
@@ -145,27 +145,44 @@
                     
                         <div class="tags-container-vertical">
                             <div class="tags-sub-container">
-                                <a class="fw3 ph1 dib" href="/tags/HEXO/">#HEXO</a>
+                                <a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a> <a class="fw3 ph1 dib" href="/tags/Junit/">#Junit</a>
                             </div>
                         </div>
                     
 
                     <!-- Main Post Content -->
-                    <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                    <h1 id="테스트-코드의-필요성"><a href="#테스트-코드의-필요성" class="headerlink" title="테스트 코드의 필요성"></a>테스트 코드의 필요성</h1><ol>
+<li>테스트 코드는 빠른 피드백 순환을 가능하게 하는 가장 중요한 수단이다.</li>
+<li>점점 애플리케이션들이 분산화되며 테스트를 효율적으로 작성하려고 노력한다,</li>
+<li>개발자들이 예측할수 있는 모든 케이스를 테스트 코드로 짜도록 노력해야한다. 예측 할수 있는 예외케이스를 Throw하는 거와 별개 진행을 해야한다.(다만 시간이 오래걸리는 단점.. 테스트 코드가 마치 비지니스 로직을 짜는 것과 같은 느낌이..)</li>
+<li>비니지스 로직이 변경되었을 경우 기존에 완성해둔 테스트 코드로 사이드 이펙트 확인이 가능하다.</li>
+<li>그외 다양한 유명한 개발자분들이 가장 중요하다 확신하고 있다.</li>
+</ol>
+<h1 id="스프링-부트-애플리케이션-테스트"><a href="#스프링-부트-애플리케이션-테스트" class="headerlink" title="스프링 부트 애플리케이션 테스트"></a>스프링 부트 애플리케이션 테스트</h1><blockquote>
+<p>스프링 부트 애플리케이션의 테스트극 크게 단위 테스트와 통합 테스트로 구분할수 있다.</p>
+<ul>
+<li>통합 테스트 - 실행 중에 스프링 애플리케이션 컨텍스트에 접근하는 모든 테스트</li>
+<li>단위 테스트 - 스프링 애플리케이션 컨텍스트에 의존하지 않는 테스트</li>
+</ul>
+</blockquote>
+<h2 id="간단한-Context-로딩-테스트"><a href="#간단한-Context-로딩-테스트" class="headerlink" title="간단한 Context 로딩 테스트"></a>간단한 Context 로딩 테스트</h2><blockquote>
+<p>Application.java 는 기본과 동일하게 쓰면되서 코드를 첨부하지 않음</p>
+</blockquote>
+<blockquote>
+<p>ApplicationTest<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootTest</span><br><span class="line">@RunWith(SpringRunner.class)</span><br><span class="line">public class ApplicationContextTests &#123;</span><br><span class="line"></span><br><span class="line"> @Autowired</span><br><span class="line"> private ApplicationContext applicationContext;</span><br><span class="line"></span><br><span class="line"> @Test</span><br><span class="line"> public void contextLoads() throws Throwable &#123;</span><br><span class="line">  Assert.assertNotNull(&quot;컨텍스트 로딩 테스트 정상작동확인&quot;,</span><br><span class="line">   this.applicationContext);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<ul>
+<li>@Run?With - JUnit에 사용, 어떤 테스트 러너전략을 사용할지 알려준다.</li>
+<li>@SpringBootTest - 스프링 부트 테스트 클래스임을 알려줌, 테스트 클래스가 애플리케이션 컨텍스트를 로딩할수 있게 해주는 ContextConfiguration 탐색을 지원 (해당 어노테이션에 아무 파라미터도 지정되지 않을 경우 SpringConfiguration 어노테이션에 의한 탐색방식으로 어플리케이션 컨텍스트 로딩)</li>
+</ul>
+<p>(SpringConfiguration은 패키지 루트에서부터 빈을 탐색) </p>
+<p>‘클라우드 네이티브 자바 4장 테스트 참고’</p>
 
                     
                     <!-- Tags Bottom -->
                     
                         <div class="tags-container-bottom">
-                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/HEXO/">#HEXO</a>
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a> <a class="fw3 ph1 dib" href="/tags/Junit/">#Junit</a>
                         </div>
                     
 
@@ -199,7 +216,11 @@
     <h3>Categories</h3>
     
         <p>
-            <a href="/categories/HEXO/">HEXO</a>
+            <a href="/categories/Spring/">Spring</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Spring/Junit/">Junit</a>
         </p>
     
 </div>
