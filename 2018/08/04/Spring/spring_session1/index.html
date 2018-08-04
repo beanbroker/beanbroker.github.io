@@ -179,8 +179,9 @@
 </blockquote>
 <p><a href="https://spring.io/blog/2015/03/01/the-portable-cloud-ready-http-session" target="_blank" rel="noopener">https://spring.io/blog/2015/03/01/the-portable-cloud-ready-http-session</a> 참고</p>
 <h4 id="스프링-부트-세션-예제"><a href="#스프링-부트-세션-예제" class="headerlink" title="스프링 부트 세션 예제"></a>스프링 부트 세션 예제</h4><blockquote>
-<p>application.properties<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server.session.timeout=5</span><br><span class="line"></span><br><span class="line">##아래의 설정을 해두지 않으면</span><br><span class="line">##Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: No session repository could be auto-configured, check your configuration (session store type is &apos;null&apos;) 과 같은 에러 발생</span><br><span class="line">spring.session.store-type=none</span><br></pre></td></tr></table></figure></p>
+<p>application.properties</p>
 </blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server.session.timeout=5</span><br><span class="line"></span><br><span class="line">##아래의 설정을 해두지 않으면</span><br><span class="line">##Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: No session repository could be auto-configured, check your configuration (session store type is &apos;null&apos;) 과 같은 에러 발생</span><br><span class="line">spring.session.store-type=none</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Application with SessionController</p>
 </blockquote>
