@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Hello pkj"/>
+        <meta property="og:title" content="Spring Boot Rest Api 2"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Hello pkj - beanbroker blog</title>
+    <title>Spring Boot Rest Api 2 - beanbroker blog</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -118,8 +118,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">Hello pkj</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-07-26</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Spring Boot Rest Api 2</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-08-04</p>
         </div>
     </div>
 
@@ -139,27 +139,35 @@
                     
                         <div class="tags-container-vertical">
                             <div class="tags-sub-container">
-                                <a class="fw3 ph1 dib" href="/tags/HEXO/">#HEXO</a>
+                                <a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a> <a class="fw3 ph1 dib" href="/tags/Rest/">#Rest</a>
                             </div>
                         </div>
                     
 
                     <!-- Main Post Content -->
-                    <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                    <h1 id="Rest-Api-v1-or-v2"><a href="#Rest-Api-v1-or-v2" class="headerlink" title="Rest Api v1 or v2"></a>Rest Api v1 or v2</h1><p> 실제 서비스를 운영 및 개발을 하다 보면 api 버젼이 바뀌는 경우가 있다.</p>
+<ul>
+<li>앱 버젼이 업그레이드되면서 같은 동작을 하는 2개의 api가 필요한 경우(사용자는 앱 업데이트를 항상 하지 않는다…..ㅠ)</li>
+<li><p>서비스 package를 userservice.v1, userservice.v2를 만들어 사용이 가능</p>
+<blockquote>
+<p>VersionRestController</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/api&quot;)</span><br><span class="line">public class VersionedRestController &#123;</span><br><span class="line"></span><br><span class="line"> //@formatter:off</span><br><span class="line"> public static final String V1_MEDIA_TYPE_VALUE</span><br><span class="line">         = &quot;application/vnd.bootiful.demo-v1+json&quot;;</span><br><span class="line"></span><br><span class="line"> public static final String V2_MEDIA_TYPE_VALUE</span><br><span class="line">         = &quot;application/vnd.bootiful.demo-v2+json&quot;;</span><br><span class="line"> //@formatter:on</span><br><span class="line"></span><br><span class="line"> private enum ApiVersion &#123;</span><br><span class="line">  v1, v2</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> public static class Greeting &#123;</span><br><span class="line"></span><br><span class="line">  private String how;</span><br><span class="line"></span><br><span class="line">  private String version;</span><br><span class="line"></span><br><span class="line">  public Greeting(String how, ApiVersion version) &#123;</span><br><span class="line">   this.how = how;</span><br><span class="line">   this.version = version.toString();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public String getHow() &#123;</span><br><span class="line">   return how;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public String getVersion() &#123;</span><br><span class="line">   return version;</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> @GetMapping(value = &quot;/&#123;version&#125;/hi&quot;, produces = APPLICATION_JSON_VALUE)</span><br><span class="line"> Greeting greetWithPathVariable(@PathVariable ApiVersion version) &#123;</span><br><span class="line">  return greet(version, &quot;path-variable&quot;);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> @GetMapping(value = &quot;/hi&quot;, produces = APPLICATION_JSON_VALUE)</span><br><span class="line"> Greeting greetWithHeader(@RequestHeader(&quot;X-API-Version&quot;) ApiVersion version) &#123;</span><br><span class="line">  return this.greet(version, &quot;header&quot;);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"> private Greeting greet(ApiVersion version, String how) &#123;</span><br><span class="line">  return new Greeting(how, version);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li><p>버젼을 url에 인코딩하면 enum인 ApiVersion으로 변환하여 핸들러 메소드에 주입. localhost:8080/api/v2/hi 로 쓸수 있다.</p>
+</li>
+<li><p>header에 담은 api 버전 처리</p>
+</li>
+</ol>
+<p>&lt;클라우드 네이티브 자바 6장 참고&gt;</p>
 
                     
                     <!-- Tags Bottom -->
                     
                         <div class="tags-container-bottom">
-                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/HEXO/">#HEXO</a>
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a> <a class="fw3 ph1 dib" href="/tags/Rest/">#Rest</a>
                         </div>
                     
 
@@ -193,7 +201,11 @@
     <h3>Categories</h3>
     
         <p>
-            <a href="/categories/HEXO/">HEXO</a>
+            <a href="/categories/Spring/">Spring</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Spring/Rest/">Rest</a>
         </p>
     
 </div>
