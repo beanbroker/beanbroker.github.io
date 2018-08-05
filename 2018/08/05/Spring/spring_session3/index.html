@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="maven deafult setting use true or false"/>
+        <meta property="og:title" content="Spring Boot Session 3 with redis"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>maven deafult setting use true or false - beanbroker blog</title>
+    <title>Spring Boot Session 3 with redis - beanbroker blog</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -118,8 +118,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">maven deafult setting use true or false</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-07-28</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Spring Boot Session 3 with redis</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-08-05</p>
         </div>
     </div>
 
@@ -139,23 +139,40 @@
                     
                         <div class="tags-container-vertical">
                             <div class="tags-sub-container">
-                                <a class="fw3 ph1 dib" href="/tags/intelliJ/">#intelliJ</a> <a class="fw3 ph1 dib" href="/tags/maven/">#maven</a>
+                                <a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a> <a class="fw3 ph1 dib" href="/tags/Session/">#Session</a> <a class="fw3 ph1 dib" href="/tags/Redis/">#Redis</a>
                             </div>
                         </div>
                     
 
                     <!-- Main Post Content -->
-                    <h1 id="메이븐-로컬-셋팅-디폴트-셋팅하기"><a href="#메이븐-로컬-셋팅-디폴트-셋팅하기" class="headerlink" title="메이븐 로컬 셋팅 디폴트 셋팅하기"></a>메이븐 로컬 셋팅 디폴트 셋팅하기</h1><ol>
-<li>cd /Users/username/.m2</li>
-<li>vim setting.xml</li>
-<li>profile 안에 있는activeByDefault true or false 직접입력 후 저장</li>
-</ol>
+                    <h1 id="Spring-boot-Redis-2"><a href="#Spring-boot-Redis-2" class="headerlink" title="Spring boot Redis 2"></a>Spring boot Redis 2</h1><p> <a href="https://beanbroker.github.io/2018/08/04/Spring/spring_session2/" target="_blank" rel="noopener">https://beanbroker.github.io/2018/08/04/Spring/spring_session2/</a></p>
+<p>위의 올린 내용을 이어서 가겠다.</p>
+<p>우선 레디스를 날려보자<br>docker -ps를 통해 보이는 names</p>
+<p>docker stop name<br>docker rm name</p>
+<p>우선 간단한 컨트롤러 추가와 dependency추가</p>
+<blockquote>
+<p>pom.xml</p>
+</blockquote>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">	&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>TripController</p>
+</blockquote>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">public class TripController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    TripRepository tripRepository;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;/all&quot;)</span><br><span class="line">    public Object getAllTrip()&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        return tripRepository.findAll();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>localhost:8080/all 을 하게되면 현재 redis에 있는 모든 trip Object를 반환한다.<br>(이를 통해 유저들의 간단한 state정도는 확인 할수 있다. 너무 많은 정보를 담지말자! 그냥 key,value만으로 사용하자)</p>
+<p>/all 을 호출하게 될경우 아래의 결과를 얻을 수 있다.<br>[<br>  {<br>    “id”: “ae9b225e-5184-4258-bc08-5b56d6526c56”,<br>    “title”: “Test Trip”,<br>    “startedAt”: “2018-08-05T07:07:57.389+0000”<br>  }<br>]</p>
+<p>로컬서버를 셧다운 한 후 redis cli를 통해 현재 무슨 데이터가 있는지 확인 하더라도 정상적으로 데아터가 담겨져있다. </p>
+<p>현재 소스 기준에서 TripController에 코드를 추가해보자</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(value = &quot;/&#123;id&#125;&quot;)</span><br><span class="line">    public Object getTripById(@PathVariable String id)&#123;</span><br><span class="line"></span><br><span class="line">        return tripRepository.findById(id);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>레디스cli를 통해 찾을수 있는 id로 localhost:8080/id 로 진행하게 될경우 현재 레디스에 올라가 있는 특정 id값의 데이터를 return받는다.(없으면 null 을 리턴한다.. 예제다.. 완벽을……….. ㅠ)</p>
+<p>다음에 이어서 springboot에서 쓰이는 redis client jedis 를 통해 예제를 만들어 볼것이다!</p>
+<p>미리 디펜던시를 추가하자</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;redis.clients&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jedis&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 
                     
                     <!-- Tags Bottom -->
                     
                         <div class="tags-container-bottom">
-                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/intelliJ/">#intelliJ</a> <a class="fw3 ph1 dib" href="/tags/maven/">#maven</a>
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a> <a class="fw3 ph1 dib" href="/tags/Session/">#Session</a> <a class="fw3 ph1 dib" href="/tags/Redis/">#Redis</a>
                         </div>
                     
 
@@ -189,11 +206,15 @@
     <h3>Categories</h3>
     
         <p>
-            <a href="/categories/intelliJ/">intelliJ</a>
+            <a href="/categories/Spring/">Spring</a>
         </p>
     
         <p>
-            <a href="/categories/intelliJ/maven/">maven</a>
+            <a href="/categories/Spring/Redis/">Redis</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Spring/Redis/Session/">Session</a>
         </p>
     
 </div>
