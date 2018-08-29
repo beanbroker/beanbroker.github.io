@@ -126,15 +126,22 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/node-js/sequelize/</loc>
-        <lastmod>2018-08-27T08:07:44.885Z</lastmod>
+        <loc>http://yoursite.com/categories/node-js/</loc>
+        <lastmod>2018-08-29T06:55:02.841Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/node-js/</loc>
-        <lastmod>2018-08-29T05:50:56.198Z</lastmod>
+        <loc>http://yoursite.com/categories/node-js/sequelize/</loc>
+        <lastmod>2018-08-29T06:55:02.841Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/node-js/sequelize/Rest/</loc>
+        <lastmod>2018-08-29T06:55:02.841Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
