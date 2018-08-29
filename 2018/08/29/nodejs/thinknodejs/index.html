@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--autoCanonical-->
-    <link rel="canonical" href="http://yoursite.com/2018/08/12/nodejs/supervisor/">
+    <link rel="canonical" href="http://yoursite.com/2018/08/29/nodejs/thinknodejs/">
 
     <!--Description-->
     
@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="node.js supervisor">
+        <meta property="og:title" content="NodeJs 생각정리">
     
 
     <!--Open Graph Description-->
@@ -47,7 +47,7 @@
 
     <!-- Title -->
     
-    <title>node.js supervisor - beanbroker blog</title>
+    <title>NodeJs 생각정리 - beanbroker blog</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -118,8 +118,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">node.js supervisor</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-08-12</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">NodeJs 생각정리</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-08-29</p>
         </div>
     </div>
 
@@ -139,28 +139,36 @@
                     
                         <div class="tags-container-vertical">
                             <div class="tags-sub-container">
-                                <a class="fw3 ph1 dib" href="/tags/node-js/">#node.js</a> <a class="fw3 ph1 dib" href="/tags/express/">#express</a>
+                                <a class="fw3 ph1 dib" href="/tags/node-js/">#node.js</a>
                             </div>
                         </div>
                     
 
                     <!-- Main Post Content -->
-                    <h1 id="npm-supervisor"><a href="#npm-supervisor" class="headerlink" title="npm supervisor"></a>npm supervisor</h1><p><a href="https://www.npmjs.com/package/supervisor" rel="external nofollow noopener noreferrer" target="_blank">https://www.npmjs.com/package/supervisor</a></p>
-<p>설치</p>
-<blockquote>
-<p>npm install supervisor -g</p>
-</blockquote>
-<p>app.js 실행</p>
-<blockquote>
-<p>supervisor app.js</p>
-</blockquote>
-<p> 코드를 실행시 즉각적으로 코드 반영</p>
+                    <h1 id="NodeJs-잠깐-생각정리"><a href="#NodeJs-잠깐-생각정리" class="headerlink" title="NodeJs 잠깐 생각정리"></a>NodeJs 잠깐 생각정리</h1><p>항상 멀티쓰레드환경에서 개발을 하다가 node.js를 개발하다보니 궁금점들이 생긴다.</p>
+<p>궁금점?</p>
+<ol>
+<li>싱글스레드다</li>
+<li>was는 멀티스레드 환경! 노드는 어떻게 싱글스레드로 처리를 해야하는가?</li>
+</ol>
+<p>다양한 문서와 혼자 공부를 하면서 느낀점을 간단히 정리하면 아래와 같다</p>
+<h3 id="싱글-스레드-이벤트-루프방식"><a href="#싱글-스레드-이벤트-루프방식" class="headerlink" title="싱글 스레드 - 이벤트 루프방식"></a>싱글 스레드 - 이벤트 루프방식</h3><p>진입점이 하나! 발생한 모든 이벤트들을 줄세워서 처리!</p>
+<p>즉 node.js의 작동원리를 햄버거가게로 생각하면 된다.<br>아래의 조건들이 있다면</p>
+<ol>
+<li>주문하는사람</li>
+<li>주문받는사람 한명 </li>
+<li>패티굽는사람</li>
+</ol>
+<p>주문하는 사람을 유저로 생각하자!<br>주문받는사람 한명이 싱글스레드라 생각한다. 주문(이벤트 발생)이 들어오면 패티굽는사람(백단 스레드)로 이벤트를 넘긴다.</p>
+<p>즉, 수많은! 주문이 들어온다하더라도 이벤트를 줄세우고 주문을 받기만 하면된다.(기본적으로 백단 스레드는 4개, but 환경변수를 통해 늘릴수 있다는 점!)</p>
+<h3 id="좀-더-발전된-방향의-개발을-하려면"><a href="#좀-더-발전된-방향의-개발을-하려면" class="headerlink" title="좀 더 발전된 방향의 개발을 하려면?"></a>좀 더 발전된 방향의 개발을 하려면?</h3><p>서버 개발자라면! IO걱정을 하며 개발을 진행하게 된다. 데이터베이스에 접근할때도 Join을 남발을 하게 되면 IO가 더 커진다. 항상 비용을 생각하며 개발을 진행을 하는 습관을 가져야한다. 보통 하드웨어 성능을 빵빵하게 해서 하면 해결이 되긴하지만.. 그건 너무 비양심적인 행동이라 생각한다…<br>그렇다면! nodeJs로 개발을 진행하게 된다면! 좀더 서비스로직 개선에 관련하여 더 많은 생각을 해야한다 판단이된다. 노력해야할점이다…</p>
+<p>지금까지 느낀점을.. 잠깐 적은….. 글… 더 좋은글을 쓸 수 있는 날까지… </p>
 
                     
                     <!-- Tags Bottom -->
                     
                         <div class="tags-container-bottom">
-                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/node-js/">#node.js</a> <a class="fw3 ph1 dib" href="/tags/express/">#express</a>
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/node-js/">#node.js</a>
                         </div>
                     
 
@@ -195,10 +203,6 @@
     
         <p>
             <a href="/categories/node-js/">node.js</a>
-        </p>
-    
-        <p>
-            <a href="/categories/node-js/express/">express</a>
         </p>
     
 </div>

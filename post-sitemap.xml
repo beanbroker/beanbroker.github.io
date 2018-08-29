@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2018/08/29/nodejs/thinknodejs/</loc>
+        <lastmod>2018-08-29T05:50:56.198Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2018/08/27/nodejs/sequelize3/</loc>
         <lastmod>2018-08-27T08:07:44.885Z</lastmod>
         <changefreq>weekly</changefreq>

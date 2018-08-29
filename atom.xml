@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-08-27T08:07:44.885Z</updated>
+  <updated>2018-08-29T05:50:56.198Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NodeJs 생각정리</title>
+    <link href="http://yoursite.com/2018/08/29/nodejs/thinknodejs/"/>
+    <id>http://yoursite.com/2018/08/29/nodejs/thinknodejs/</id>
+    <published>2018-08-29T09:30:00.000Z</published>
+    <updated>2018-08-29T05:50:56.198Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NodeJs-잠깐-생각정리"><a href="#NodeJs-잠깐-생각정리" class="headerlink" title="NodeJs 잠깐 생각정리"></a>NodeJs 잠깐 생각정리</h1><p>항상 멀티쓰레드환경에서 개발을 하다가 node.js를 개발하다보니 궁금점들이 생긴다.</p><p>궁금점?</p><ol><li>싱글스레드다</li><li>was는 멀티스레드 환경! 노드는 어떻게 싱글스레드로 처리를 해야하는가?</li></ol><p>다양한 문서와 혼자 공부를 하면서 느낀점을 간단히 정리하면 아래와 같다</p><h3 id="싱글-스레드-이벤트-루프방식"><a href="#싱글-스레드-이벤트-루프방식" class="headerlink" title="싱글 스레드 - 이벤트 루프방식"></a>싱글 스레드 - 이벤트 루프방식</h3><p>진입점이 하나! 발생한 모든 이벤트들을 줄세워서 처리!</p><p>즉 node.js의 작동원리를 햄버거가게로 생각하면 된다.<br>아래의 조건들이 있다면</p><ol><li>주문하는사람</li><li>주문받는사람 한명 </li><li>패티굽는사람</li></ol><p>주문하는 사람을 유저로 생각하자!<br>주문받는사람 한명이 싱글스레드라 생각한다. 주문(이벤트 발생)이 들어오면 패티굽는사람(백단 스레드)로 이벤트를 넘긴다.</p><p>즉, 수많은! 주문이 들어온다하더라도 이벤트를 줄세우고 주문을 받기만 하면된다.(기본적으로 백단 스레드는 4개, but 환경변수를 통해 늘릴수 있다는 점!)</p><h3 id="좀-더-발전된-방향의-개발을-하려면"><a href="#좀-더-발전된-방향의-개발을-하려면" class="headerlink" title="좀 더 발전된 방향의 개발을 하려면?"></a>좀 더 발전된 방향의 개발을 하려면?</h3><p>서버 개발자라면! IO걱정을 하며 개발을 진행하게 된다. 데이터베이스에 접근할때도 Join을 남발을 하게 되면 IO가 더 커진다. 항상 비용을 생각하며 개발을 진행을 하는 습관을 가져야한다. 보통 하드웨어 성능을 빵빵하게 해서 하면 해결이 되긴하지만.. 그건 너무 비양심적인 행동이라 생각한다…<br>그렇다면! nodeJs로 개발을 진행하게 된다면! 좀더 서비스로직 개선에 관련하여 더 많은 생각을 해야한다 판단이된다. 노력해야할점이다…</p><p>지금까지 느낀점을.. 잠깐 적은….. 글… 더 좋은글을 쓸 수 있는 날까지… </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;NodeJs-잠깐-생각정리&quot;&gt;&lt;a href=&quot;#NodeJs-잠깐-생각정리&quot; class=&quot;headerlink&quot; title=&quot;NodeJs 잠깐 생각정리&quot;&gt;&lt;/a&gt;NodeJs 잠깐 생각정리&lt;/h1&gt;&lt;p&gt;항상 멀티쓰레드환경에서 개발을 하다가 n
+      
+    
+    </summary>
+    
+      <category term="node.js" scheme="http://yoursite.com/categories/node-js/"/>
+    
+    
+      <category term="node.js" scheme="http://yoursite.com/tags/node-js/"/>
+    
+  </entry>
   
   <entry>
     <title>sequelize3</title>
@@ -266,39 +291,6 @@
       <category term="express" scheme="http://yoursite.com/tags/express/"/>
     
       <category term="router" scheme="http://yoursite.com/tags/router/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>node.js 세션</title>
-    <link href="http://yoursite.com/2018/08/12/nodejs/nodesession/"/>
-    <id>http://yoursite.com/2018/08/12/nodejs/nodesession/</id>
-    <published>2018-08-12T06:30:00.000Z</published>
-    <updated>2018-08-12T06:30:25.528Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="node-js-session"><a href="#node-js-session" class="headerlink" title="node.js session"></a>node.js session</h1><h2 id="1-세션을-사용해보자"><a href="#1-세션을-사용해보자" class="headerlink" title="1. 세션을 사용해보자"></a>1. 세션을 사용해보자</h2><h4 id="HTTP-프로토콜-특징"><a href="#HTTP-프로토콜-특징" class="headerlink" title="HTTP 프로토콜 특징"></a>HTTP 프로토콜 특징</h4><ol><li>Connecionless</li><li>Stateless</li></ol><p>비연결성, 상태값을 가지지 않는다</p><p>동작형태 -&gt; 클라이언트/서버( 요청과 응답 &lt;-포인트)<br>비연결성(상태 노유지 프로토콜)-&gt; 소왓? -&gt; 무작위를 상대로하는 서비스로는 최적<br>이지<br>메시지 교환형태 프로토콜이야(클라이언트와 서버간의 http메세지 주고받으며 통신<br>)</p><p>stateless라며? -&gt; 쿠키 등장!</p><h4 id="쿠키와-세션"><a href="#쿠키와-세션" class="headerlink" title="쿠키와 세션"></a>쿠키와 세션</h4><p>-&gt; Http의 약점 보완</p><ul><li>쿠키(클라이언트 로컬에 저장되는 키와 값) - 클라이언트 파일로 저장</li><li>세션(서버에서 일정 시간동안 저장되는 키와 값) - 서버에 저장</li></ul><p>세션은 서버의 자원을 사용하기 때문에 마구잡이로 사용하다보면 서버 메모리가 감<br>당할수 없게 되고 그로 인해 서비스 장애 또는 서비스가 느려 질수 있다. 그래서 &gt;쿠기를 사용해야 한당.</p><p>[관련내용]</p><ol><li><a href="https://www.npmjs.com/package/express-session" rel="external nofollow noopener noreferrer" target="_blank">https://www.npmjs.com/package/express-session</a></li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express-session --save</span><br></pre></td></tr></table></figure><p>package.json확인</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"> var express = require(&apos;express&apos;);</span><br><span class="line"> var session = require(&apos;express-session&apos;);</span><br><span class="line"> var app = express();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> app.use(session(&#123;</span><br><span class="line">   secret: &apos;supserljksdg#23423&apos;,</span><br><span class="line">   resave: false,</span><br><span class="line">   saveUninitialized: true, // 세션아이디 발급전에 발급 x</span><br><span class="line"> </span><br><span class="line"> &#125;));</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"> app.get(&apos;/cnt&apos;, function(req,res)&#123;</span><br><span class="line">    req.session.cnt= 1;</span><br><span class="line">    res.send(&apos;Sesson hello&apos;);</span><br><span class="line"> &#125;);</span><br><span class="line"></span><br><span class="line">app.get(&apos;/check&apos;, function(req,res)&#123;</span><br><span class="line">    res.send(&apos;rst : &apos; + parseInt(req.session.cnt));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"> app.listen(3005, function () &#123;</span><br><span class="line">    console.log(&apos;app listening on port 3005!&apos;);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure><p>위와같이 작성후</p><ol><li>localhost:3005/cnt</li></ol><ul><li>session hello 확인</li></ul><ol start="2"><li>localhost:3005/check</li></ol><ul><li>rst : 1 확인</li></ul><h2 id="2-session-cnt-올려보기"><a href="#2-session-cnt-올려보기" class="headerlink" title="2. session cnt 올려보기"></a>2. session cnt 올려보기</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"> var express = require(&apos;express&apos;);</span><br><span class="line"> var session = require(&apos;express-session&apos;);</span><br><span class="line"> var app = express();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> app.use(session(&#123;</span><br><span class="line">   secret: &apos;supserljksdg#23423&apos;,</span><br><span class="line">   resave: false,</span><br><span class="line">   saveUninitialized: true, // 세션아이디 발급전에 발급 x</span><br><span class="line"> </span><br><span class="line"> &#125;));</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"> app.get(&apos;/cnt&apos;, function(req,res)&#123;</span><br><span class="line"> </span><br><span class="line">    if(req.session.cnt)&#123;</span><br><span class="line">        req.session.cnt++;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        req.session.cnt = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    res.send(&apos;cnt :&apos; + req.session.cnt);</span><br><span class="line"> &#125;);</span><br><span class="line"></span><br><span class="line">app.get(&apos;/check&apos;, function(req,res)&#123;</span><br><span class="line">    res.send(&apos;rst : &apos; + parseInt(req.session.cnt));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"> app.listen(3005, function () &#123;</span><br><span class="line">    console.log(&apos;app listening on port 3005!&apos;);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure><ol><li>위와 같이 작성하여 실행</li><li>localhost:3005/cnt 새로고침</li><li>cnt 증가</li><li>localhost:3005/check 세션에 cnt 잘담겨져있는지 확인</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;node-js-session&quot;&gt;&lt;a href=&quot;#node-js-session&quot; class=&quot;headerlink&quot; title=&quot;node.js session&quot;&gt;&lt;/a&gt;node.js session&lt;/h1&gt;&lt;h2 id=&quot;1-세션을-사용해보자&quot;&gt;
-      
-    
-    </summary>
-    
-      <category term="node.js" scheme="http://yoursite.com/categories/node-js/"/>
-    
-      <category term="express" scheme="http://yoursite.com/categories/node-js/express/"/>
-    
-      <category term="Session" scheme="http://yoursite.com/categories/node-js/express/Session/"/>
-    
-    
-      <category term="Session" scheme="http://yoursite.com/tags/Session/"/>
-    
-      <category term="node.js" scheme="http://yoursite.com/tags/node-js/"/>
-    
-      <category term="express" scheme="http://yoursite.com/tags/express/"/>
     
   </entry>
   
