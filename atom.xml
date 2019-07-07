@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-07T09:00:01.927Z</updated>
+  <updated>2019-07-07T09:47:10.472Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker Mysql 인코딩 해결</title>
+    <link href="http://yoursite.com/2019/07/07/docekr_encode/"/>
+    <id>http://yoursite.com/2019/07/07/docekr_encode/</id>
+    <published>2019-07-07T09:50:00.000Z</published>
+    <updated>2019-07-07T09:47:10.472Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Docker-Mysql-인코딩-해결"><a href="#Docker-Mysql-인코딩-해결" class="headerlink" title="Docker Mysql 인코딩 해결"></a>Docker Mysql 인코딩 해결</h2><p>옛날부터 꼭 올려야 된다 생각하였지만..</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name some-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure><p>꼭 도커 컨테이너를 실행시 뒤에 char set 설정을 해야 한다. 그렇지 않을 경우 한글 insert시 다깨져서 나온다….</p><h3 id="1-도커-mysql-접속"><a href="#1-도커-mysql-접속" class="headerlink" title="1. 도커 mysql 접속"></a>1. 도커 mysql 접속</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker exec -i -t some-mysql bash</span><br><span class="line"></span><br><span class="line">mysql -u root -p</span><br><span class="line">패스워드 입력</span><br></pre></td></tr></table></figure><h3 id="2-status-명령어-입력"><a href="#2-status-명령어-입력" class="headerlink" title="2. status 명령어 입력"></a>2. status 명령어 입력</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; status</span><br><span class="line">--------------</span><br><span class="line">mysql  Ver 14.14 Distrib 5.7.26, for Linux (x86_64) using  EditLine wrapper</span><br><span class="line"></span><br><span class="line">Connection id:6</span><br><span class="line">Current database:</span><br><span class="line">Current user:root@localhost</span><br><span class="line">SSL:Not in use</span><br><span class="line">Current pager:stdout</span><br><span class="line">Using outfile:&apos;&apos;</span><br><span class="line">Using delimiter:;</span><br><span class="line">Server version:5.7.26 MySQL Community Server (GPL)</span><br><span class="line">Protocol version:10</span><br><span class="line">Connection:Localhost via UNIX socket</span><br><span class="line">Server characterset:utf8mb4</span><br><span class="line">Db     characterset:utf8mb4</span><br><span class="line">Client characterset:latin1</span><br><span class="line">Conn.  characterset:latin1</span><br><span class="line">UNIX socket:/var/run/mysqld/mysqld.sock</span><br><span class="line">Uptime:8 min 27 sec</span><br><span class="line"></span><br><span class="line">Threads: 3  Questions: 53  Slow queries: 0  Opens: 111  Flush tables: 1  Open tables: 104  Queries per second avg: 0.104</span><br><span class="line">--------------</span><br></pre></td></tr></table></figure><h3 id="3-뒤에-charset을-붙이지-않고-테스트-진행"><a href="#3-뒤에-charset을-붙이지-않고-테스트-진행" class="headerlink" title="3. 뒤에 charset을 붙이지 않고 테스트 진행"></a>3. 뒤에 charset을 붙이지 않고 테스트 진행</h3><p>docker run -d –name test-mysql -p 3308:3308 -e MYSQL_ROOT_PASSWORD=password mysql:5.7</p><h3 id="위와-차이점을-확인하자"><a href="#위와-차이점을-확인하자" class="headerlink" title="위와 차이점을 확인하자!"></a>위와 차이점을 확인하자!</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">--------------</span><br><span class="line">mysql  Ver 14.14 Distrib 5.7.26, for Linux (x86_64) using  EditLine wrapper</span><br><span class="line"></span><br><span class="line">Connection id:2</span><br><span class="line">Current database:</span><br><span class="line">Current user:root@localhost</span><br><span class="line">SSL:Not in use</span><br><span class="line">Current pager:stdout</span><br><span class="line">Using outfile:&apos;&apos;</span><br><span class="line">Using delimiter:;</span><br><span class="line">Server version:5.7.26 MySQL Community Server (GPL)</span><br><span class="line">Protocol version:10</span><br><span class="line">Connection:Localhost via UNIX socket</span><br><span class="line">Server characterset:latin1</span><br><span class="line">Db     characterset:latin1</span><br><span class="line">Client characterset:latin1</span><br><span class="line">Conn.  characterset:latin1</span><br><span class="line">UNIX socket:/var/run/mysqld/mysqld.sock</span><br><span class="line">Uptime:14 sec</span><br><span class="line"></span><br><span class="line">Threads: 1  Questions: 5  Slow queries: 0  Opens: 105  Flush tables: 1  Open tables: 98  Queries per second avg: 0.357</span><br><span class="line">--------------</span><br></pre></td></tr></table></figure><p>끝!</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Docker-Mysql-인코딩-해결&quot;&gt;&lt;a href=&quot;#Docker-Mysql-인코딩-해결&quot; class=&quot;headerlink&quot; title=&quot;Docker Mysql 인코딩 해결&quot;&gt;&lt;/a&gt;Docker Mysql 인코딩 해결&lt;/h2&gt;&lt;p&gt;옛날
+      
+    
+    </summary>
+    
+      <category term="Docker" scheme="http://yoursite.com/categories/Docker/"/>
+    
+      <category term="mysql" scheme="http://yoursite.com/categories/Docker/mysql/"/>
+    
+    
+      <category term="Docker" scheme="http://yoursite.com/tags/Docker/"/>
+    
+      <category term="mysql" scheme="http://yoursite.com/tags/mysql/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo Back up</title>
@@ -275,39 +304,6 @@
     
     
       <category term="Nginx" scheme="http://yoursite.com/tags/Nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nginx with Docker 2장[ self deprecated ]</title>
-    <link href="http://yoursite.com/2019/05/19/Server/nginx2/"/>
-    <id>http://yoursite.com/2019/05/19/Server/nginx2/</id>
-    <published>2019-05-19T10:00:00.000Z</published>
-    <updated>2019-07-07T08:12:45.330Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Nginx-with-docker-2장-deprecated"><a href="#Nginx-with-docker-2장-deprecated" class="headerlink" title="Nginx with docker 2장  deprecated"></a>Nginx with docker 2장  deprecated</h1><p>Docker compose를 활용 해보장</p><h2 id="Docker-compose란"><a href="#Docker-compose란" class="headerlink" title="Docker compose란?"></a>Docker compose란?</h2><p>간단하게 말하자면 multi-container Docker applications을 실행하기 위한 툴이다. </p><p><a href="https://docs.docker.com/compose/" rel="external nofollow noopener noreferrer" target="_blank">Docker compose</a></p><h2 id="Docker-compse-설치"><a href="#Docker-compse-설치" class="headerlink" title="Docker compse 설치"></a>Docker compse 설치</h2><p><a href="https://docs.docker.com/compose/install/" rel="external nofollow noopener noreferrer" target="_blank">Docker compose 설치 가이드</a></p><blockquote><p>STEP1 , Run this command to download the current stable release of Docker Compose:</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure><blockquote><p>STEP2, Apply executable permissions to the binary</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure><blockquote><p>STEP3, 정상설치 확인</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --version</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">아래처럼 버젼확인가능</span><br><span class="line">docker-compose version 1.24.0, build 0aa59064</span><br></pre></td></tr></table></figure><p>아.. 이게 잠깐만 nginx 공부를 위해 작성하고 있는데 이건모 도커만 두들겨 패는느낌이…</p><p>잠시… 하.. 그냥 프리티어 ec2에서 nginx 설치할걸.. 하며 후회하는중….. 일단 여기까지 업로드 후 추후 업로드</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Nginx-with-docker-2장-deprecated&quot;&gt;&lt;a href=&quot;#Nginx-with-docker-2장-deprecated&quot; class=&quot;headerlink&quot; title=&quot;Nginx with docker 2장  deprecat
-      
-    
-    </summary>
-    
-      <category term="Nginx" scheme="http://yoursite.com/categories/Nginx/"/>
-    
-      <category term="Docker" scheme="http://yoursite.com/categories/Nginx/Docker/"/>
-    
-      <category term="Docker-compose" scheme="http://yoursite.com/categories/Nginx/Docker/Docker-compose/"/>
-    
-    
-      <category term="Nginx" scheme="http://yoursite.com/tags/Nginx/"/>
-    
-      <category term="Docker" scheme="http://yoursite.com/tags/Docker/"/>
-    
-      <category term="Docker-compose" scheme="http://yoursite.com/tags/Docker-compose/"/>
     
   </entry>
   

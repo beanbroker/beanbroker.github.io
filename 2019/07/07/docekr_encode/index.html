@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Hello pkj">
+        <meta property="og:title" content="Docker Mysql 인코딩 해결">
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Hello pkj - beanbroker blog</title>
+    <title>Docker Mysql 인코딩 해결 - beanbroker blog</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
@@ -79,7 +79,7 @@
 
 </head>
 
-<link rel="canonical" href="http://yoursite.com/2018/07/26/hello-world/">
+<link rel="canonical" href="http://yoursite.com/2019/07/07/docekr_encode/">
 
 <body>
 
@@ -116,8 +116,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">Hello pkj</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-07-26</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Docker Mysql 인코딩 해결</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-07-07</p>
         </div>
     </div>
 
@@ -137,27 +137,26 @@
                     
                         <div class="tags-container-vertical">
                             <div class="tags-sub-container">
-                                <a class="fw3 ph1 dib" href="/tags/HEXO/">#HEXO</a>
+                                <a class="fw3 ph1 dib" href="/tags/Docker/">#Docker</a> <a class="fw3 ph1 dib" href="/tags/mysql/">#mysql</a>
                             </div>
                         </div>
                     
 
                     <!-- Main Post Content -->
-                    <p>Welcome to <a href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" rel="external nofollow noopener noreferrer" target="_blank">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" rel="external nofollow noopener noreferrer" target="_blank">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" rel="external nofollow noopener noreferrer" target="_blank">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" rel="external nofollow noopener noreferrer" target="_blank">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" rel="external nofollow noopener noreferrer" target="_blank">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" rel="external nofollow noopener noreferrer" target="_blank">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" rel="external nofollow noopener noreferrer" target="_blank">Deployment</a></p>
+                    <h2 id="Docker-Mysql-인코딩-해결"><a href="#Docker-Mysql-인코딩-해결" class="headerlink" title="Docker Mysql 인코딩 해결"></a>Docker Mysql 인코딩 해결</h2><p>옛날부터 꼭 올려야 된다 생각하였지만..</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name some-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
+<p>꼭 도커 컨테이너를 실행시 뒤에 char set 설정을 해야 한다. 그렇지 않을 경우 한글 insert시 다깨져서 나온다….</p>
+<h3 id="1-도커-mysql-접속"><a href="#1-도커-mysql-접속" class="headerlink" title="1. 도커 mysql 접속"></a>1. 도커 mysql 접속</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker exec -i -t some-mysql bash</span><br><span class="line"></span><br><span class="line">mysql -u root -p</span><br><span class="line">패스워드 입력</span><br></pre></td></tr></table></figure>
+<h3 id="2-status-명령어-입력"><a href="#2-status-명령어-입력" class="headerlink" title="2. status 명령어 입력"></a>2. status 명령어 입력</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; status</span><br><span class="line">--------------</span><br><span class="line">mysql  Ver 14.14 Distrib 5.7.26, for Linux (x86_64) using  EditLine wrapper</span><br><span class="line"></span><br><span class="line">Connection id:		6</span><br><span class="line">Current database:</span><br><span class="line">Current user:		root@localhost</span><br><span class="line">SSL:			Not in use</span><br><span class="line">Current pager:		stdout</span><br><span class="line">Using outfile:		&apos;&apos;</span><br><span class="line">Using delimiter:	;</span><br><span class="line">Server version:		5.7.26 MySQL Community Server (GPL)</span><br><span class="line">Protocol version:	10</span><br><span class="line">Connection:		Localhost via UNIX socket</span><br><span class="line">Server characterset:	utf8mb4</span><br><span class="line">Db     characterset:	utf8mb4</span><br><span class="line">Client characterset:	latin1</span><br><span class="line">Conn.  characterset:	latin1</span><br><span class="line">UNIX socket:		/var/run/mysqld/mysqld.sock</span><br><span class="line">Uptime:			8 min 27 sec</span><br><span class="line"></span><br><span class="line">Threads: 3  Questions: 53  Slow queries: 0  Opens: 111  Flush tables: 1  Open tables: 104  Queries per second avg: 0.104</span><br><span class="line">--------------</span><br></pre></td></tr></table></figure>
+<h3 id="3-뒤에-charset을-붙이지-않고-테스트-진행"><a href="#3-뒤에-charset을-붙이지-않고-테스트-진행" class="headerlink" title="3. 뒤에 charset을 붙이지 않고 테스트 진행"></a>3. 뒤에 charset을 붙이지 않고 테스트 진행</h3><p>docker run -d –name test-mysql -p 3308:3308 -e MYSQL_ROOT_PASSWORD=password mysql:5.7</p>
+<h3 id="위와-차이점을-확인하자"><a href="#위와-차이점을-확인하자" class="headerlink" title="위와 차이점을 확인하자!"></a>위와 차이점을 확인하자!</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">--------------</span><br><span class="line">mysql  Ver 14.14 Distrib 5.7.26, for Linux (x86_64) using  EditLine wrapper</span><br><span class="line"></span><br><span class="line">Connection id:		2</span><br><span class="line">Current database:</span><br><span class="line">Current user:		root@localhost</span><br><span class="line">SSL:			Not in use</span><br><span class="line">Current pager:		stdout</span><br><span class="line">Using outfile:		&apos;&apos;</span><br><span class="line">Using delimiter:	;</span><br><span class="line">Server version:		5.7.26 MySQL Community Server (GPL)</span><br><span class="line">Protocol version:	10</span><br><span class="line">Connection:		Localhost via UNIX socket</span><br><span class="line">Server characterset:	latin1</span><br><span class="line">Db     characterset:	latin1</span><br><span class="line">Client characterset:	latin1</span><br><span class="line">Conn.  characterset:	latin1</span><br><span class="line">UNIX socket:		/var/run/mysqld/mysqld.sock</span><br><span class="line">Uptime:			14 sec</span><br><span class="line"></span><br><span class="line">Threads: 1  Questions: 5  Slow queries: 0  Opens: 105  Flush tables: 1  Open tables: 98  Queries per second avg: 0.357</span><br><span class="line">--------------</span><br></pre></td></tr></table></figure>
+<p>끝!</p>
 
                     
                     <!-- Tags Bottom -->
                     
                         <div class="tags-container-bottom">
-                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/HEXO/">#HEXO</a>
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Docker/">#Docker</a> <a class="fw3 ph1 dib" href="/tags/mysql/">#mysql</a>
                         </div>
                     
 
@@ -191,7 +190,11 @@
     <h3>Categories</h3>
     
         <p>
-            <a href="/categories/HEXO/">HEXO</a>
+            <a href="/categories/Docker/">Docker</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Docker/mysql/">mysql</a>
         </p>
     
 </div>
