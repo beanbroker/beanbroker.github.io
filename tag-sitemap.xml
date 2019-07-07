@@ -30,20 +30,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Aurora/</loc>
-        <lastmod>2019-07-07T08:12:45.322Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/max-connections/</loc>
-        <lastmod>2019-07-07T08:12:45.322Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/tags/timezone/</loc>
         <lastmod>2019-07-07T08:12:45.322Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -52,6 +38,20 @@
 
     <url>
         <loc>http://yoursite.com/tags/DOCKER/</loc>
+        <lastmod>2019-07-07T08:12:45.322Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Aurora/</loc>
+        <lastmod>2019-07-07T08:12:45.322Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/max-connections/</loc>
         <lastmod>2019-07-07T08:12:45.322Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -72,6 +72,13 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/tags/maven/</loc>
+        <lastmod>2019-07-07T08:12:45.324Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://yoursite.com/tags/Intellij/</loc>
         <lastmod>2019-07-07T08:12:45.324Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -80,13 +87,6 @@
 
     <url>
         <loc>http://yoursite.com/tags/multi/</loc>
-        <lastmod>2019-07-07T08:12:45.324Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/maven/</loc>
         <lastmod>2019-07-07T08:12:45.324Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -107,14 +107,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/coroutines/</loc>
+        <loc>http://yoursite.com/tags/functional/</loc>
         <lastmod>2019-07-07T08:12:45.326Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/functional/</loc>
+        <loc>http://yoursite.com/tags/coroutines/</loc>
         <lastmod>2019-07-07T08:12:45.326Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -135,14 +135,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Predicate/</loc>
+        <loc>http://yoursite.com/tags/QueryDsl/</loc>
         <lastmod>2019-07-07T08:12:45.327Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/QueryDsl/</loc>
+        <loc>http://yoursite.com/tags/Predicate/</loc>
         <lastmod>2019-07-07T08:12:45.327Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -268,13 +268,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Profile/</loc>
-        <lastmod>2019-07-07T08:12:45.331Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/tags/MongoDb/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -283,6 +276,13 @@
 
     <url>
         <loc>http://yoursite.com/tags/config/</loc>
+        <lastmod>2019-07-07T08:12:45.331Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Profile/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

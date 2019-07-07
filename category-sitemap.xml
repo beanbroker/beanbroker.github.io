@@ -35,13 +35,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Aurora/</loc>
-        <lastmod>2019-07-07T08:12:45.322Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/categories/Docker/</loc>
         <lastmod>2019-07-07T08:12:45.322Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -49,7 +42,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Aurora/max-connections/</loc>
+        <loc>http://yoursite.com/categories/Aurora/</loc>
         <lastmod>2019-07-07T08:12:45.322Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -64,6 +57,13 @@
 
     <url>
         <loc>http://yoursite.com/categories/ETC/DOCKER/</loc>
+        <lastmod>2019-07-07T08:12:45.322Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Aurora/max-connections/</loc>
         <lastmod>2019-07-07T08:12:45.322Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -91,14 +91,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Intellij/multi/</loc>
+        <loc>http://yoursite.com/categories/intelliJ/maven/</loc>
         <lastmod>2019-07-07T08:12:45.324Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/intelliJ/maven/</loc>
+        <loc>http://yoursite.com/categories/Intellij/multi/</loc>
         <lastmod>2019-07-07T08:12:45.324Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -126,14 +126,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Kotlin/coroutines/</loc>
+        <loc>http://yoursite.com/categories/Kotlin/functional/</loc>
         <lastmod>2019-07-07T08:12:45.326Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Kotlin/functional/</loc>
+        <loc>http://yoursite.com/categories/Kotlin/coroutines/</loc>
         <lastmod>2019-07-07T08:12:45.326Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -203,14 +203,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/node-js/sequelize/Rest/</loc>
+        <loc>http://yoursite.com/categories/node-js/express/Session/</loc>
         <lastmod>2019-07-07T08:12:45.329Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/node-js/express/Session/</loc>
+        <loc>http://yoursite.com/categories/node-js/sequelize/Rest/</loc>
         <lastmod>2019-07-07T08:12:45.329Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -294,7 +294,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/Profile/</loc>
+        <loc>http://yoursite.com/categories/Spring/MongoDb/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -308,7 +308,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/MongoDb/</loc>
+        <loc>http://yoursite.com/categories/Spring/Profile/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
