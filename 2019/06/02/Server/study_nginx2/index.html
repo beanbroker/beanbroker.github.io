@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="개발관련">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="beanbroker">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Nginx Proxy 설정">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="개발관련">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="beanbroker blog">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>Nginx Proxy 설정 - beanbroker blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-86502943-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="beanbroker blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="beanbroker blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about.html" title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/contact.html" title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Nginx Proxy 설정</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-06-02</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Nginx/">#Nginx</a> <a class="fw3 ph1 dib" href="/tags/Proxy/">#Proxy</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="Nginx-Proxy-설정"><a href="#Nginx-Proxy-설정" class="headerlink" title="Nginx Proxy 설정"></a>Nginx Proxy 설정</h1><blockquote>
+<p>Nginx Proxy 설정해보자!</p>
+</blockquote>
+<p>설정전에 간단한 개념정리</p>
+<h2 id="1-what"><a href="#1-what" class="headerlink" title="1. what?"></a>1. what?</h2><p>Proxy 서버란? -&gt; 중계서버(서버로 들어오는 request 중계)</p>
+<p><a href="https://ko.wikipedia.org/wiki/%ED%94%84%EB%A1%9D%EC%8B%9C_%EC%84%9C%EB%B2%84" rel="external nofollow noopener noreferrer" target="_blank">위키 proxy서버란?</a></p>
+<h2 id="2-why"><a href="#2-why" class="headerlink" title="2. why?"></a>2. why?</h2><ol>
+<li>보안<ul>
+<li>익명의 사용자가 서버에 접근하는 것을 막음</li>
+</ul>
+</li>
+<li><p>속도</p>
+<ul>
+<li>Proxy 서버로 들어오는 요청을 캐싱함</li>
+<li>cache를 저정하기 때문에 동일한 요청이 들어오게 될경우 cache 사용 가능</li>
+<li>서버의 불필요한 자원 낭비 방지</li>
+</ul>
+</li>
+<li><p>접근 우회</p>
+<ul>
+<li>보안적인 이슈로 인해 서버에 접근하지 못할 경우 우회해서 다른 서버들이 사용할수 있게 요청 전달</li>
+</ul>
+</li>
+<li><p>ACL (Proxy Server에 접속 할 수 있는 범위를 설정하는 옵션)</p>
+<ul>
+<li>사이트 접근에 대한 접근 정책을 정의 가능</li>
+</ul>
+</li>
+<li><p>Log/Audit</p>
+</li>
+</ol>
+<h2 id="3-Proxy-실습"><a href="#3-Proxy-실습" class="headerlink" title=" 3. Proxy 실습"></a> 3. Proxy 실습</h2><p>우선 Proxy 설정을 하기전에 로컬에서 기동시킬 간단한 서버가 필요</p>
+<p>각자 취향에 맞게 노드나 파이썬이나 스프링이나 아무거나 상관이 없음</p>
+<blockquote>
+<p>서버 port 7077롤 셋팅한 간단한 hello world</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloController</span></span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/"</span>)</span><br><span class="line">    <span class="function">fun <span class="title">getSomething</span><span class="params">()</span>: String </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello world! welcome to visit my site"</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/test"</span>)</span><br><span class="line">    <span class="function">fun <span class="title">test</span><span class="params">()</span>: String </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"test test test"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>nginx.conf 파일 변경</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">       listen       5000;</span><br><span class="line">       server_name  localhost;</span><br><span class="line"></span><br><span class="line">       #charset koi8-r;</span><br><span class="line"></span><br><span class="line">       #access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">       location / &#123;</span><br><span class="line"></span><br><span class="line">               proxy_pass http://localhost:7077;</span><br><span class="line">               proxy_http_version 1.1;</span><br><span class="line"></span><br><span class="line">           #root   html;</span><br><span class="line">           #index  index.html index.htm;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><a href="http://localhost:7077" rel="external nofollow noopener noreferrer" target="_blank">http://localhost:7077</a> 으로 proxy 적용</li>
+<li>proxy_http_version은 HTTP/1.1</li>
+</ol>
+<p>nginx -s reload 실행 후</p>
+<p>localhost:5000접근시 nginx 초기 페이지가 아닌 <em>‘hello world! welcome to visit my site’</em> 노출 확인</p>
+<blockquote>
+<p>location 을 추가해보자</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location /test &#123;</span><br><span class="line"></span><br><span class="line">               proxy_pass http://localhost:7077/test;</span><br><span class="line">               proxy_http_version 1.1;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<p>-&gt; localhost:5000/test로 들어오게 되면 <a href="http://localhost:7077/test" rel="external nofollow noopener noreferrer" target="_blank">http://localhost:7077/test</a> 호출</p>
+<p><em>‘test test test’</em> 문구 정상 노출 확인</p>
+<p>사실   <a href="https://docs.nginx.com/nginx/admin-guide/web-server/web-server/" rel="external nofollow noopener noreferrer" target="_blank">Nginx 공홈</a> 에 너무 좋은 자료가 많다.. 다해보고 싶지만 우선 여기까지</p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Nginx/">#Nginx</a> <a class="fw3 ph1 dib" href="/tags/Proxy/">#Proxy</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="beanbroker">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            Good to see you! have a fun
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Nginx/">Nginx</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Nginx/Proxy/">Proxy</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar3/">CI 3장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar2/">CI 2장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar1/">CI 1장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/08/intelliJ/multi_project/">Intellij multi project</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/04/etc/aws_rds_max_connections/">Amazon Aurora max_connections</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Beanbroker blog All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/" rel="external nofollow noopener noreferrer" target="_blank">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

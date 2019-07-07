@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="개발관련">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="beanbroker">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="CI 1장, Amazon CodeStar">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="개발관련">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="beanbroker blog">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>CI 1장, Amazon CodeStar - beanbroker blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-86502943-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="beanbroker blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="beanbroker blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about.html" title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/contact.html" title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">CI 1장, Amazon CodeStar</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-06-09</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Amazon/">#Amazon</a> <a class="fw3 ph1 dib" href="/tags/CodeStar/">#CodeStar</a> <a class="fw3 ph1 dib" href="/tags/CI/">#CI</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="Amazon-CodeStar"><a href="#Amazon-CodeStar" class="headerlink" title="Amazon CodeStar"></a>Amazon CodeStar</h1><p>aws 계정을 새로만들었으나.. 메일 인증을 안했던………</p>
+<p>CI를 구축을 위해 이리저리 알아보다가 aws에서 제공해주는 CodeStar를 테스트하였고 아주 훌륭함을 느낌! 2장은 Travis로 간단한 테스트 예정!</p>
+<blockquote>
+<p>CodeStar란?</p>
+</blockquote>
+<p><a href="https://aws.amazon.com/ko/codestar/" rel="external nofollow noopener noreferrer" target="_blank">Amazon CodeStar</a></p>
+<p>AWS CodeStar 사용에 대한 <strong>추가 비용은 없습니다.</strong> 애플리케이션을 개발하고 실행하기 위해 프로비저닝한 AWS 리소스에 대한 비용만 지불하면 됩니다(예: Amazon EC2 인스턴스).</p>
+<p>추가비용이 없습니다!! S3에 파일 업로드되는 비용 또는 ec2인스턴스 등을 쓰는 비용만 지불</p>
+<p>우선 aws무료계정을 만들고, 메일 인증을 꼭하자</p>
+<h2 id="STEP-1"><a href="#STEP-1" class="headerlink" title="STEP 1"></a>STEP 1</h2><ul>
+<li>로그인 후 서비스에서 codestar를 찾은 후 클릭</li>
+<li>프로젝트 시작 클릭</li>
+</ul>
+<p><img src="/images/codestar/1.png" alt="1"></p>
+<h2 id="STEP-2"><a href="#STEP-2" class="headerlink" title="STEP 2"></a>STEP 2</h2><ul>
+<li>권한이 필요함을 알수 있음</li>
+</ul>
+<p><img src="/images/codestar/2.png" alt="2"></p>
+<h2 id="STEP-3"><a href="#STEP-3" class="headerlink" title="STEP 3"></a>STEP 3</h2><ul>
+<li>사람들이 많이 쓰는 다양한 프레임워크가 존재</li>
+<li>우리는 Java Spring 웹 서비스, Elastic Beanstalk선택</li>
+<li>여기서 잠깐 Elastic Beanstalk란? 직접 찾아서 검색</li>
+<li>참고로 코틀린이 없다고 아쉬워 할필요 없음. 프로젝트 생성후 코틀린으로 바꿀수 있음(이미 실험완료)</li>
+</ul>
+<p><img src="/images/codestar/3.png" alt="3"></p>
+<h2 id="STEP-4"><a href="#STEP-4" class="headerlink" title="STEP 4"></a>STEP 4</h2><ul>
+<li>프로젝트 이름 대충 입력 후</li>
+<li>github 클릭</li>
+</ul>
+<p><img src="/images/codestar/4.png" alt="4"></p>
+<h2 id="STEP-5"><a href="#STEP-5" class="headerlink" title="STEP 5"></a>STEP 5</h2><ul>
+<li>깃헙 로그인 후</li>
+<li>레포지토리 이름 설정</li>
+<li>private으로 만들어야한다. ( secret key 노출 가능성 있음)</li>
+</ul>
+<p><img src="/images/codestar/5.png" alt="5"></p>
+<h2 id="STEP-6"><a href="#STEP-6" class="headerlink" title="STEP 6"></a>STEP 6</h2><ul>
+<li>소스는 github에서 관리</li>
+<li>빌드는 aws codebuild에서</li>
+<li>테스트는 코드빌드에서 또한 진행(테스트 코드가 없다면 ci는 필요가 없다 생각)</li>
+<li>배포는 beanstalk에 배포</li>
+<li>모니터링은 cloudwatch에서! (cloudwatch를 쓰는 모든 개발자들에게 insight는 정말 신의 한수)</li>
+</ul>
+<p><img src="/images/codestar/6.png" alt="6"></p>
+<h2 id="STEP-7"><a href="#STEP-7" class="headerlink" title="STEP 7"></a>STEP 7</h2><ul>
+<li>Amazon EC2 Management Console에 로그인하고 키 페어 생성을 선택하여 키 페어를 생성합니다.</li>
+<li>대충 생성 후 키페어 선택 옆에 새로고침 버튼 클릭</li>
+<li>방금 만든 키페어는 어디에도 노출되면안됨!! 절대 안됨( 노출하게 되면 누군가 유럽 진형에서 비트코인 채굴하는 모습을 볼수 있음)</li>
+</ul>
+<p><img src="/images/codestar/7.png" alt="7"></p>
+<h2 id="STEP-8"><a href="#STEP-8" class="headerlink" title="STEP 8"></a>STEP 8</h2><ul>
+<li>다음 버튼 누르면 끝</li>
+</ul>
+<p><img src="/images/codestar/8.png" alt="8"></p>
+<h2 id="STEP-9"><a href="#STEP-9" class="headerlink" title="STEP 9"></a>STEP 9</h2><ul>
+<li>끝 기다리자</li>
+</ul>
+<p><img src="/images/codestar/9.png" alt="9"></p>
+<h2 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h2><ol>
+<li>자신의 깃헙으로 들어가면 바로 레포지노리가 생성되었음을 알수 있음(빠름)</li>
+<li>처음 프로젝트 빌드하는 동안 오래 걸림(하지만 원래 이게 정상)</li>
+<li>다음 장에서 좀더 심화 과정으로 </li>
+<li>스프링 프로젝트가 디폴트로 메이븐 프로젝트로 되있음…… gradle을 설정할수 있는 부분이 없는데 해당부분은 직접 바꾸며됨(조금 많이 귀찮음.. 기존 프로젝트에 있는 디펜던시 다옮기다가 힘들어 죽을번..)</li>
+</ol>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Amazon/">#Amazon</a> <a class="fw3 ph1 dib" href="/tags/CodeStar/">#CodeStar</a> <a class="fw3 ph1 dib" href="/tags/CI/">#CI</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="beanbroker">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            Good to see you! have a fun
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Amazon/">Amazon</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Amazon/CodeStar/">CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Amazon/CodeStar/CI/">CI</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar3/">CI 3장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar2/">CI 2장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar1/">CI 1장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/08/intelliJ/multi_project/">Intellij multi project</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/04/etc/aws_rds_max_connections/">Amazon Aurora max_connections</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Beanbroker blog All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/" rel="external nofollow noopener noreferrer" target="_blank">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="개발관련">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="beanbroker">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="CI 3장, Amazon CodeStar">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="개발관련">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="beanbroker blog">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>CI 3장, Amazon CodeStar - beanbroker blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-86502943-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="beanbroker blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="beanbroker blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about.html" title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/contact.html" title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">CI 3장, Amazon CodeStar</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-06-09</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Amazon/">#Amazon</a> <a class="fw3 ph1 dib" href="/tags/CodeStar/">#CodeStar</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="Amazon-CodeStar-3장"><a href="#Amazon-CodeStar-3장" class="headerlink" title="Amazon CodeStar 3장"></a>Amazon CodeStar 3장</h1><p><a href="https://beanbroker.github.io/2019/06/09/CI/codestar1/" rel="external nofollow noopener noreferrer" target="_blank">Amazon CodeStar 1장</a> </p>
+<p><a href="https://beanbroker.github.io/2019/06/09/CI/codestar2/" rel="external nofollow noopener noreferrer" target="_blank">Amazon CodeStar 2장</a> </p>
+<p>2장에서 깜빡한 부분이…. 깃이그노어를 추가해야된다는…것을 깜빡…</p>
+<h2 id="STEP-14"><a href="#STEP-14" class="headerlink" title="STEP 14"></a>STEP 14</h2><ul>
+<li>.gitignore 파일 추가</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/target/</span><br><span class="line">!.mvn/wrapper/maven-wrapper.jar</span><br><span class="line"></span><br><span class="line">### STS ###</span><br><span class="line">.apt_generated</span><br><span class="line">.classpath</span><br><span class="line">.factorypath</span><br><span class="line">.project</span><br><span class="line">.settings</span><br><span class="line">.springBeans</span><br><span class="line">.sts4-cache</span><br><span class="line"></span><br><span class="line">### IntelliJ IDEA ###</span><br><span class="line">.idea</span><br><span class="line">*.iws</span><br><span class="line">*.iml</span><br><span class="line">*.ipr</span><br><span class="line"></span><br><span class="line">### NetBeans ###</span><br><span class="line">/nbproject/private/</span><br><span class="line">/build/</span><br><span class="line">/nbbuild/</span><br><span class="line">/dist/</span><br><span class="line">/nbdist/</span><br><span class="line">/.nb-gradle/</span><br></pre></td></tr></table></figure>
+<ul>
+<li>깃 이그노어를 추가 후 push하자마자 아래의 사진과 같이 재배포 시작</li>
+<li>커밋 이력이 보이며, 오른쪽에 연속배포가 변화함을 알수 있음</li>
+<li>마스터 브랜치 기준으로 배포가 진행되니 develope branch생성하여 푸쉬하자!</li>
+<li>해당 실습에서 배포 기준은 master로</li>
+</ul>
+<p><img src="/images/codestar/14.png" alt="14"></p>
+<h2 id="STEP-15-마무리"><a href="#STEP-15-마무리" class="headerlink" title="STEP 15 마무리"></a>STEP 15 마무리</h2><blockquote>
+<ol>
+<li>테스트 코드 작성 중요성</li>
+</ol>
+</blockquote>
+<ol>
+<li>강제로 테스트코드에 무조건 fail 하는 코드 생성 후 master brach에 push시 빌드 실패하여 배포 안됨</li>
+<li>이를 통해 사이드이펙트 미리 방지 할수 있으며 테스트 코드를 통한 음… 안정성? 및 안전한 배포 가능</li>
+<li>깃 branch를 직접생성하거나 git-flow를 활용하여! 코드 리뷰를 진행해야 한다.</li>
+</ol>
+<blockquote>
+<ol start="2">
+<li>codebuild</li>
+</ol>
+</blockquote>
+<ol>
+<li>aws codebuild를 통해 디폴트 환경변수 셋팅 가능</li>
+<li>인증서 추가 가능 등등 다양한 빌드 옵션 추가 가능</li>
+</ol>
+<blockquote>
+<ol start="3">
+<li>배포 브런치 선택가능</li>
+</ol>
+</blockquote>
+<ol>
+<li>어떠한 브런치 기준으로 커밋이되었을 때 자동으로 배포됨을 설정 가능</li>
+</ol>
+<h2 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h2><p>CI의 중요성이나 테스트 코드 및 다양한 codestar 기능을 추가하고 싶으나! CI의 중요성은 이미 훌륭하신 개발자 분들께서 블로그에 올려두셨으니 참고 바람(꼭)</p>
+<p>실제로 진행하면서 버튼 몇번으로 끝나서 무언가 쉽다 느끼지만 이것을 만들기 위한 aws노력에 감탄하며!</p>
+<p>다양한 환경 구성을 통해 CI를 구축하며 노력하는 개발자가 되어야겠음을 반성</p>
+<p>무언가 필요함을 느끼는 것을 전략! 그것을 풀어나가는 것이 전술! ( 개발을 가르쳐준 o효섭 개발자의 말을 따르면… ) - 전략이 중요하고 전술은 풀어과는 과정</p>
+<p>CI을 필요함을 느껴 codestar로…… 다음주에는 travis를 통해 CI를 구축해볼 생각!</p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Amazon/">#Amazon</a> <a class="fw3 ph1 dib" href="/tags/CodeStar/">#CodeStar</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="beanbroker">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            Good to see you! have a fun
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Amazon/">Amazon</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Amazon/CodeStar/">CodeStar</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar3/">CI 3장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar2/">CI 2장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar1/">CI 1장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/08/intelliJ/multi_project/">Intellij multi project</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/04/etc/aws_rds_max_connections/">Amazon Aurora max_connections</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Beanbroker blog All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/" rel="external nofollow noopener noreferrer" target="_blank">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="개발관련">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="beanbroker">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="코틀린, 컬렉션 활용기">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="개발관련">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="beanbroker blog">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>코틀린, 컬렉션 활용기 - beanbroker blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-86502943-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="beanbroker blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="beanbroker blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about.html" title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/contact.html" title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">코틀린, 컬렉션 활용기</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-03-17</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Kotlin/">#Kotlin</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="코틀린-컬렉션-활용기"><a href="#코틀린-컬렉션-활용기" class="headerlink" title="코틀린 컬렉션 활용기"></a>코틀린 컬렉션 활용기</h1><p>데이터 셋을 만들어보자</p>
+<blockquote>
+<p>유저 클래스</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function">data class <span class="title">User</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">var</span> name : String = <span class="string">""</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">var</span> age : Int = <span class="number">0</span></span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">)</span> </span>&#123;</span><br><span class="line">    <span class="function">override fun <span class="title">toString</span><span class="params">()</span>: String </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"User(name='$name', age=$age)"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>샘플 데이터 생성</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">val users = listOf&lt;User&gt;(</span><br><span class="line"></span><br><span class="line">        User(<span class="string">"pkj"</span>, <span class="number">30</span>),</span><br><span class="line">        User(<span class="string">"beanbroker"</span>, <span class="number">40</span>),</span><br><span class="line">        User(<span class="string">"A"</span>, <span class="number">32</span>),</span><br><span class="line">        User(<span class="string">"B"</span>, <span class="number">27</span>),</span><br><span class="line">        User(<span class="string">"C"</span>, <span class="number">44</span>),</span><br><span class="line">        User(<span class="string">"D"</span>, <span class="number">30</span>)</span><br><span class="line"></span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<h2 id="1-filter"><a href="#1-filter" class="headerlink" title="1. filter"></a>1. filter</h2><p>우리가 원하는 조건값에 맞는 리스트를 리턴한다</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Returns a list containing only elements matching the given [predicate].</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> inline fun &lt;T&gt; Iterable&lt;T&gt;.filter(predicate: (T) -&gt; Boolean): List&lt;T&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> filterTo(ArrayList&lt;T&gt;(), predicate)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>샘플코드</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    val listOfOverThirtyFive = users.filter &#123; it.age &gt; <span class="number">35</span> &#125;</span><br><span class="line">    println(listOfOverThirtyFive.toString())</span><br><span class="line"></span><br><span class="line">결과 : [User(name=beanbroker, age=<span class="number">40</span>), User(name=C, age=<span class="number">44</span>)]</span><br></pre></td></tr></table></figure>
+<h2 id="2-all"><a href="#2-all" class="headerlink" title="2. all"></a>2. all</h2><p>모든 데이터가 주어진 조건이 맞는지 안하는지 return true or fale</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Returns `true` if all elements match the given [predicate].</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@sample</span> samples.collections.Collections.Aggregates.all</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> inline fun &lt;T&gt; Iterable&lt;T&gt;.all(predicate: (T) -&gt; Boolean): Boolean &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> is Collection &amp;&amp; isEmpty()) <span class="keyword">return</span> <span class="keyword">true</span></span><br><span class="line">    <span class="keyword">for</span> (element in <span class="keyword">this</span>) <span class="keyword">if</span> (!predicate(element)) <span class="keyword">return</span> <span class="keyword">false</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>샘플코드</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">val isOlderThan50 = users.all &#123; it.age &gt; <span class="number">50</span> &#125;</span><br><span class="line"></span><br><span class="line">println(isOlderThan50)</span><br><span class="line"></span><br><span class="line">val isYoungerThan50 = users.all &#123; it.age &lt;<span class="number">50</span> &#125;</span><br><span class="line">println(isYoungerThan50)</span><br><span class="line"></span><br><span class="line">결과</span><br><span class="line">isOlderThan50 : <span class="keyword">false</span></span><br><span class="line">isYoungerThan50 : <span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+<p>만약 users.all { it.age &lt;40 } 이면 false를 리턴 모든 조건을 충족해야하기 때문에</p>
+<h2 id="3-any"><a href="#3-any" class="headerlink" title="3. any"></a>3. any</h2><p>하나의 데이터라도 주어진 조건에 맞는다면 true를 리턴</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Returns `true` if at least one element matches the given [predicate].</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@sample</span> samples.collections.Collections.Aggregates.anyWithPredicate</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> inline fun &lt;T&gt; Iterable&lt;T&gt;.any(predicate: (T) -&gt; Boolean): Boolean &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> is Collection &amp;&amp; isEmpty()) <span class="keyword">return</span> <span class="keyword">false</span></span><br><span class="line">    <span class="keyword">for</span> (element in <span class="keyword">this</span>) <span class="keyword">if</span> (predicate(element)) <span class="keyword">return</span> <span class="keyword">true</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>샘플코드</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> val isAnyOneOlderThan50 = users.any &#123; it.age &gt; <span class="number">50</span> &#125;</span><br><span class="line"></span><br><span class="line">println(isAnyOneOlderThan50)</span><br><span class="line"></span><br><span class="line">val isAnyOnYoungerThan50 = users.any &#123; it.age &lt;<span class="number">40</span> &#125;</span><br><span class="line">println(isAnyOnYoungerThan50)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">결과</span><br><span class="line">isAnyOneOlderThan50 : <span class="keyword">false</span></span><br><span class="line">isAnyOnYoungerThan50 : <span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-count"><a href="#4-count" class="headerlink" title="4. count"></a>4. count</h2><p>설명이 불필요…</p>
+<blockquote>
+<p>샘플코드</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">val countWhoIsYoungerThan35 = users.count&#123;it.age &lt; <span class="number">35</span>&#125;</span><br><span class="line">println(countWhoIsYoungerThan35)</span><br><span class="line"></span><br><span class="line">결과 : <span class="number">4</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-find-findLast"><a href="#5-find-findLast" class="headerlink" title="5. find, findLast"></a>5. find, findLast</h2><p>조건에 맞는 첫번째 데이터 반환, 만약 조건에 맞는 엘리먼트가 없다면 null리턴</p>
+<p>만약 맨 뒤에 엘리먼트릴 return받고 싶다면 findLast를 쓰자!</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Returns the first element matching the given [predicate], or `null` if no such element was found.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@kotlin</span>.internal.InlineOnly</span><br><span class="line"><span class="keyword">public</span> inline fun &lt;T&gt; Iterable&lt;T&gt;.find(predicate: (T) -&gt; Boolean): T? &#123;</span><br><span class="line">    <span class="keyword">return</span> firstOrNull(predicate)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>샘플코드</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> val someoneWhoseAgeis32 = users.find &#123; it.age == <span class="number">32</span> &#125;</span><br><span class="line"></span><br><span class="line">println(someoneWhoseAgeis32.toString())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">val someoneWhoseAgeis26 = users.find &#123; it.age == <span class="number">26</span> &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">println(someoneWhoseAgeis26.toString())</span><br><span class="line"></span><br><span class="line">결과</span><br><span class="line">someoneWhoseAgeis32 : User(name=<span class="string">'A'</span>, age=<span class="number">32</span>)</span><br><span class="line">someoneWhoseAgeis26 : <span class="keyword">null</span></span><br></pre></td></tr></table></figure>
+<h2 id="6-groupBy"><a href="#6-groupBy" class="headerlink" title="6. groupBy"></a>6. groupBy</h2><p>자세한 설명은 생략! 말그대로 그룹바이</p>
+<blockquote>
+<p>샘플코드</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">val userGroup = users.groupBy &#123; it.age &#125;.toList()</span><br><span class="line"></span><br><span class="line">println(userGroup.toString())</span><br><span class="line"></span><br><span class="line">결과 : </span><br><span class="line">[(<span class="number">30</span>, [User(name=<span class="string">'pkj'</span>, age=<span class="number">30</span>), User(name=<span class="string">'D'</span>, age=<span class="number">30</span>)]), </span><br><span class="line">(<span class="number">40</span>, [User(name=<span class="string">'beanbroker'</span>, age=<span class="number">40</span>)]), (<span class="number">32</span>, [User(name=<span class="string">'A'</span>, age=<span class="number">32</span>)]), </span><br><span class="line">(<span class="number">27</span>, [User(name=<span class="string">'B'</span>, age=<span class="number">27</span>)]), </span><br><span class="line">(<span class="number">44</span>, [User(name=<span class="string">'C'</span>, age=<span class="number">44</span>)])]</span><br></pre></td></tr></table></figure>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Kotlin/">#Kotlin</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="beanbroker">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            Good to see you! have a fun
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Kotlin/">Kotlin</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar3/">CI 3장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar2/">CI 2장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar1/">CI 1장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/08/intelliJ/multi_project/">Intellij multi project</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/04/etc/aws_rds_max_connections/">Amazon Aurora max_connections</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Beanbroker blog All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/" rel="external nofollow noopener noreferrer" target="_blank">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

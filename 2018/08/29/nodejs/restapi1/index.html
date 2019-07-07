@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="개발관련">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="beanbroker">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="RestApi with sequelize 1장">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="개발관련">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="beanbroker blog">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>RestApi with sequelize 1장 - beanbroker blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-86502943-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="beanbroker blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="beanbroker blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about.html" title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/contact.html" title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">RestApi with sequelize 1장</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-08-29</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Rest/">#Rest</a> <a class="fw3 ph1 dib" href="/tags/node-js/">#node.js</a> <a class="fw3 ph1 dib" href="/tags/sequelize/">#sequelize</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="1장-RestApi-Sequelize"><a href="#1장-RestApi-Sequelize" class="headerlink" title="1장 RestApi, Sequelize"></a>1장 RestApi, Sequelize</h1><p>Sequelize3장에서 끝낸 아래문제를 해결 및<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 서비스로직이 필요하다!</span><br><span class="line">2. 에러핸들러가 없다</span><br><span class="line">3. 통일된 res object가 없다</span><br></pre></td></tr></table></figure></p>
+<p>Sequelize orm과! 좀더restful하게 api를 만들어보자! </p>
+<h1 id="서비스로직이-필요하다"><a href="#서비스로직이-필요하다" class="headerlink" title="서비스로직이 필요하다!"></a>서비스로직이 필요하다!</h1><blockquote>
+<p>셋팅</p>
+</blockquote>
+<ol>
+<li>루트폴더에 service폴더 생성</li>
+<li>service폴더 및에 user폴더 생성(도메인 폴더 생성)</li>
+<li>기존에 쓰던 app.js, /routes/user.js수정</li>
+</ol>
+<blockquote>
+<p>app.js</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">var createError = require(&apos;http-errors&apos;);</span><br><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var path = require(&apos;path&apos;);</span><br><span class="line">var cookieParser = require(&apos;cookie-parser&apos;);</span><br><span class="line">var logger = require(&apos;morgan&apos;);</span><br><span class="line"></span><br><span class="line">const indexRouter = require(&apos;./routes/index&apos;);</span><br><span class="line">const usersRouter = require(&apos;./routes/users&apos;);</span><br><span class="line"></span><br><span class="line">var app = express();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const sequelize = require(&apos;./models&apos;).sequelize;</span><br><span class="line"></span><br><span class="line">const bodyParser = require(&apos;body-parser&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sequelize</span><br><span class="line">    .authenticate()</span><br><span class="line">    .then(() =&gt; &#123;</span><br><span class="line">        console.log(&apos;Connection has been established successfully.&apos;);</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(err =&gt; &#123;</span><br><span class="line">        console.error(&apos;Unable to connect to the database:&apos;, err);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sequelize.sync();</span><br><span class="line"></span><br><span class="line">// view engine setup</span><br><span class="line">app.set(&apos;views&apos;, path.join(__dirname, &apos;views&apos;));</span><br><span class="line">app.set(&apos;view engine&apos;, &apos;jade&apos;);</span><br><span class="line"></span><br><span class="line">app.use(logger(&apos;dev&apos;));</span><br><span class="line">app.use(express.json());</span><br><span class="line">app.use(express.urlencoded(&#123; extended: false &#125;));</span><br><span class="line"></span><br><span class="line">app.use(bodyParser.json());</span><br><span class="line">app.use(cookieParser());</span><br><span class="line">app.use(express.static(path.join(__dirname, &apos;public&apos;)));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.use(&apos;/&apos;, indexRouter);</span><br><span class="line">app.use(&apos;/users&apos;, usersRouter);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// catch 404 and forward to error handler</span><br><span class="line">app.use(function(req, res, next) &#123;</span><br><span class="line"></span><br><span class="line">    res.status(err.status || 404);</span><br><span class="line">    res.send(&apos;404 not found&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// error handler</span><br><span class="line">app.use(function(err, req, res, next) &#123;</span><br><span class="line">  // set locals, only providing error in development</span><br><span class="line">  res.locals.message = err.message;</span><br><span class="line">  res.locals.error = req.app.get(&apos;env&apos;) === &apos;development&apos; ? err : &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  // render the error page</span><br><span class="line">  res.status(err.status || 500);</span><br><span class="line">  res.render(&apos;error&apos;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(3005, function()&#123;</span><br><span class="line">    console.log(&apos;3005 port connected&apos;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">module.exports = app;</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>/routes/user.js</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;</span><br><span class="line">const express = require(&apos;express&apos;);</span><br><span class="line">const router = express.Router();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const userCreateService  =  require(&apos;../service/user/usercreate.service&apos;);</span><br><span class="line">const useReadService  =  require(&apos;../service/user/userread.service&apos;);</span><br><span class="line">const userUpdateService  =  require(&apos;../service/user/userupdate.service&apos;);</span><br><span class="line">const userDeleteService  =  require(&apos;../service/user/userdelete.service&apos;);</span><br><span class="line">const userListService  =  require(&apos;../service/user/userlist.service&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* GET users listing. */</span><br><span class="line">router.get(&apos;/&apos;, function(req, res, next) &#123;</span><br><span class="line">  res.send(&apos;User Api&apos;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">router.get(&apos;/list&apos;, (req,res,next)=&gt; &#123;</span><br><span class="line">    userListService.exec()</span><br><span class="line">        .then((users) =&gt; &#123;</span><br><span class="line">            console.log(users);</span><br><span class="line">            console.log(&apos;finish to findAll&apos;);</span><br><span class="line">            res.json(users);</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch((err =&gt; &#123;</span><br><span class="line">            console.error(err);</span><br><span class="line">            res.send(err);</span><br><span class="line">        &#125;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">router.get(&apos;/:id&apos;, function(req, res, next) &#123;</span><br><span class="line">    useReadService.exec(req.params.id)</span><br><span class="line">        .then((user) =&gt; &#123;</span><br><span class="line">            console.log(user);</span><br><span class="line">            console.log(&apos;finish to findById&apos;);</span><br><span class="line">            res.json(user);</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch((err =&gt; &#123;</span><br><span class="line">            console.error(err);</span><br><span class="line">            res.send(err);</span><br><span class="line">        &#125;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">router.post(&apos;/&apos;, (req,res,next) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">    userCreateService.exec(req.body)</span><br><span class="line">        .then((result) =&gt; &#123;</span><br><span class="line">            console.log(result);</span><br><span class="line">            console.log(&apos;finish to create&apos;);</span><br><span class="line">            res.status(201).json(result);</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch((err =&gt; &#123;</span><br><span class="line">            console.error(err);</span><br><span class="line">            res.send(err);</span><br><span class="line">        &#125;));</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">router.put(&apos;/:id&apos;, (req,res,next) =&gt; &#123;</span><br><span class="line">    userUpdateService.exec(req.body, req.params.id)</span><br><span class="line">        .then((result) =&gt; &#123;</span><br><span class="line">            console.log(result);</span><br><span class="line">            console.log(&apos;finish to update&apos;);</span><br><span class="line">            res.json(result);</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch((err =&gt; &#123;</span><br><span class="line">            console.error(err);</span><br><span class="line">            res.send(err);</span><br><span class="line">        &#125;));</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">router.delete(&apos;/:id&apos;, function(req, res, next) &#123;</span><br><span class="line">    userDeleteService.exec(req.params.id)</span><br><span class="line">        .then((result) =&gt; &#123;</span><br><span class="line">            res.json(result);</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch((err) =&gt; &#123;</span><br><span class="line">            console.error(err);</span><br><span class="line">            next(err);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">module.exports = router;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Rest-CRUD"><a href="#Rest-CRUD" class="headerlink" title="Rest CRUD"></a>Rest CRUD</h2><h4 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h4><p>‘비지니스 로직을 담당’</p>
+<p>UserService처럼 하나만 만들어도 되지만 전부 쪼개서 만들자! 실제 하나의 서비스에 다양한 많은 로직을 담게 될경우 변경할경우 힘든경우가..있다.. 파일이 많이 만들어지더라도… 이렇게 해보자…</p>
+<p>(‘use strict’을 항상 모든 js파일 맨위에 붙이자! 습관습관)</p>
+<blockquote>
+<p>CreateService -&gt; /service/user/usercreate.service.js </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;</span><br><span class="line">const User = require(&apos;../../models&apos;).User;</span><br><span class="line">const exec = async (body) =&gt;&#123;</span><br><span class="line"></span><br><span class="line">    const user = await User.create(&#123;</span><br><span class="line">        name : body.name,</span><br><span class="line">        age : body.age,</span><br><span class="line">        gender : body.gender,</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line">    return user;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line"></span><br><span class="line">    exec,</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ReadService  -&gt; /service/user/userread.service.js</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;</span><br><span class="line">const User = require(&apos;../../models&apos;).User;</span><br><span class="line">const exec = async (id) =&gt;&#123;</span><br><span class="line"></span><br><span class="line">    const user = await User.findById(id);</span><br><span class="line">    return user;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line"></span><br><span class="line">    exec,</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>UpdateServce -&gt; /service/user/userupdate.service.js</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;</span><br><span class="line">const User = require(&apos;../../models&apos;).User;</span><br><span class="line">const exec = async (body, id) =&gt;&#123;</span><br><span class="line"></span><br><span class="line">    const user = await User.update(</span><br><span class="line">        &#123;</span><br><span class="line">            name : body.name,</span><br><span class="line">            age : body.age,</span><br><span class="line">            gender : body.gender,</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            where : &#123;id : id&#125;</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    return user;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line"></span><br><span class="line">    exec,</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>DeleteService -&gt; /service/user/userdelete.service.js</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const User = require(&apos;../../models&apos;).User;</span><br><span class="line">const exec = async (id) =&gt;&#123;</span><br><span class="line"></span><br><span class="line">    const result = await User.destroy(&#123; where: &#123; id: id &#125; &#125;)</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line"></span><br><span class="line">    exec,</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ListService -&gt; /service/user/userlist.service.js</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;</span><br><span class="line">const User = require(&apos;../../models&apos;).User;</span><br><span class="line">const exec = async () =&gt;&#123;</span><br><span class="line"></span><br><span class="line">    const userList = await User.findAll();</span><br><span class="line">    return userList</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line"></span><br><span class="line">    exec,</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>위와같이 CRUD서비스를 만들어보았다. 포스트맨을 활용하여 테스트를 진행할경우 정상적으로 작동함을 확인할수 있다!</p>
+<h3 id="간단-소스-설명"><a href="#간단-소스-설명" class="headerlink" title="간단 소스 설명"></a>간단 소스 설명</h3><p>노드로 서버를 개발을 하게될경우! 무조건 무조건 비동기로 만들어한다.. 동기로 짜도 돌아가는 것처럼 보이지만 절대 그렇게 하지말라 공식문서에도 나와있다…</p>
+<h4 id="라우터"><a href="#라우터" class="headerlink" title="라우터"></a>라우터</h4><ol>
+<li>router를 controller라 생각!하여 </li>
+<li>localhost:3005/users/list로 request가 들어오면</li>
+<li>유저리스트 서비스(비지니스로직을 담당) 데이터를 받아와서</li>
+<li>해당데이터를 json으로 말아서 보낸다!</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">router.get(&apos;/list&apos;, (req,res,next)=&gt; &#123;</span><br><span class="line">    userListService.exec()</span><br><span class="line">        .then((users) =&gt; &#123;</span><br><span class="line">            console.log(users);</span><br><span class="line">            console.log(&apos;finish to findAll&apos;);</span><br><span class="line">            res.json(users);</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch((err =&gt; &#123;</span><br><span class="line">            console.error(err);</span><br><span class="line">            res.send(err);</span><br><span class="line">        &#125;));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="서비스"><a href="#서비스" class="headerlink" title="서비스"></a>서비스</h4><ol>
+<li>User모델 필요</li>
+<li>body가 param으로 넘어왔고</li>
+<li>해당 파람맵핑하여 user생성</li>
+<li>기다리다 생성되면 리턴<br>디비접근부분은.. async await으로 쓰는 것을 선호한다…</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const User = require(&apos;../../models&apos;).User;</span><br><span class="line">const exec = async (body) =&gt;&#123;</span><br><span class="line"></span><br><span class="line">    const user = await User.create(&#123;</span><br><span class="line">        name : body.name,</span><br><span class="line">        age : body.age,</span><br><span class="line">        gender : body.gender,</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line">    return user;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>코드를 짜는 모든사람들의 취향존중을 해주어야한다! 하지만 왜 그렇게 하는지는 확고히 가지고 있어야 된다 생각한다.</p>
+<p>async, await에서는 try catch가 가능하다(퍼포먼스가 좋은지는 모름…. 사실 안써봄…)! 물론 이를 이용하여 router를 구현할수 있으나! router에 promise를 적용함을 통해 얻는 부분이 존재한다. </p>
+<ul>
+<li>then -&gt; 서비스로직에서 결과가 나오면!!!!!!</li>
+<li>catch -&gt; 서비스로직에서 에러를 던지면 받는 곳!!이라 생각</li>
+</ul>
+<hr>
+<h3 id="궁금점이-생기는-부분"><a href="#궁금점이-생기는-부분" class="headerlink" title="궁금점이 생기는 부분"></a>궁금점이 생기는 부분</h3><p>이렇게 코드를 짜놓고 보니 서비스로직의 공통된 부분이 있자. 객체지향언어인 자바 또는 C#으로 개발을 진행해본사람은! </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const User = require(&apos;../../models&apos;).User;</span><br></pre></td></tr></table></figure>
+<p>상위 Object에 추상화를 꿈꿀것이다! 하지만 여기선 그럴필요가 없다!<br>찾아보니 이유인 즉슨 require로 한번 호출된 이후로 캐싱이 자동적으로 되어서 알아서 잘 처리가 된다고 한다.. (정확한 작동원리는 모름)</p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Rest/">#Rest</a> <a class="fw3 ph1 dib" href="/tags/node-js/">#node.js</a> <a class="fw3 ph1 dib" href="/tags/sequelize/">#sequelize</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="beanbroker">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            Good to see you! have a fun
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/node-js/">node.js</a>
+        </p>
+    
+        <p>
+            <a href="/categories/node-js/sequelize/">sequelize</a>
+        </p>
+    
+        <p>
+            <a href="/categories/node-js/sequelize/Rest/">Rest</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar3/">CI 3장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar2/">CI 2장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar1/">CI 1장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/08/intelliJ/multi_project/">Intellij multi project</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/04/etc/aws_rds_max_connections/">Amazon Aurora max_connections</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Beanbroker blog All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/" rel="external nofollow noopener noreferrer" target="_blank">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

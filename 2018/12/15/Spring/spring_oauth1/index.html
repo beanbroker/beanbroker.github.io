@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="개발관련">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="beanbroker">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Oauth with Spring">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="개발관련">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="beanbroker blog">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>Oauth with Spring - beanbroker blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-86502943-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="beanbroker blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="beanbroker blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about.html" title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/contact.html" title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Oauth with Spring</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-12-15</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a> <a class="fw3 ph1 dib" href="/tags/Oauth/">#Oauth</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="Oauth2"><a href="#Oauth2" class="headerlink" title="Oauth2"></a>Oauth2</h1><p><a href="https://www.devglan.com/spring-security/spring-boot-security-oauth2-example" rel="external nofollow noopener noreferrer" target="_blank">https://www.devglan.com/spring-security/spring-boot-security-oauth2-example</a> 를 참고하세요!</p>
+<h2 id="Oauth1-ROLES"><a href="#Oauth1-ROLES" class="headerlink" title="Oauth1 ROLES"></a>Oauth1 ROLES</h2><ol>
+<li>oAuth Provider (ex : google, facebook, kakao, etc..)</li>
+<li>oAuth Client ( Using provider )</li>
+<li>Owner ( 실제 사용자)</li>
+</ol>
+<h2 id="OAuth2-Roles"><a href="#OAuth2-Roles" class="headerlink" title="OAuth2 Roles"></a>OAuth2 Roles</h2><ol>
+<li>Resource Owner : user</li>
+<li>Client : Appication</li>
+<li>Resource Server : API</li>
+<li>Authoriztion Server : API</li>
+</ol>
+<h2 id="OAuth2-Grant-Types"><a href="#OAuth2-Grant-Types" class="headerlink" title="OAuth2 Grant Types"></a>OAuth2 Grant Types</h2><p>핸드쉐이킹 하는 방법이 4가지!</p>
+<ol>
+<li><p>Authorization Code: used with server-side Applications </p>
+</li>
+<li><p>Implicit: used with Mobile Apps or Web Applications (applications that run on the user’s device)</p>
+</li>
+<li><p>Resource Owner Password Credentials: used with trusted Applications, such as those owned by the service itself</p>
+</li>
+<li><p>Client Credentials: used with Applications API access</p>
+</li>
+</ol>
+<h2 id="Auth-Server-Config"><a href="#Auth-Server-Config" class="headerlink" title="Auth Server Config"></a>Auth Server Config</h2><p>토큰 발급 담당</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableAuthorizationServer</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AuthorizationServerConfig</span> <span class="keyword">extends</span> <span class="title">AuthorizationServerConfigurerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String CLIEN_ID = <span class="string">"beanbroker-client"</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String CLIENT_SECRET = <span class="string">"beanbroker-secret"</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String PASS_WORD = <span class="string">"password"</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String AUTHORIZATION_CODE = <span class="string">"authorization_code"</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String REFRESH_TOKEN = <span class="string">"refresh_token"</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String IMPLICIT = <span class="string">"implicit"</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String SCOPE_READ = <span class="string">"read"</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String SCOPE_WRITE = <span class="string">"write"</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String TRUST = <span class="string">"trust"</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> ACCESS_TOKEN_VALIDITY_SECONDS = <span class="number">1</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> FREFRESH_TOKEN_VALIDITY_SECONDS = <span class="number">6</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> TokenStore tokenStore;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AuthenticationManager authenticationManager;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> PasswordEncoder passwordEncoder;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AuthorizationServerConfig</span><span class="params">(TokenStore tokenStore, AuthenticationManager authenticationManager, PasswordEncoder passwordEncoder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.tokenStore = tokenStore;</span><br><span class="line">        <span class="keyword">this</span>.authenticationManager = authenticationManager;</span><br><span class="line">        <span class="keyword">this</span>.passwordEncoder = passwordEncoder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(ClientDetailsServiceConfigurer configurer)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">        configurer</span><br><span class="line">                .inMemory()</span><br><span class="line">                .withClient(CLIEN_ID)</span><br><span class="line"><span class="comment">//                .secret(CLIENT_SECRET)</span></span><br><span class="line">                .secret(passwordEncoder.encode(CLIENT_SECRET))</span><br><span class="line">                .authorizedGrantTypes(PASS_WORD, AUTHORIZATION_CODE, REFRESH_TOKEN, IMPLICIT )</span><br><span class="line">                .scopes(SCOPE_READ, SCOPE_WRITE, TRUST)</span><br><span class="line">                .accessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY_SECONDS).</span><br><span class="line">                refreshTokenValiditySeconds(FREFRESH_TOKEN_VALIDITY_SECONDS);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthorizationServerEndpointsConfigurer endpoints)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        endpoints.tokenStore(tokenStore)</span><br><span class="line">                .authenticationManager(authenticationManager);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>TokenStore -&gt; 토큰 저장하는 저장소 </p>
+</li>
+<li><p>AuthenticationManager -&gt; 실질적인 인증 인터페이스이며, 인증 처리를 담당한다.</p>
+</li>
+<li>grantType 4가지 </li>
+<li>토큰 만료기간 한시간</li>
+<li>리프레시 토큰 만료기간 6시간</li>
+<li>client와 clientId -&gt; 토큰을 받아오려면 클라이언트로 인증이 되어야만 받을수 있다</li>
+</ol>
+<h2 id="Resource-Server-Config"><a href="#Resource-Server-Config" class="headerlink" title="Resource Server Config"></a>Resource Server Config</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableResourceServer</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResourceServerConfig</span> <span class="keyword">extends</span> <span class="title">ResourceServerConfigurerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String RESOURCE_ID = <span class="string">"resource_id"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(ResourceServerSecurityConfigurer resources)</span> </span>&#123;</span><br><span class="line">        resources.resourceId(RESOURCE_ID).stateless(<span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        http.</span><br><span class="line">                anonymous().disable()</span><br><span class="line">                .authorizeRequests()</span><br><span class="line">                .antMatchers(<span class="string">"/users/**"</span>).authenticated()</span><br><span class="line">                .and().exceptionHandling().accessDeniedHandler(<span class="keyword">new</span> OAuth2AccessDeniedHandler());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>stateless</p>
+<ul>
+<li>true : 토큰 인증만 할거면 true, </li>
+<li>false : 아니면 false, </li>
+</ul>
+</li>
+<li><p>authorizeRequests -&gt; 유저에 접근하는 모든 request는 인증이 되어야함</p>
+</li>
+</ol>
+<h2 id="깃헙-클론"><a href="#깃헙-클론" class="headerlink" title="깃헙 클론"></a>깃헙 클론</h2><p>깃헙을 클론하여 진행하여주세요. 그 외 다른 유저 서비스 및 정보들은 누구나 쉽게 구현하여 진행이 가능합니다</p>
+<blockquote>
+<p>깃헙 주소 </p>
+</blockquote>
+<p><a href="https://github.com/beanbroker/sample_oauth" rel="external nofollow noopener noreferrer" target="_blank">https://github.com/beanbroker/sample_oauth</a></p>
+<h2 id="테스트"><a href="#테스트" class="headerlink" title="테스트"></a>테스트</h2><p>postman으로 진행 postman impot<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"info"</span>: &#123;</span><br><span class="line">		<span class="attr">"_postman_id"</span>: <span class="string">"1760d7bd-196d-40b3-90ba-ea05eded8d37"</span>,</span><br><span class="line">		<span class="attr">"name"</span>: <span class="string">"study_oauth"</span>,</span><br><span class="line">		<span class="attr">"schema"</span>: <span class="string">"https://schema.getpostman.com/json/collection/v2.1.0/collection.json"</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">"item"</span>: [</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="attr">"name"</span>: <span class="string">"Get Token"</span>,</span><br><span class="line">			<span class="attr">"request"</span>: &#123;</span><br><span class="line">				<span class="attr">"auth"</span>: &#123;</span><br><span class="line">					<span class="attr">"type"</span>: <span class="string">"basic"</span>,</span><br><span class="line">					<span class="attr">"basic"</span>: [</span><br><span class="line">						&#123;</span><br><span class="line">							<span class="attr">"key"</span>: <span class="string">"password"</span>,</span><br><span class="line">							<span class="attr">"value"</span>: <span class="string">"beanbroker-secret"</span>,</span><br><span class="line">							<span class="attr">"type"</span>: <span class="string">"string"</span></span><br><span class="line">						&#125;,</span><br><span class="line">						&#123;</span><br><span class="line">							<span class="attr">"key"</span>: <span class="string">"username"</span>,</span><br><span class="line">							<span class="attr">"value"</span>: <span class="string">"beanbroker-client"</span>,</span><br><span class="line">							<span class="attr">"type"</span>: <span class="string">"string"</span></span><br><span class="line">						&#125;</span><br><span class="line">					]</span><br><span class="line">				&#125;,</span><br><span class="line">				<span class="attr">"method"</span>: <span class="string">"POST"</span>,</span><br><span class="line">				<span class="attr">"header"</span>: [</span><br><span class="line">					&#123;</span><br><span class="line">						<span class="attr">"key"</span>: <span class="string">"Content-Type"</span>,</span><br><span class="line">						<span class="attr">"name"</span>: <span class="string">"Content-Type"</span>,</span><br><span class="line">						<span class="attr">"value"</span>: <span class="string">"application/x-www-form-urlencoded"</span>,</span><br><span class="line">						<span class="attr">"type"</span>: <span class="string">"text"</span></span><br><span class="line">					&#125;</span><br><span class="line">				],</span><br><span class="line">				<span class="attr">"body"</span>: &#123;</span><br><span class="line">					<span class="attr">"mode"</span>: <span class="string">"urlencoded"</span>,</span><br><span class="line">					<span class="attr">"urlencoded"</span>: [</span><br><span class="line">						&#123;</span><br><span class="line">							<span class="attr">"key"</span>: <span class="string">"username"</span>,</span><br><span class="line">							<span class="attr">"value"</span>: <span class="string">"beanbroker"</span>,</span><br><span class="line">							<span class="attr">"type"</span>: <span class="string">"text"</span></span><br><span class="line">						&#125;,</span><br><span class="line">						&#123;</span><br><span class="line">							<span class="attr">"key"</span>: <span class="string">"password"</span>,</span><br><span class="line">							<span class="attr">"value"</span>: <span class="string">"12342"</span>,</span><br><span class="line">							<span class="attr">"type"</span>: <span class="string">"text"</span></span><br><span class="line">						&#125;,</span><br><span class="line">						&#123;</span><br><span class="line">							<span class="attr">"key"</span>: <span class="string">"grant_type"</span>,</span><br><span class="line">							<span class="attr">"value"</span>: <span class="string">"password"</span>,</span><br><span class="line">							<span class="attr">"type"</span>: <span class="string">"text"</span></span><br><span class="line">						&#125;</span><br><span class="line">					]</span><br><span class="line">				&#125;,</span><br><span class="line">				<span class="attr">"url"</span>: &#123;</span><br><span class="line">					<span class="attr">"raw"</span>: <span class="string">"localhost:8080/oauth/token"</span>,</span><br><span class="line">					<span class="attr">"host"</span>: [</span><br><span class="line">						<span class="string">"localhost"</span></span><br><span class="line">					],</span><br><span class="line">					<span class="attr">"port"</span>: <span class="string">"8080"</span>,</span><br><span class="line">					<span class="attr">"path"</span>: [</span><br><span class="line">						<span class="string">"oauth"</span>,</span><br><span class="line">						<span class="string">"token"</span></span><br><span class="line">					]</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="attr">"response"</span>: []</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="attr">"name"</span>: <span class="string">"Get User Info"</span>,</span><br><span class="line">			<span class="attr">"protocolProfileBehavior"</span>: &#123;</span><br><span class="line">				<span class="attr">"disableBodyPruning"</span>: <span class="literal">true</span></span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="attr">"request"</span>: &#123;</span><br><span class="line">				<span class="attr">"auth"</span>: &#123;</span><br><span class="line">					<span class="attr">"type"</span>: <span class="string">"oauth2"</span>,</span><br><span class="line">					<span class="attr">"oauth2"</span>: [</span><br><span class="line">						&#123;</span><br><span class="line">							<span class="attr">"key"</span>: <span class="string">"accessToken"</span>,</span><br><span class="line">							<span class="attr">"value"</span>: <span class="string">"f420e4db-d76f-49b8-bcd1-480d03832c4b"</span>,</span><br><span class="line">							<span class="attr">"type"</span>: <span class="string">"string"</span></span><br><span class="line">						&#125;,</span><br><span class="line">						&#123;</span><br><span class="line">							<span class="attr">"key"</span>: <span class="string">"addTokenTo"</span>,</span><br><span class="line">							<span class="attr">"value"</span>: <span class="string">"header"</span>,</span><br><span class="line">							<span class="attr">"type"</span>: <span class="string">"string"</span></span><br><span class="line">						&#125;</span><br><span class="line">					]</span><br><span class="line">				&#125;,</span><br><span class="line">				<span class="attr">"method"</span>: <span class="string">"GET"</span>,</span><br><span class="line">				<span class="attr">"header"</span>: [</span><br><span class="line">					&#123;</span><br><span class="line">						<span class="attr">"key"</span>: <span class="string">"Content-Type"</span>,</span><br><span class="line">						<span class="attr">"name"</span>: <span class="string">"Content-Type"</span>,</span><br><span class="line">						<span class="attr">"value"</span>: <span class="string">"application/x-www-form-urlencoded"</span>,</span><br><span class="line">						<span class="attr">"type"</span>: <span class="string">"text"</span></span><br><span class="line">					&#125;</span><br><span class="line">				],</span><br><span class="line">				<span class="attr">"body"</span>: &#123;</span><br><span class="line">					<span class="attr">"mode"</span>: <span class="string">"urlencoded"</span>,</span><br><span class="line">					<span class="attr">"urlencoded"</span>: [</span><br><span class="line">						&#123;</span><br><span class="line">							<span class="attr">"key"</span>: <span class="string">"username"</span>,</span><br><span class="line">							<span class="attr">"value"</span>: <span class="string">"beanbroker"</span>,</span><br><span class="line">							<span class="attr">"type"</span>: <span class="string">"text"</span></span><br><span class="line">						&#125;,</span><br><span class="line">						&#123;</span><br><span class="line">							<span class="attr">"key"</span>: <span class="string">"password"</span>,</span><br><span class="line">							<span class="attr">"value"</span>: <span class="string">"1234"</span>,</span><br><span class="line">							<span class="attr">"type"</span>: <span class="string">"text"</span></span><br><span class="line">						&#125;,</span><br><span class="line">						&#123;</span><br><span class="line">							<span class="attr">"key"</span>: <span class="string">"grant_type"</span>,</span><br><span class="line">							<span class="attr">"value"</span>: <span class="string">"password"</span>,</span><br><span class="line">							<span class="attr">"type"</span>: <span class="string">"text"</span></span><br><span class="line">						&#125;</span><br><span class="line">					]</span><br><span class="line">				&#125;,</span><br><span class="line">				<span class="attr">"url"</span>: &#123;</span><br><span class="line">					<span class="attr">"raw"</span>: <span class="string">"localhost:8080/users/user"</span>,</span><br><span class="line">					<span class="attr">"host"</span>: [</span><br><span class="line">						<span class="string">"localhost"</span></span><br><span class="line">					],</span><br><span class="line">					<span class="attr">"port"</span>: <span class="string">"8080"</span>,</span><br><span class="line">					<span class="attr">"path"</span>: [</span><br><span class="line">						<span class="string">"users"</span>,</span><br><span class="line">						<span class="string">"user"</span></span><br><span class="line">					]</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="attr">"response"</span>: []</span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Get-Token"><a href="#Get-Token" class="headerlink" title="Get Token"></a>Get Token</h3><blockquote>
+<p>localhost:8080/oauth/token</p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"access_token"</span>: <span class="string">"f420e4db-d76f-49b8-bcd1-480d03832c4b"</span>,</span><br><span class="line">    <span class="attr">"token_type"</span>: <span class="string">"bearer"</span>,</span><br><span class="line">    <span class="attr">"refresh_token"</span>: <span class="string">"f7216eeb-d1ba-4c93-832d-9b0ffa52e2db"</span>,</span><br><span class="line">    <span class="attr">"expires_in"</span>: <span class="number">3599</span>,</span><br><span class="line">    <span class="attr">"scope"</span>: <span class="string">"read write trust"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>위와같이 토큰 발급이 진행되어진다.</p>
+<p>정상적인 비밀번호를 입력하지 않을경우<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"error"</span>: <span class="string">"invalid_grant"</span>,</span><br><span class="line">    <span class="attr">"error_description"</span>: <span class="string">"Bad credentials"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Get-User-Info"><a href="#Get-User-Info" class="headerlink" title="Get User Info"></a>Get User Info</h3><blockquote>
+<p>localhost:8080/users/user </p>
+</blockquote>
+<p>발급받은 access_token설정하여 request</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">"id"</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="attr">"userName"</span>: <span class="string">"beanbroker"</span>,</span><br><span class="line">        <span class="attr">"password"</span>: <span class="string">"&#123;bcrypt&#125;$2a$10$UNtRqoEj2OoaD1trDP61hOxhZvPQISYd6Bz8px0wAn56LzHq5iO0."</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>유저정보 반환</p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a> <a class="fw3 ph1 dib" href="/tags/Oauth/">#Oauth</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="beanbroker">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            Good to see you! have a fun
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Spring/">Spring</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Spring/Oauth/">Oauth</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar3/">CI 3장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar2/">CI 2장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar1/">CI 1장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/08/intelliJ/multi_project/">Intellij multi project</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/04/etc/aws_rds_max_connections/">Amazon Aurora max_connections</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Beanbroker blog All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/" rel="external nofollow noopener noreferrer" target="_blank">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

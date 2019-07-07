@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="개발관련">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="beanbroker">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Kotlin 기초 1장 with Kotlin In Action">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="개발관련">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="beanbroker blog">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>Kotlin 기초 1장 with Kotlin In Action - beanbroker blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-86502943-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="beanbroker blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="beanbroker blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about.html" title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/contact.html" title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Kotlin 기초 1장 with Kotlin In Action</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-04-21</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Kotlin/">#Kotlin</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <p>해당 블로그는 <a href="http://acornpub.co.kr/book/kotlin-in-action" rel="external nofollow noopener noreferrer" target="_blank">Kotlin In Action</a> 책의 내용을 정리한 글입니다. </p>
+<h2 id="1-코틀린은"><a href="#1-코틀린은" class="headerlink" title="1. 코틀린은?"></a>1. 코틀린은?</h2><ol>
+<li><p>정적 타입</p>
+<ul>
+<li>코틀린은 자바와 마찬가지로 정적 타입 지정 언어(컴파일러가 타임을 검증)</li>
+</ul>
+</li>
+<li><p>타입 추론</p>
+<ul>
+<li>코틀린에서 모든 변수타입을 개발자가 직접 명시할 필요가 없다.</li>
+</ul>
+</li>
+<li><p>nullable type 지원</p>
+</li>
+<li><p>함수형 프로그래밍 지원</p>
+<ul>
+<li>일급 시민인 함수를 일반 값처럼 다룰수 있다.</li>
+<li>불변성</li>
+<li>함수형 프로그래밍의 장점을 가질수 있음</li>
+</ul>
+</li>
+<li><p>함수를 최상위 수준에 정의 할수 있다. (자바와 달리) 꼭 클래스 안에 함수를 넣어야 할 필요가 없다. 이점은 진자 편함</p>
+</li>
+<li><p>코틀린에서 여러 클래스를 한 파일에 넣을 수 있고, 파일의 이름을 마음대로 정할수 있다.</p>
+</li>
+</ol>
+<h2 id="2-코틀린-변수"><a href="#2-코틀린-변수" class="headerlink" title="2. 코틀린 변수"></a>2. 코틀린 변수</h2><p>val? var?</p>
+<p><a href="https://beanbroker.github.io/2018/11/11/Kotlin/kotlin_value/" rel="external nofollow noopener noreferrer" target="_blank">코틀린 변수 설명</a></p>
+<h2 id="코틀린-property"><a href="#코틀린-property" class="headerlink" title="코틀린 property"></a>코틀린 property</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">House</span></span>&#123;</span><br><span class="line">  val address : String,</span><br><span class="line">  <span class="keyword">var</span> hasYard : Boolean</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> address는 val로 선언 -&gt; 읽기 전용, 단순 읽을수 있는 getter 생성</p>
+<p> isMarried var로 선언 -&gt; read, write둘다 가능. </p>
+<h2 id="3-Casting"><a href="#3-Casting" class="headerlink" title="3. Casting"></a>3. Casting</h2><ul>
+<li><p>스마트 캐스트 -&gt;<br>코틀린에서는 개발자 대신 컴파일러가 캐스팅을 대신해준다.</p>
+</li>
+<li><p>원하틑 타입으로 명시적으로 타입 캐스팅 하려면 as키워드 사용</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val numValue = n as Num</span><br></pre></td></tr></table></figure>
+<h2 id="4-const"><a href="#4-const" class="headerlink" title="4. const"></a>4. const</h2><p>원시 타입과 String 타입만 const를 추가 할수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">코틀린</span><br><span class="line"><span class="keyword">const</span> val WHO_R_U = <span class="string">"WHO R U"</span></span><br><span class="line"></span><br><span class="line">자바</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String  WHO_R_U = <span class="string">"WHO R U"</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-확장-함수-진자-매력적인-부분"><a href="#5-확장-함수-진자-매력적인-부분" class="headerlink" title="5. 확장 함수 ( 진자 매력적인 부분 )"></a>5. 확장 함수 ( 진자 매력적인 부분 )</h2><p>확장 함수는 어떤 클래스의 멤버 메소드인 것처럼 호출할 수 있지만 그 클래스의 밖에 선언된 함수다. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fun String.lastChar() : Char = <span class="keyword">this</span>[<span class="keyword">this</span>.length-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<p>확장 함수를 만들려면 추가하려는 함수 이름 앞에 그 함수가 확장할 클래스의 이름을 덧붙이기만 하면 된다. </p>
+<ul>
+<li>수신 객체 타입 : <strong>클래스 이름</strong>, 위에선 String이 수식 객체 타입</li>
+<li>수신 객체 : <strong>확장 함수가 호출되는 대상이 되는 값</strong>, 위에선 this가 수신 객체</li>
+</ul>
+<p>확장 함수 내부에서 일반적인 인스턴스 메소드의 내부에서와 마찬가지로 수신 객체의 메소드나 프로퍼티를 바로 사용 할수 있다. 하지만 캡슐화를 깨지는 않는다. <strong>클래스 안에서 정의된 메소드와 달리 확장 함수 안에는 클래스 내부에서만 사용할 수 있는 비공개 멤버나 보호된 멤버를 사용 할수 없다.</strong></p>
+<p>(확장 함수는 오버라이드 할수 없다.)</p>
+<p>확장 함수를 사용하게 되면 외부 라이브러리에 정의된 클래스를 포함하여 모든 클래스의 API를 그 클래스의 소드코드를 바꿀 필요 없이 확장 할수 있다.</p>
+<h2 id="6-클래스-객체-인터페이스"><a href="#6-클래스-객체-인터페이스" class="headerlink" title="6. 클래스, 객체, 인터페이스"></a>6. 클래스, 객체, 인터페이스</h2><p>자바와 달리 코틀린 선언은 기본적으로 final이며 public이다. 클래스를 data로 선언하면 컴파일러가 일부 표준 메소드를 생성해준다. </p>
+<blockquote>
+<p>코틀린 인터페이스</p>
+</blockquote>
+<ul>
+<li><p>추상메소드 뿐만 아니라 구현이 있는 메소드도 정의 할수 있다.</p>
+</li>
+<li><p>인터페이스에는 아무란 상태(필드)도 들어갈 수 없다.</p>
+</li>
+</ul>
+<blockquote>
+<p>코틀린 data class</p>
+</blockquote>
+<ul>
+<li><p>모든 클래스가 정의해야하는 메소드를 자동 생성</p>
+</li>
+<li><p>데이터 클래스의 프로퍼티가 꼭 val일 필요는 없음, var사용 가능. <strong>but</strong> 읽기 전용으로 만들어서 데이터 클래스를 불변으로 만들라 권장한다. 불변 객체를 사용하게 된다면 스레드가 사용 중인 데이터를 다른 스레드가 변경할수 없으므로 스레드를 동기화해야할 필요가 줄어든다.</p>
+</li>
+</ul>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Kotlin/">#Kotlin</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="beanbroker">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            Good to see you! have a fun
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Kotlin/">Kotlin</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar3/">CI 3장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar2/">CI 2장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar1/">CI 1장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/08/intelliJ/multi_project/">Intellij multi project</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/04/etc/aws_rds_max_connections/">Amazon Aurora max_connections</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Beanbroker blog All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/" rel="external nofollow noopener noreferrer" target="_blank">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

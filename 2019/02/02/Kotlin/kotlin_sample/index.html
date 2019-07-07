@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="개발관련">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="beanbroker">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Kotlin 불변성">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="개발관련">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="beanbroker blog">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>Kotlin 불변성 - beanbroker blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-86502943-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="beanbroker blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="beanbroker blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about.html" title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/contact.html" title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Kotlin 불변성</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-02-02</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Kotlin/">#Kotlin</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h2 id="Kotlin-불변성"><a href="#Kotlin-불변성" class="headerlink" title="Kotlin 불변성"></a>Kotlin 불변성</h2><h3 id="불변성이란"><a href="#불변성이란" class="headerlink" title="불변성이란"></a>불변성이란</h3><ul>
+<li>책들을 읽다보면 쓰레드 세이프하기 위해선 어떻게 해야하나요?<ul>
+<li>전역변수를 사용하지 않고 변수 선언을 지역변수로만 선언한다 등등 </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>함수형 프로그래밍은 thread safe하다고 한다. 왜?<br><a href="https://beanbroker.github.io/2018/11/17/Kotlin/concept_functional/" rel="external nofollow noopener noreferrer" target="_blank">https://beanbroker.github.io/2018/11/17/Kotlin/concept_functional/</a><br>위를 한번 읽고 오자</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MutableObjet</span></span>&#123;</span><br><span class="line">    <span class="keyword">val</span> mutableValue : <span class="built_in">Int</span> = <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>위의 클래스를 동시에 여러 스레드에서 호출하는 상황을 생각해보자! mutableValue의 무결한가에 대한 보장은 없다. 해당 값을 변경할수 없게 한다고 가정해본다면 문제는 부분적으로 해결이 가능하다. 하지만 불변한 클래스를 생성하고 모든 변수를 읽기 전용으로 만드는 것은….. 말이 되지 않는다</p>
+<blockquote>
+<p>키포인트 : 불변성은 변경 금지에 대한 것이 아니라 변경 처리에 대한 것이다. </p>
+</blockquote>
+<h3 id="코틀린에서-불변성을-구현해보자"><a href="#코틀린에서-불변성을-구현해보자" class="headerlink" title="코틀린에서 불변성을 구현해보자"></a>코틀린에서 불변성을 구현해보자</h3><h4 id="var과-val"><a href="#var과-val" class="headerlink" title="var과 val"></a>var과 val</h4><p>var는 단순 변수라 생각된다. 그럼 val의 역할은?</p>
+<ul>
+<li>읽기 전용을 강제하며!</li>
+<li>초기화 이후에 val 변수에 write할수 없다.</li>
+<li>즉 커스텀한 getter 없이는 val 변수를 사용하면 참조 불변성을 얻을수 있다.</li>
+</ul>
+<p>example<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> temp:String =<span class="string">"beanbroker"</span></span><br><span class="line">temp+= <span class="string">"개발자"</span></span><br></pre></td></tr></table></figure></p>
+<p>위의 코드는 컴파일 되지 않는다. 당연한 결과이다… 패스</p>
+<h4 id="val과-const-val"><a href="#val과-const-val" class="headerlink" title="val과 const val"></a>val과 const val</h4><ol>
+<li>val은 읽기 전용, const val은 컴파일 상수</li>
+<li>val는 custom getter를 가질수 있으나 const val는 그러하지 않다.</li>
+<li>함수 내부, 클래스 멤버 등 어디서나 vaㅣ 속성을 가질수 있지만, const val는 클래스/Object의 최상위 멤버야만 한다.</li>
+<li>모든 타입에 대한 val 속성을 가질수 있다,(직접 정의한 클래스 또는 모든 종류의 기본 데이터 타입이) const val는 기본 데이터 타입과 문자열만을 사용할수 있다.</li>
+<li>const val은 null이 가능한 데이터 타입을 가질수 없다.</li>
+</ol>
+<blockquote>
+<p>4번 sample<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">val</span> temp = <span class="string">"pair"</span> to <span class="string">"pair"</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>  너무나도 편한 Pair 위와 같이 선언시 Only primitives and String are allowed라는 에러문구가 친절하게 ide에서 말해준다.</p>
+<h3 id="불변성의-장점"><a href="#불변성의-장점" class="headerlink" title="불변성의 장점"></a>불변성의 장점</h3><ol>
+<li>thread safe</li>
+<li>낮은 커플링</li>
+<li>참조 투명성</li>
+<li>실패 원자성</li>
+<li>컴파일러 최적화</li>
+<li>순수 함수</li>
+</ol>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Kotlin/">#Kotlin</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="beanbroker">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            Good to see you! have a fun
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Kotlin/">Kotlin</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar3/">CI 3장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar2/">CI 2장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar1/">CI 1장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/08/intelliJ/multi_project/">Intellij multi project</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/04/etc/aws_rds_max_connections/">Amazon Aurora max_connections</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Beanbroker blog All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/" rel="external nofollow noopener noreferrer" target="_blank">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

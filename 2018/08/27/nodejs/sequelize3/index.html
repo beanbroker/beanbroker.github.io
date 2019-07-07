@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="개발관련">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="beanbroker">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="sequelize3">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="개발관련">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="beanbroker blog">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>sequelize3 - beanbroker blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-86502943-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="beanbroker blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="beanbroker blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about.html" title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/contact.html" title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">sequelize3</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-08-27</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/node-js/">#node.js</a> <a class="fw3 ph1 dib" href="/tags/sequelize/">#sequelize</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="sequelize3"><a href="#sequelize3" class="headerlink" title="sequelize3"></a>sequelize3</h1><h2 id="셋팅하기"><a href="#셋팅하기" class="headerlink" title="셋팅하기"></a>셋팅하기</h2><p>2장에 이어서 직접 콜을 때려서 디비에 접근해보겠습니다</p>
+<blockquote>
+<p>app.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const indexRouter = require(&apos;./routes/index&apos;);</span><br><span class="line">const usersRouter = require(&apos;./routes/users&apos;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.use(&apos;/&apos;, indexRouter);</span><br><span class="line">app.use(&apos;/users&apos;, usersRouter);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>/routes/index.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var router = express.Router();</span><br><span class="line"></span><br><span class="line">/* GET home page. */</span><br><span class="line">router.get(&apos;/&apos;, function(req, res, next) &#123;</span><br><span class="line">  res.send(&apos;index page&apos;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">module.exports = router;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>웹브라우저에서 <a href="http://localhost:3005/" rel="external nofollow noopener noreferrer" target="_blank">http://localhost:3005/</a><br>-&gt; index page</p>
+<p>정상출력 확인</p>
+<blockquote>
+<p>/routes/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var router = express.Router();</span><br><span class="line"></span><br><span class="line">/* GET users listing. */</span><br><span class="line">router.get(&apos;/&apos;, function(req, res, next) &#123;</span><br><span class="line">  res.send(&apos;respond with a user&apos;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">module.exports = router;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>웹브라우저에서 <a href="http://localhost:3005/users" rel="external nofollow noopener noreferrer" target="_blank">http://localhost:3005/users</a><br>-&gt; respond with a user</p>
+<p>정상출력 확인</p>
+<h2 id="CRUD"><a href="#CRUD" class="headerlink" title="CRUD"></a>CRUD</h2><blockquote>
+<p>crud에 앞서 컴퓨터 재시작하여 도커에 올린 디비가 연결이 안된다면</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker restart &apos;CONTAINER ID&apos;</span><br><span class="line">재기동</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>/routers/user.js</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const User = require(&apos;../models&apos;).User;</span><br></pre></td></tr></table></figure>
+<p>추가! orm모델사용!</p>
+<h3 id="Create"><a href="#Create" class="headerlink" title="Create"></a>Create</h3><ul>
+<li>준비사항<ol>
+<li>npm install body-parser -save 후<br>package.json확인</li>
+<li>postman설치 (사용방법은 구글에 많음)</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>app.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const bodyParser = require(&apos;body-parser&apos;);</span><br><span class="line"></span><br><span class="line">app.use(express.urlencoded(&#123; extended: false &#125;));</span><br><span class="line"></span><br><span class="line">app.use(bodyParser.json());</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>위의 2개 다 추가</p>
+<ul>
+<li>postman에서 json으로 보낼지</li>
+<li><a href="http://www.-form-urlencoded로" rel="external nofollow noopener noreferrer" target="_blank">www.-form-urlencoded로</a> 보낼지</li>
+</ul>
+<blockquote>
+<p>/routes/users.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">router.post(&apos;/&apos;, (req,res,next) =&gt; &#123;</span><br><span class="line">    User.create(&#123;</span><br><span class="line">        name : req.body.name,</span><br><span class="line">        age : req.body.age,</span><br><span class="line">        gender : req.body.gender,</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">        .then((result) =&gt; &#123;</span><br><span class="line">            console.log(result);</span><br><span class="line">            console.log(&apos;finish to create&apos;);</span><br><span class="line">            res.status(201).json(result);</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch((err =&gt; &#123;</span><br><span class="line">            console.error(err);</span><br><span class="line">            res.send(err);</span><br><span class="line">        &#125;));</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>추가 후 run</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Url - http://localhost:3005/users/</span><br><span class="line">method - post</span><br><span class="line">req</span><br><span class="line">&#123;</span><br><span class="line">	&quot;name&quot; : &quot;특정인물&quot;,</span><br><span class="line">	&quot;age&quot; : 53,</span><br><span class="line">	&quot;gender&quot; : 0</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">res</span><br><span class="line">&#123;</span><br><span class="line">    &quot;id&quot;: 35,</span><br><span class="line">    &quot;name&quot;: &quot;특정인물&quot;,</span><br><span class="line">    &quot;age&quot;: 53,</span><br><span class="line">    &quot;gender&quot;: false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Read"><a href="#Read" class="headerlink" title="Read"></a>Read</h3><p>Create한 부분을 읽어보자!</p>
+<blockquote>
+<p>/routes/users.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;</span><br><span class="line">const express = require(&apos;express&apos;);</span><br><span class="line">const router = express.Router();</span><br><span class="line"></span><br><span class="line">const User = require(&apos;../models&apos;).User;</span><br><span class="line"></span><br><span class="line">router.get(&apos;/:id&apos;, function(req, res, next) &#123;</span><br><span class="line">    User.findById(req.params.id)</span><br><span class="line">        .then((user) =&gt; &#123;</span><br><span class="line">            console.log(user);</span><br><span class="line">            console.log(&apos;finish to findById&apos;);</span><br><span class="line">            res.json(user);</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch((err =&gt; &#123;</span><br><span class="line">            console.error(err);</span><br><span class="line">            res.send(err);</span><br><span class="line">        &#125;));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>추가 후 run</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Url - http://localhost:3005/users/35</span><br><span class="line">method - get</span><br><span class="line"></span><br><span class="line">res</span><br><span class="line">&#123;</span><br><span class="line">    &quot;id&quot;: 35,</span><br><span class="line">    &quot;name&quot;: &quot;특정인물&quot;,</span><br><span class="line">    &quot;age&quot;: 53,</span><br><span class="line">    &quot;gender&quot;: false,</span><br><span class="line">    &quot;createdAt&quot;: &quot;2018-08-27T07:53:31.000Z&quot;,</span><br><span class="line">    &quot;updatedAt&quot;: &quot;2018-08-27T07:53:31.000Z&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>전체 목록을 가져오자!</p>
+<blockquote>
+<p>/routes/users.js</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/* GET users listing. */</span><br><span class="line">router.get(&apos;/&apos;, function(req, res, next) &#123;</span><br><span class="line">  res.send(&apos;User Api&apos;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">router.get(&apos;/list&apos;, (req,res,next)=&gt; &#123;</span><br><span class="line"></span><br><span class="line">    User.findAll()</span><br><span class="line">        .then((users) =&gt; &#123;</span><br><span class="line">            console.log(users);</span><br><span class="line">            console.log(&apos;finish to findAll&apos;);</span><br><span class="line">            res.json(users);</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch((err =&gt; &#123;</span><br><span class="line">            console.error(err);</span><br><span class="line">            res.send(err);</span><br><span class="line">        &#125;));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>run</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">url - http://localhost:3005/users/list</span><br><span class="line">method - get</span><br><span class="line">res</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;id&quot;: 1,</span><br><span class="line">        &quot;name&quot;: &quot;박기진&quot;,</span><br><span class="line">        &quot;age&quot;: 29,</span><br><span class="line">        &quot;gender&quot;: true,</span><br><span class="line">        &quot;createdAt&quot;: &quot;2018-08-24T07:19:13.000Z&quot;,</span><br><span class="line">        &quot;updatedAt&quot;: &quot;2018-08-24T07:19:37.000Z&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;id&quot;: 7,</span><br><span class="line">        &quot;name&quot;: &quot;박기진&quot;,</span><br><span class="line">        &quot;age&quot;: 100,</span><br><span class="line">        &quot;gender&quot;: false,</span><br><span class="line">        &quot;createdAt&quot;: &quot;2018-08-24T08:10:41.000Z&quot;,</span><br><span class="line">        &quot;updatedAt&quot;: &quot;2018-08-26T13:40:39.000Z&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;id&quot;: 32,</span><br><span class="line">        &quot;name&quot;: &quot;박기진&quot;,</span><br><span class="line">        &quot;age&quot;: 15,</span><br><span class="line">        &quot;gender&quot;: false,</span><br><span class="line">        &quot;createdAt&quot;: &quot;2018-08-27T07:44:50.000Z&quot;,</span><br><span class="line">        &quot;updatedAt&quot;: &quot;2018-08-27T07:44:50.000Z&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;id&quot;: 33,</span><br><span class="line">        &quot;name&quot;: &quot;박기진&quot;,</span><br><span class="line">        &quot;age&quot;: 31,</span><br><span class="line">        &quot;gender&quot;: false,</span><br><span class="line">        &quot;createdAt&quot;: &quot;2018-08-27T07:46:28.000Z&quot;,</span><br><span class="line">        &quot;updatedAt&quot;: &quot;2018-08-27T07:46:28.000Z&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;id&quot;: 34,</span><br><span class="line">        &quot;name&quot;: &quot;특정인물&quot;,</span><br><span class="line">        &quot;age&quot;: 23,</span><br><span class="line">        &quot;gender&quot;: false,</span><br><span class="line">        &quot;createdAt&quot;: &quot;2018-08-27T07:46:41.000Z&quot;,</span><br><span class="line">        &quot;updatedAt&quot;: &quot;2018-08-27T07:46:41.000Z&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;id&quot;: 35,</span><br><span class="line">        &quot;name&quot;: &quot;특정인물&quot;,</span><br><span class="line">        &quot;age&quot;: 53,</span><br><span class="line">        &quot;gender&quot;: false,</span><br><span class="line">        &quot;createdAt&quot;: &quot;2018-08-27T07:53:31.000Z&quot;,</span><br><span class="line">        &quot;updatedAt&quot;: &quot;2018-08-27T07:53:31.000Z&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><blockquote>
+<p>/routes/user.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">router.put(&apos;/:id&apos;, (req,res,next) =&gt; &#123;</span><br><span class="line">    User.update(</span><br><span class="line">        &#123;</span><br><span class="line">        name : req.body.name,</span><br><span class="line">        age : req.body.age,</span><br><span class="line">        gender : req.body.gender,</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            where : &#123;id : req.params.id&#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        .then((result) =&gt; &#123;</span><br><span class="line">            console.log(result);</span><br><span class="line">            console.log(&apos;finish to update&apos;);</span><br><span class="line">            res.json(result);</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch((err =&gt; &#123;</span><br><span class="line">            console.error(err);</span><br><span class="line">            res.send(err);</span><br><span class="line">        &#125;));</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h3><p>특정필드를 삭제할때 함브로 삭제하면안된다.<br>deletedAt 컬럼을 사용하거나 특정 필드를 사용하여 소프트 델리트 형식으로하자!<br>하지만 지금은 마음대로 지워보자</p>
+<blockquote>
+<p>/routes/user.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">router.delete(&apos;/:id&apos;, function(req, res, next) &#123;</span><br><span class="line">    User.destroy(&#123; where: &#123; id: req.params.id &#125; &#125;)</span><br><span class="line">        .then((result) =&gt; &#123;</span><br><span class="line">            res.json(result);</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch((err) =&gt; &#123;</span><br><span class="line">            console.error(err);</span><br><span class="line">            next(err);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>run 후</p>
+<p>method-delete, <a href="http://localhost:3005/users/35" rel="external nofollow noopener noreferrer" target="_blank">http://localhost:3005/users/35</a> 을 실행</p>
+<p>db쿼리 직접실행</p>
+<p>select * from users where id =35;</p>
+<p>없음을 확인</p>
+<hr>
+<p>위와같이 CRUD를 실행해보았지만 몬가 아쉬운 부분이 많다.</p>
+<ol>
+<li>서비스로직이 필요하다!</li>
+<li>에러핸들러가 없다</li>
+<li>통일된 res object가 없다</li>
+</ol>
+<p>4번째! 페이지에서 위와같은 일을 진행해보자!</p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/node-js/">#node.js</a> <a class="fw3 ph1 dib" href="/tags/sequelize/">#sequelize</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="beanbroker">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            Good to see you! have a fun
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/node-js/">node.js</a>
+        </p>
+    
+        <p>
+            <a href="/categories/node-js/sequelize/">sequelize</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar3/">CI 3장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar2/">CI 2장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/09/CI/codestar1/">CI 1장, Amazon CodeStar</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/08/intelliJ/multi_project/">Intellij multi project</a>
+        </p>
+    
+        <p>
+            <a href="/2019/06/04/etc/aws_rds_max_connections/">Amazon Aurora max_connections</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Beanbroker blog All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/" rel="external nofollow noopener noreferrer" target="_blank">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
