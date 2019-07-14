@@ -144,6 +144,8 @@
 
                     <!-- Main Post Content -->
                     <h1 id="1-기본셋팅"><a href="#1-기본셋팅" class="headerlink" title="1. 기본셋팅"></a>1. 기본셋팅</h1><p>5버젼과 4버젼의 차이를 추후 블로그에 공유할예정! </p>
+<p>회사에서 gradle 4버젼을 사용함을 인지!</p>
+<p>build.gradle에서 가장 중요하게 봐야하는 부분은 <strong>// querydsl 적용</strong> 이라 적혀있는 부분</p>
 <blockquote>
 <p>build.gradle (메이븐일 경우 다른데곳에서 찾아서….하시길..)</p>
 </blockquote>
@@ -197,6 +199,8 @@
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserController</span><span class="params">(UserService userService)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userService = userService;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserEntity <span class="title">testUser</span><span class="params">()</span> <span class="keyword">throws</span> NotFoundException </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        userService.createUser();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> userService.getUserId(<span class="string">"beanbroker"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>약속이 있으므로 빠르게 튀튀 다음장에서 github과 다른 부분들 더자세하게</p>
+<p>2019년 7월 17일 깃헙 추가</p>
+<p><a href="https://github.com/beanbroker/querydsl_java_spring" rel="external nofollow noopener noreferrer" target="_blank">git source</a> 링크</p>
 
                     
                     <!-- Tags Bottom -->
@@ -254,6 +258,10 @@
     <h3>Recent Posts</h3>
     
         <p>
+            <a href="/2019/07/14/Java/java_querydsl_gradle4-2/">Spring boot With Querydsl Java (gradle 4 버젼용) 2장</a>
+        </p>
+    
+        <p>
             <a href="/2019/07/13/Java/java_querydsl_gradle4-1/">Spring boot With Querydsl Java (gradle 4 버젼용) 1장</a>
         </p>
     
@@ -267,10 +275,6 @@
     
         <p>
             <a href="/2019/07/07/back/">Hexo Back up</a>
-        </p>
-    
-        <p>
-            <a href="/2019/06/09/CI/codestar3/">CI 3장, Amazon CodeStar</a>
         </p>
     
 </div>

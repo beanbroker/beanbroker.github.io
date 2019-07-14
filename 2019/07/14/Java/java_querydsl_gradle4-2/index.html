@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="개발관련">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="beanbroker">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Spring boot With Querydsl Java (gradle 4 버젼용) 2장">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="개발관련">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="beanbroker blog">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>Spring boot With Querydsl Java (gradle 4 버젼용) 2장 - beanbroker blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-86502943-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+<link rel="canonical" href="http://yoursite.com/2019/07/14/java/java_querydsl_gradle4-2/">
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="beanbroker blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="beanbroker blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about.html" title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/contact.html" title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Spring boot With Querydsl Java (gradle 4 버젼용) 2장</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-07-14</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Querydsl/">#Querydsl</a> <a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="PREDICATOR"><a href="#PREDICATOR" class="headerlink" title="PREDICATOR"></a>PREDICATOR</h1><p><a href="https://github.com/beanbroker/querydsl_java_spring" rel="external nofollow noopener noreferrer" target="_blank">git source</a> 링크</p>
+<p><a href="https://beanbroker.github.io/2019/03/09/Kotlin/kotlin_queryDsl3/" rel="external nofollow noopener noreferrer" target="_blank">kotlin_version</a> 링크</p>
+<p>PREDICATOR가 왜필요할지는  동적쿼리를 매번매번 function으로 추가하여 쓸데없는 메소드 추가를 방지</p>
+<h2 id="바로-소스-카즈아"><a href="#바로-소스-카즈아" class="headerlink" title="바로 소스 카즈아"></a>바로 소스 카즈아</h2><p><strong>중요부분</strong> 매우 중요</p>
+<p>괜히 이펙티브자바에서 빌더를 써라라고 하는것이 아님!</p>
+<blockquote>
+<p>UserPredicator.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.beanbroker.sample.api.user.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.beanbroker.sample.api.user.entity.QUserEntity;</span><br><span class="line"><span class="keyword">import</span> com.querydsl.core.BooleanBuilder;</span><br><span class="line"><span class="keyword">import</span> com.querydsl.core.types.Predicate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.util.StringUtils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserPredicator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> QUserEntity table = QUserEntity.userEntity;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> BooleanBuilder builder = <span class="keyword">new</span> BooleanBuilder();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserPredicator <span class="title">userId</span><span class="params">(String userId)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(userId != <span class="keyword">null</span>)&#123;</span><br><span class="line">            builder.and(table.userId.eq(userId));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserPredicator <span class="title">name</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(name != <span class="keyword">null</span>)&#123;</span><br><span class="line">            builder.and(table.name.eq(name));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserPredicator <span class="title">age</span><span class="params">(<span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(age &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            builder.and(table.age.eq(age));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Predicate <span class="title">values</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> builder.getValue();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>참쉬죠잉?</p>
+<blockquote>
+<p>UserRepositoryCustom.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.beanbroker.sample.api.user.entity.UserEntity;</span><br><span class="line"><span class="keyword">import</span> com.querydsl.core.types.Predicate;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepositoryCustom</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function">UserEntity <span class="title">getByUserId</span><span class="params">(String userId)</span></span>;</span><br><span class="line">    <span class="function">UserEntity <span class="title">getUserInfoWithPredicator</span><span class="params">(Predicate predicate)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>UserRepositoryImpl.java</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class UserRepositoryImpl extends QuerydslRepositorySupport</span><br><span class="line">        implements UserRepositoryCustom &#123;</span><br><span class="line"></span><br><span class="line">    private static final QUserEntity table = QUserEntity.userEntity;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Creates a new &#123;@link QuerydslRepositorySupport&#125; instance for the given domain type.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * @param domainClass must not be &#123;@literal null&#125;.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    public UserRepositoryImpl() &#123;</span><br><span class="line">        super(UserEntity.class);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public UserEntity getByUserId(String userId) &#123;</span><br><span class="line"></span><br><span class="line">        return  from(table)</span><br><span class="line">                .where(table.userId.eq(userId))</span><br><span class="line">                .fetchOne();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public UserEntity getUserInfoWithPredicator(Predicate userPredicator) &#123;</span><br><span class="line">        return from(table)</span><br><span class="line">                .where(userPredicator)</span><br><span class="line">                .fetchOne();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="셋팅은-끝낫는데-how-to-use"><a href="#셋팅은-끝낫는데-how-to-use" class="headerlink" title="셋팅은 끝낫는데 how to use?"></a>셋팅은 끝낫는데 how to use?</h2><p>아래가 핵심코드</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> UserEntity <span class="title">getUserInfoWithPredicator</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">           String userId,</span></span></span><br><span class="line"><span class="function"><span class="params">           String name,</span></span></span><br><span class="line"><span class="function"><span class="params">           <span class="keyword">int</span> age</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">   )</span></span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> userRepository.getUserInfoWithPredicator(</span><br><span class="line">               setUserQuery(userId, name, age)</span><br><span class="line">       );</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">private</span> Predicate <span class="title">setUserQuery</span><span class="params">( String userId,</span></span></span><br><span class="line"><span class="function"><span class="params">                                   String name,</span></span></span><br><span class="line"><span class="function"><span class="params">                                   <span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> UserPredicator()</span><br><span class="line">               .userId(userId)</span><br><span class="line">               .name(name)</span><br><span class="line">               .age(age)</span><br><span class="line">               .values();</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="그럼-써보자"><a href="#그럼-써보자" class="headerlink" title="그럼 써보자"></a>그럼 써보자</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">UserEntity test1 = userService.getUserInfoWithPredicator(</span><br><span class="line">             <span class="string">"beanbroker"</span>,</span><br><span class="line">             <span class="keyword">null</span>,</span><br><span class="line">             <span class="number">0</span></span><br><span class="line"></span><br><span class="line">     );</span><br><span class="line"></span><br><span class="line">     System.out.println(test1.toString());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     UserEntity test2 = userService.getUserInfoWithPredicator(</span><br><span class="line">             <span class="string">"beanbroker"</span>,</span><br><span class="line">                 <span class="string">"pkj"</span>,</span><br><span class="line">             <span class="number">0</span></span><br><span class="line"></span><br><span class="line">     );</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     System.out.println(test2.toString());</span><br><span class="line"></span><br><span class="line">     UserEntity test3 = userService.getUserInfoWithPredicator(</span><br><span class="line">             <span class="keyword">null</span>,</span><br><span class="line">             <span class="keyword">null</span>,</span><br><span class="line">             <span class="number">32</span></span><br><span class="line"></span><br><span class="line">     );</span><br><span class="line"></span><br><span class="line">     System.out.println(test3.toString());</span><br></pre></td></tr></table></figure>
+<p>아 요즘은 왜 저렇게써야하는지 설명 적는게 귀찮다…. 활용방법은 다양하니! 잘사용합시당</p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Querydsl/">#Querydsl</a> <a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="beanbroker">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            Good to see you! have a fun
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Querydsl/">Querydsl</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Querydsl/Spring/">Spring</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2019/07/14/Java/java_querydsl_gradle4-2/">Spring boot With Querydsl Java (gradle 4 버젼용) 2장</a>
+        </p>
+    
+        <p>
+            <a href="/2019/07/13/Java/java_querydsl_gradle4-1/">Spring boot With Querydsl Java (gradle 4 버젼용) 1장</a>
+        </p>
+    
+        <p>
+            <a href="/2019/07/13/Java/java_querydsl_gradle5/">Spring boot With Querydsl Java (gradle 5.0 이상)</a>
+        </p>
+    
+        <p>
+            <a href="/2019/07/07/docekr_encode/">Docker Mysql 인코딩 해결</a>
+        </p>
+    
+        <p>
+            <a href="/2019/07/07/back/">Hexo Back up</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Beanbroker blog All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/" rel="external nofollow noopener noreferrer" target="_blank">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
