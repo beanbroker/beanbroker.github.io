@@ -184,13 +184,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Docker-compose/</loc>
-        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/tags/docker/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -198,21 +191,14 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/tags/Docker-compose/</loc>
+        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://yoursite.com/tags/Proxy/</loc>
-        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/JMS/</loc>
-        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/MQ/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -240,7 +226,21 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Java/</loc>
+        <loc>http://yoursite.com/tags/JMS/</loc>
+        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/MQ/</loc>
+        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Oauth/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -261,13 +261,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Oauth/</loc>
-        <lastmod>2019-07-07T08:12:45.331Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/tags/Profile/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -275,14 +268,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Redis/</loc>
+        <loc>http://yoursite.com/tags/Session/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Session/</loc>
+        <loc>http://yoursite.com/tags/Redis/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -333,6 +326,20 @@
     <url>
         <loc>http://yoursite.com/tags/Spring/</loc>
         <lastmod>2019-07-14T09:20:25.059Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Obejct/</loc>
+        <lastmod>2019-07-21T07:53:19.520Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Java/</loc>
+        <lastmod>2019-07-21T07:53:19.520Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

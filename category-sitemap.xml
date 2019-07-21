@@ -196,14 +196,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/node-js/express/Session/</loc>
+        <loc>http://yoursite.com/categories/node-js/sequelize/Rest/</loc>
         <lastmod>2019-07-07T08:12:45.329Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/node-js/sequelize/Rest/</loc>
+        <loc>http://yoursite.com/categories/node-js/express/Session/</loc>
         <lastmod>2019-07-07T08:12:45.329Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -224,14 +224,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Nginx/Docker/</loc>
+        <loc>http://yoursite.com/categories/Nginx/docker/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Nginx/docker/</loc>
+        <loc>http://yoursite.com/categories/Nginx/Docker/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -245,14 +245,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/JMS/</loc>
+        <loc>http://yoursite.com/categories/AWS/elastic-beanstalk/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/AWS/elastic-beanstalk/</loc>
+        <loc>http://yoursite.com/categories/Spring/JMS/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -266,13 +266,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/JMS/MQ/</loc>
-        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/categories/AWS/elastic-beanstalk/SpringBoot/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -280,14 +273,21 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/MongoDb/</loc>
-        <lastmod>2019-07-07T08:12:45.331Z</lastmod>
+        <loc>http://yoursite.com/categories/Spring/JMS/MQ/</loc>
+        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/categories/Spring/Oauth/</loc>
+        <lastmod>2019-07-07T08:12:45.331Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Spring/MongoDb/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -308,14 +308,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/Redis/</loc>
+        <loc>http://yoursite.com/categories/Spring/Session/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/Session/</loc>
+        <loc>http://yoursite.com/categories/Spring/Redis/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -387,6 +387,20 @@
     <url>
         <loc>http://yoursite.com/categories/Querydsl/Spring/</loc>
         <lastmod>2019-07-14T09:20:25.059Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Obejct/</loc>
+        <lastmod>2019-07-21T07:53:19.520Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Obejct/Java/</loc>
+        <lastmod>2019-07-21T07:53:19.520Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

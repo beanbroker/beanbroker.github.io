@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-14T09:20:25.059Z</updated>
+  <updated>2019-07-21T07:53:19.520Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OBJECT 1장</title>
+    <link href="http://yoursite.com/2019/07/21/Java/Object_java1/"/>
+    <id>http://yoursite.com/2019/07/21/Java/Object_java1/</id>
+    <published>2019-07-21T08:00:00.000Z</published>
+    <updated>2019-07-21T07:53:19.520Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Obejct-1장"><a href="#Obejct-1장" class="headerlink" title="Obejct 1장"></a>Obejct 1장</h1><blockquote><p>해당 블로그 컨텐츠는 Object 책을 공부하며 생각을 정리한 내용입니다.</p></blockquote><p><a href="https://wikibook.co.kr/object/" rel="external nofollow noopener noreferrer" target="_blank">Object wikibook</a> 링크</p><p><a href="https://github.com/eternity-oop/object" rel="external nofollow noopener noreferrer" target="_blank">해당 책 예제 소스 </a> 링크</p><h1 id="A-객체지향이란"><a href="#A-객체지향이란" class="headerlink" title="A. 객체지향이란?"></a>A. 객체지향이란?</h1><blockquote><p>p41</p></blockquote><p>말 그대로 객체를 지향하는 것이다. 진정한 객체지향 페러다임으로의 전환은 클래스가 아닌 객체에 초점을 맞출 떄에만 얻을 수 있다. 이를 위해 2가지에 집중이 필요</p><ol><li>어떤 클래스가 필요한지를 고민하기 전에 어떤 객체들이 필요한지 고민하라! <ul><li>클래스는 공통적인 <strong>상태와 행동</strong> 을 공유하는 객체들을 추상화 한것이다.</li></ul></li><li>객체를 독립적인 존재가 아니라 기능을 구현하기 위한 협력하는 공동체의 일월으로 봐야 한다.<ul><li>객체는 다른 객체에게 도움을 주거나 의존하면서 살아가는 협력적인 존재</li><li>객체를 고립된 존재로 바로보지 말고 협력에 참여하는 협력자로 바라보자.</li><li>객체들의 모양과 윤곽이 잡히면 <strong>공통된 특성과 상태</strong> 를 가진 각채들을 <strong>타입으로 분류</strong> 하고 이 타입을 기반으로 클래스를 구현하라.</li></ul></li></ol><p>즉! -&gt; 현실 세계의 state와 behavior를 추상화 -&gt; 클래스</p><p>객체지향의 본질은 협력하는 객체들의 공동체를 창조하는 것이다. 핵심은 <strong>역할, 책임, 협력</strong> 이다. 가장 중효하다 생각하는 부분은 당연히 책임이다.</p><p>객체의 상태에 초점을 맞추기 보다는 객체의 행동에 집중해야 한다. 객체의 내누 구현에 초점을 맞춘 설계 방법을 데이터 주도 설계(Data-Driven Design)</p><h2 id="책과의-별도-내용-Abstract-Class와-interface의-차이는-개인적인-생각-2년차부터-생각한"><a href="#책과의-별도-내용-Abstract-Class와-interface의-차이는-개인적인-생각-2년차부터-생각한" class="headerlink" title="(책과의 별도 내용) Abstract Class와 interface의 차이는? (개인적인 생각! 2년차부터 생각한!)"></a>(책과의 별도 내용) Abstract Class와 interface의 차이는? (개인적인 생각! 2년차부터 생각한!)</h2><p><strong>같은 상속구조 트리안에 있냐 없냐</strong> 가 중요하다고 생각한다. 기능을 제공할때 추상클래스에 위임할지 인터페이스에 위임할지 설계시 많은 고민을 한다. 같은 상속구조트리안에 있다면 추상클래스에 기능을 위임하고 같은 상속구조트라 안에 있지 않다면 인터페이스에 기능을 위임하는 것이 맞다고 생각한다. 이는 요구조건을 파악하고 설계시 매우 중요하다고 생각한다. 추상화한 클래스에 억지로 이러한 기능이 필요할거야 라는 좋지 않은 생각을 버리도록 항상 노력하자!</p><p>이를 통해 높은 응집도와 낮은 결합도를 추구할수 있다 생각한다. 객체지향은 항상 어려운것이다.</p><h2 id="B-method-or-message"><a href="#B-method-or-message" class="headerlink" title="B. method or message"></a>B. method or message</h2><blockquote><p>p49</p></blockquote><p>객체게 다른 객체와 상호작용할수 있는 유일한 방법을 메시지를 전송하는 것뿐이다. 다른 객체에게 요청이 도달할 때 해당 객체가 메시지를 수신했다고 이야기한다. 수진된 메시지를 처리하기 위한 자신만의 방법을 메서드라고 부른다.</p><p>how to 구분? 메시지와 메서드 : <strong>다형성</strong> 과 연관</p><p>메시지와 메서드를 실행 시점에 바인당한다. </p><ol><li><p>지연 바인딩 or 동적 바인딩</p><ul><li>메서드를 실행 시점에 바인딩한다.</li></ul></li><li><p>초기 바인딩 or 동적 바인딩</p><ul><li>전통적인 함수 호출처럼 컴파일 시점에 실행된 함수나 프로시저를 결정하는 것</li></ul></li></ol><p>객체지향이 컴파일 시점의 의존성과 실행 시점의 인존성을 분리하고, 하나의 메시지를 선택적으로 서로 다른 메서드에 연결할수 있는 이유가 바로 지연 바인딩이라는 메커니즘을 사용하기 때문</p><p>책에 나와있는 모든 샘플 코드와 왜 이와같이 변경되는지도 포함시켜 업로드하고 싶지만.. 이건 직접봐야하는 책이라고 생각한다. </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Obejct-1장&quot;&gt;&lt;a href=&quot;#Obejct-1장&quot; class=&quot;headerlink&quot; title=&quot;Obejct 1장&quot;&gt;&lt;/a&gt;Obejct 1장&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;해당 블로그 컨텐츠는 Object 책을 공부하며 생각
+      
+    
+    </summary>
+    
+      <category term="Obejct" scheme="http://yoursite.com/categories/Obejct/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Obejct/Java/"/>
+    
+    
+      <category term="Obejct" scheme="http://yoursite.com/tags/Obejct/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring boot With Querydsl Java (gradle 4 버젼용) 2장</title>
@@ -279,35 +309,6 @@
       <category term="Intellij" scheme="http://yoursite.com/tags/Intellij/"/>
     
       <category term="multi" scheme="http://yoursite.com/tags/multi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Amazon Aurora max_connections</title>
-    <link href="http://yoursite.com/2019/06/04/etc/aws_rds_max_connections/"/>
-    <id>http://yoursite.com/2019/06/04/etc/aws_rds_max_connections/</id>
-    <published>2019-06-04T11:30:00.000Z</published>
-    <updated>2019-07-07T08:12:45.322Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Amazon-Aurora의-instance-type에-따른-max-connections"><a href="#Amazon-Aurora의-instance-type에-따른-max-connections" class="headerlink" title="Amazon Aurora의 instance type에 따른 max_connections"></a>Amazon Aurora의 instance type에 따른 max_connections</h1><p><a href="https://docs.aws.amazon.com/ko_kr/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Managing.Performance.html" rel="external nofollow noopener noreferrer" target="_blank">Aws rds max connection</a></p><p>db.t2.small: 45</p><p>db.t2.medium: 90</p><p>db.r3.large: 1000</p><p>db.r3.xlarge: 2000</p><p>db.r3.2xlarge: 3000</p><p>db.r3.4xlarge: 4000</p><p>db.r3.8xlarge: 5000</p><p>db.r4.large: 1000</p><p>db.r4.xlarge: 2000</p><p>db.r4.2xlarge: 3000</p><p>db.r4.4xlarge: 4000</p><p>db.r4.8xlarge: 5000</p><p>db.r4.16xlarge: 6000</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Amazon-Aurora의-instance-type에-따른-max-connections&quot;&gt;&lt;a href=&quot;#Amazon-Aurora의-instance-type에-따른-max-connections&quot; class=&quot;headerlink&quot; tit
-      
-    
-    </summary>
-    
-      <category term="Aurora" scheme="http://yoursite.com/categories/Aurora/"/>
-    
-      <category term="max_connections" scheme="http://yoursite.com/categories/Aurora/max-connections/"/>
-    
-    
-      <category term="Aurora" scheme="http://yoursite.com/tags/Aurora/"/>
-    
-      <category term="max_connections" scheme="http://yoursite.com/tags/max-connections/"/>
     
   </entry>
   
