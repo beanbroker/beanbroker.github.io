@@ -35,14 +35,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/ETC/</loc>
+        <loc>http://yoursite.com/categories/Docker/timezone/</loc>
         <lastmod>2019-07-07T08:12:45.322Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Docker/timezone/</loc>
+        <loc>http://yoursite.com/categories/ETC/</loc>
         <lastmod>2019-07-07T08:12:45.322Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -210,6 +210,13 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/categories/AWS/</loc>
+        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://yoursite.com/categories/Nginx/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -217,7 +224,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/AWS/</loc>
+        <loc>http://yoursite.com/categories/Spring/JMS/</loc>
+        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/AWS/elastic-beanstalk/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -245,21 +259,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/AWS/elastic-beanstalk/</loc>
-        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/Spring/JMS/</loc>
-        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/Nginx/Docker/Docker-compose/</loc>
+        <loc>http://yoursite.com/categories/Spring/JMS/MQ/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -273,7 +273,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/JMS/MQ/</loc>
+        <loc>http://yoursite.com/categories/Nginx/Docker/Docker-compose/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -308,14 +308,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/Redis/</loc>
+        <loc>http://yoursite.com/categories/Spring/Session/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/Session/</loc>
+        <loc>http://yoursite.com/categories/Spring/Redis/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -407,14 +407,14 @@
 
     <url>
         <loc>http://yoursite.com/categories/Spring/</loc>
-        <lastmod>2019-07-28T05:31:02.519Z</lastmod>
+        <lastmod>2019-07-28T07:36:22.452Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/categories/Spring/Junit/</loc>
-        <lastmod>2019-07-28T05:31:02.519Z</lastmod>
+        <lastmod>2019-07-28T07:36:22.452Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
