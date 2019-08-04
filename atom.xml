@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-28T07:36:22.452Z</updated>
+  <updated>2019-08-04T09:51:31.208Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring Jpa Rollback이 안될 떄</title>
+    <link href="http://yoursite.com/2019/08/04/Spring/spring_jpa_rollback_tip/"/>
+    <id>http://yoursite.com/2019/08/04/Spring/spring_jpa_rollback_tip/</id>
+    <published>2019-08-04T07:50:00.000Z</published>
+    <updated>2019-08-04T09:51:31.208Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Spring-Jpa-RollbackTest가-정상적으로-되지-않을-때"><a href="#Spring-Jpa-RollbackTest가-정상적으로-되지-않을-때" class="headerlink" title="Spring Jpa RollbackTest가 정상적으로 되지 않을 때"></a>Spring Jpa RollbackTest가 정상적으로 되지 않을 때</h1><h2 id="고생하엿던-부분"><a href="#고생하엿던-부분" class="headerlink" title="고생하엿던 부분."></a>고생하엿던 부분.</h2><p>스프링 jpa테스트를 진행하려고 하던 도중 만약에 안될시<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Issue is with MySQL Database engine. My engine was MYIsam which doesn&apos;t supports Transactions. I changed my DB engine to InnoDB and its working. Thanks for the contributions. Below are the queries for the same.</span><br><span class="line"></span><br><span class="line">SELECT ENGINE FROM information_schema.TABLES WHERE TABLE_NAME = &apos;tabel_name&apos; AND TABLE_SCHEMA=&apos;db_name&apos;;</span><br><span class="line"></span><br><span class="line">ALTER TABLE table_name ENGINE = INNODB;</span><br></pre></td></tr></table></figure></p><p>위의 부분을 확인해보자… (<a href="https://stackoverflow.com/questions/54293032/spring-boot-jpa-transactional-annotation-roll-back-is-not-working" rel="external nofollow noopener noreferrer" target="_blank">https://stackoverflow.com/questions/54293032/spring-boot-jpa-transactional-annotation-roll-back-is-not-working</a>)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Spring-Jpa-RollbackTest가-정상적으로-되지-않을-때&quot;&gt;&lt;a href=&quot;#Spring-Jpa-RollbackTest가-정상적으로-되지-않을-때&quot; class=&quot;headerlink&quot; title=&quot;Spring Jpa Rollb
+      
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://yoursite.com/categories/Spring/"/>
+    
+      <category term="jpa" scheme="http://yoursite.com/categories/Spring/jpa/"/>
+    
+      <category term="rollback" scheme="http://yoursite.com/categories/Spring/jpa/rollback/"/>
+    
+    
+      <category term="Spring" scheme="http://yoursite.com/tags/Spring/"/>
+    
+      <category term="jpa" scheme="http://yoursite.com/tags/jpa/"/>
+    
+      <category term="rollback" scheme="http://yoursite.com/tags/rollback/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring RestTemplate 실무 적용 추상화</title>
@@ -127,9 +160,9 @@
       <category term="Java" scheme="http://yoursite.com/categories/Obejct/Java/"/>
     
     
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
       <category term="Obejct" scheme="http://yoursite.com/tags/Obejct/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
   </entry>
   
@@ -272,35 +305,6 @@
     
     
       <category term="HEXO" scheme="http://yoursite.com/tags/HEXO/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CI 3장, Amazon CodeStar</title>
-    <link href="http://yoursite.com/2019/06/09/CI/codestar3/"/>
-    <id>http://yoursite.com/2019/06/09/CI/codestar3/</id>
-    <published>2019-06-09T09:10:00.000Z</published>
-    <updated>2019-07-07T08:12:45.322Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Amazon-CodeStar-3장"><a href="#Amazon-CodeStar-3장" class="headerlink" title="Amazon CodeStar 3장"></a>Amazon CodeStar 3장</h1><p><a href="https://beanbroker.github.io/2019/06/09/CI/codestar1/" rel="external nofollow noopener noreferrer" target="_blank">Amazon CodeStar 1장</a> </p><p><a href="https://beanbroker.github.io/2019/06/09/CI/codestar2/" rel="external nofollow noopener noreferrer" target="_blank">Amazon CodeStar 2장</a> </p><p>2장에서 깜빡한 부분이…. 깃이그노어를 추가해야된다는…것을 깜빡…</p><h2 id="STEP-14"><a href="#STEP-14" class="headerlink" title="STEP 14"></a>STEP 14</h2><ul><li>.gitignore 파일 추가</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/target/</span><br><span class="line">!.mvn/wrapper/maven-wrapper.jar</span><br><span class="line"></span><br><span class="line">### STS ###</span><br><span class="line">.apt_generated</span><br><span class="line">.classpath</span><br><span class="line">.factorypath</span><br><span class="line">.project</span><br><span class="line">.settings</span><br><span class="line">.springBeans</span><br><span class="line">.sts4-cache</span><br><span class="line"></span><br><span class="line">### IntelliJ IDEA ###</span><br><span class="line">.idea</span><br><span class="line">*.iws</span><br><span class="line">*.iml</span><br><span class="line">*.ipr</span><br><span class="line"></span><br><span class="line">### NetBeans ###</span><br><span class="line">/nbproject/private/</span><br><span class="line">/build/</span><br><span class="line">/nbbuild/</span><br><span class="line">/dist/</span><br><span class="line">/nbdist/</span><br><span class="line">/.nb-gradle/</span><br></pre></td></tr></table></figure><ul><li>깃 이그노어를 추가 후 push하자마자 아래의 사진과 같이 재배포 시작</li><li>커밋 이력이 보이며, 오른쪽에 연속배포가 변화함을 알수 있음</li><li>마스터 브랜치 기준으로 배포가 진행되니 develope branch생성하여 푸쉬하자!</li><li>해당 실습에서 배포 기준은 master로</li></ul><p><img src="/images/codestar/14.png" alt="14"></p><h2 id="STEP-15-마무리"><a href="#STEP-15-마무리" class="headerlink" title="STEP 15 마무리"></a>STEP 15 마무리</h2><blockquote><ol><li>테스트 코드 작성 중요성</li></ol></blockquote><ol><li>강제로 테스트코드에 무조건 fail 하는 코드 생성 후 master brach에 push시 빌드 실패하여 배포 안됨</li><li>이를 통해 사이드이펙트 미리 방지 할수 있으며 테스트 코드를 통한 음… 안정성? 및 안전한 배포 가능</li><li>깃 branch를 직접생성하거나 git-flow를 활용하여! 코드 리뷰를 진행해야 한다.</li></ol><blockquote><ol start="2"><li>codebuild</li></ol></blockquote><ol><li>aws codebuild를 통해 디폴트 환경변수 셋팅 가능</li><li>인증서 추가 가능 등등 다양한 빌드 옵션 추가 가능</li></ol><blockquote><ol start="3"><li>배포 브런치 선택가능</li></ol></blockquote><ol><li>어떠한 브런치 기준으로 커밋이되었을 때 자동으로 배포됨을 설정 가능</li></ol><h2 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h2><p>CI의 중요성이나 테스트 코드 및 다양한 codestar 기능을 추가하고 싶으나! CI의 중요성은 이미 훌륭하신 개발자 분들께서 블로그에 올려두셨으니 참고 바람(꼭)</p><p>실제로 진행하면서 버튼 몇번으로 끝나서 무언가 쉽다 느끼지만 이것을 만들기 위한 aws노력에 감탄하며!</p><p>다양한 환경 구성을 통해 CI를 구축하며 노력하는 개발자가 되어야겠음을 반성</p><p>무언가 필요함을 느끼는 것을 전략! 그것을 풀어나가는 것이 전술! ( 개발을 가르쳐준 o효섭 개발자의 말을 따르면… ) - 전략이 중요하고 전술은 풀어과는 과정</p><p>CI을 필요함을 느껴 codestar로…… 다음주에는 travis를 통해 CI를 구축해볼 생각!</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Amazon-CodeStar-3장&quot;&gt;&lt;a href=&quot;#Amazon-CodeStar-3장&quot; class=&quot;headerlink&quot; title=&quot;Amazon CodeStar 3장&quot;&gt;&lt;/a&gt;Amazon CodeStar 3장&lt;/h1&gt;&lt;p&gt;&lt;a hre
-      
-    
-    </summary>
-    
-      <category term="Amazon" scheme="http://yoursite.com/categories/Amazon/"/>
-    
-      <category term="CodeStar" scheme="http://yoursite.com/categories/Amazon/CodeStar/"/>
-    
-    
-      <category term="Amazon" scheme="http://yoursite.com/tags/Amazon/"/>
-    
-      <category term="CodeStar" scheme="http://yoursite.com/tags/CodeStar/"/>
     
   </entry>
   
