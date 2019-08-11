@@ -37,6 +37,13 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/tags/timezone/</loc>
+        <lastmod>2019-07-07T08:12:45.322Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://yoursite.com/tags/ETC/</loc>
         <lastmod>2019-07-07T08:12:45.322Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -45,13 +52,6 @@
 
     <url>
         <loc>http://yoursite.com/tags/DOCKER/</loc>
-        <lastmod>2019-07-07T08:12:45.322Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/timezone/</loc>
         <lastmod>2019-07-07T08:12:45.322Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -128,14 +128,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Predicate/</loc>
+        <loc>http://yoursite.com/tags/QueryDsl/</loc>
         <lastmod>2019-07-07T08:12:45.327Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/QueryDsl/</loc>
+        <loc>http://yoursite.com/tags/Predicate/</loc>
         <lastmod>2019-07-07T08:12:45.327Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -184,14 +184,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/docker/</loc>
+        <loc>http://yoursite.com/tags/Docker-compose/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Docker-compose/</loc>
+        <loc>http://yoursite.com/tags/docker/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -324,13 +324,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Java/</loc>
-        <lastmod>2019-07-21T07:53:19.520Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/tags/spring-cloud/</loc>
         <lastmod>2019-07-21T09:29:29.652Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -368,6 +361,27 @@
     <url>
         <loc>http://yoursite.com/tags/rollback/</loc>
         <lastmod>2019-08-04T09:51:31.208Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Java/</loc>
+        <lastmod>2019-08-11T07:24:36.701Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/File-Walk/</loc>
+        <lastmod>2019-08-11T07:24:36.701Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/WatchService/</loc>
+        <lastmod>2019-08-11T07:24:36.701Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

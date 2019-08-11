@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="개발관련">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="beanbroker">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Java File 모니터링">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="개발관련">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="beanbroker blog">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>Java File 모니터링 - beanbroker blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-86502943-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+<link rel="canonical" href="http://yoursite.com/2019/08/11/java/file_observer/">
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="beanbroker blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="beanbroker blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about.html" title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/contact.html" title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Java File 모니터링</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-08-11</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Java/">#Java</a> <a class="fw3 ph1 dib" href="/tags/File-Walk/">#File Walk</a> <a class="fw3 ph1 dib" href="/tags/WatchService/">#WatchService</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="Java-File-모니터링"><a href="#Java-File-모니터링" class="headerlink" title="Java File 모니터링"></a>Java File 모니터링</h1><p>Java File Walk활용하여 파일을 모니터링해보자</p>
+<p><a href="https://github.com/beanbroker/spring_file_work" rel="external nofollow noopener noreferrer" target="_blank">git source</a> 소스 링크</p>
+<p>왜 이러한 것이 추가되었을까에 대한 고찰?</p>
+<blockquote>
+<p>협력사 또는 회사 내부에서 특정 시간에 데이터(파일)들이 꾸준하게 ftp를 통해 파일이 생성되어진다고 가정을 하였을떄!</p>
+</blockquote>
+<ul>
+<li>배치로 작동하는것이 옳을가? (만약 파일이 너무 무거워서 배치가 돌아야 할 시간에 정상적으로 업로드 되지 않은 경우)</li>
+<li>누군가 같은 정해진 네이밍으로 한 파일을 올리고 잘못올림을 감지하고 다시 올렸을 경우(어찌 할것인가? 직접 서버로 들어가서 수정된시간을 볼것인가?)</li>
+</ul>
+<p>위와 같은 고민에서 시작한 선배 개발자의 의견에 키워드를 얻게되었고 해결방법에 대한 가이드를 전달받아 이 블로그를 작성합니다.</p>
+<h2 id="1-키워드"><a href="#1-키워드" class="headerlink" title="1. 키워드"></a>1. 키워드</h2><p>WatchService ( 자바 1.7 도입 ) - 옵져버라 생각</p>
+<p>StandardWatchEventKinds</p>
+<ul>
+<li>ENTRY_CREATE : 생성시</li>
+<li>ENTRY_DELETE : 삭제시</li>
+<li>ENTRY_MODIFY : 수정시</li>
+</ul>
+<h2 id="2-파일-생성-감지"><a href="#2-파일-생성-감지" class="headerlink" title="2. 파일 생성 감지"></a>2. 파일 생성 감지</h2><p>생성, 수정, 삭제에 대한 피드</p>
+<blockquote>
+<p>FileObserver.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">       String searchFileFolder = <span class="string">"search_file"</span>;</span><br><span class="line">       String targetDirectory = getWorkingDirectory() + <span class="string">"/"</span> + searchFileFolder;</span><br><span class="line">       observeFileCreated(targetDirectory);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">observeFileCreated</span><span class="params">(String targetDirectory)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       Path faxFolder = Paths.get(targetDirectory);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">           WatchService fileWatchService = FileSystems.getDefault().newWatchService();</span><br><span class="line">           faxFolder.register(fileWatchService, StandardWatchEventKinds.ENTRY_CREATE);</span><br><span class="line"></span><br><span class="line">           <span class="keyword">boolean</span> valid = <span class="keyword">true</span>;</span><br><span class="line">           <span class="keyword">do</span> &#123;</span><br><span class="line">               WatchKey watchKey = fileWatchService.take();</span><br><span class="line"></span><br><span class="line">               <span class="keyword">for</span> (WatchEvent event : watchKey.pollEvents()) &#123;</span><br><span class="line">                   WatchEvent.Kind kind = event.kind();</span><br><span class="line">                   <span class="keyword">if</span> (StandardWatchEventKinds.ENTRY_CREATE.equals(event.kind())) &#123;</span><br><span class="line">                       String fileName = event.context().toString();</span><br><span class="line">                       System.out.println(<span class="string">"start to notify file Created :"</span> + fileName + <span class="string">" , time : "</span> + LocalDateTime.now());</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">               valid = watchKey.reset();</span><br><span class="line"></span><br><span class="line">           &#125; <span class="keyword">while</span> (valid);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException | InterruptedException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>run후 파일을 새로 생성해보자</p>
+<blockquote>
+<p>console.log<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">start to notify file Created :test1 복사본.txt , time : 2019-08-11T16:11:29.992</span><br><span class="line">start to notify file Created :test3 복사본.txt , time : 2019-08-11T16:11:29.992</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<ol start="3">
+<li>파일 생성, 삭제 수정에 대한 모든 부분을 커버할수 있도록 해보자</li>
+</ol>
+<blockquote>
+<p>FileObserverUpgrade.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      String searchFileFolder = <span class="string">"search_file"</span>;</span><br><span class="line">      String targetDirectory = getWorkingDirectory() + <span class="string">"/"</span> + searchFileFolder;</span><br><span class="line">      observeFileStatus(targetDirectory);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">observeFileStatus</span><span class="params">(String targetDirectory)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      Path faxFolder = Paths.get(targetDirectory);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">          <span class="comment">//워치 서비스에 이벤트들 등</span></span><br><span class="line">          WatchService fileWatchService = FileSystems.getDefault().newWatchService();</span><br><span class="line">          faxFolder.register(fileWatchService,</span><br><span class="line">                  StandardWatchEventKinds.ENTRY_CREATE,</span><br><span class="line">                  StandardWatchEventKinds.ENTRY_MODIFY,</span><br><span class="line">                  StandardWatchEventKinds.ENTRY_DELETE,</span><br><span class="line">                  StandardWatchEventKinds.OVERFLOW</span><br><span class="line"></span><br><span class="line">                  );</span><br><span class="line"></span><br><span class="line">          <span class="keyword">boolean</span> valid = <span class="keyword">true</span>;</span><br><span class="line">          <span class="keyword">do</span> &#123;</span><br><span class="line">              WatchKey watchKey = fileWatchService.take();</span><br><span class="line"></span><br><span class="line">              <span class="keyword">for</span> (WatchEvent event : watchKey.pollEvents()) &#123;</span><br><span class="line"></span><br><span class="line">                  <span class="keyword">if</span> (StandardWatchEventKinds.ENTRY_CREATE.equals(event.kind())) &#123;</span><br><span class="line">                      String fileName = event.context().toString();</span><br><span class="line">                      System.out.println(<span class="string">"start to notify file Created :"</span> + fileName + <span class="string">" , time : "</span> + LocalDateTime.now());</span><br><span class="line">                  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(StandardWatchEventKinds.ENTRY_MODIFY.equals(event.kind()))&#123;</span><br><span class="line">                      String fileName = event.context().toString();</span><br><span class="line">                      System.out.println(<span class="string">"start to notify file modified :"</span> + fileName + <span class="string">" , time : "</span> + LocalDateTime.now());</span><br><span class="line">                  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(StandardWatchEventKinds.ENTRY_DELETE.equals(event.kind()))&#123;</span><br><span class="line">                      String fileName = event.context().toString();</span><br><span class="line">                      System.out.println(<span class="string">"start to notify file deleted :"</span> + fileName + <span class="string">" , time : "</span> + LocalDateTime.now());</span><br><span class="line">                  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(StandardWatchEventKinds.OVERFLOW.equals(event.kind())) &#123;</span><br><span class="line">                      String fileName = event.context().toString();</span><br><span class="line">                      System.out.println(<span class="string">"start to notify OVERFLOW  time : "</span> + LocalDateTime.now());</span><br><span class="line">                  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                      System.out.println(<span class="string">"UNKNOWN EVENT ......"</span>);</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">              valid = watchKey.reset();</span><br><span class="line"></span><br><span class="line">          &#125; <span class="keyword">while</span> (valid);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (IOException | InterruptedException e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>console.log<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">start to notify file Created :test1 복사본 2.txt , time : 2019-08-11T16:19:18.057</span><br><span class="line">start to notify file modified :.DS_Store , time : 2019-08-11T16:19:37.999</span><br><span class="line">start to notify file deleted :test1 복사본 2.txt , time : 2019-08-11T16:19:37.999</span><br><span class="line">start to notify file modified :test3 복사본.txt , time : 2019-08-11T16:19:57.999</span><br></pre></td></tr></table></figure></p>
+<p>정상작동 체크!</p>
+<p>물론 비정상적으로 작동하는 부분 체크나, 대용량 처리 등의 테스트는 반드시 필요함을 인지해야한다. 아마 이러한 부분을 다른 방법으로 쓸수 있는 여러가지 서비스들이 있을 것이다. 대표적으로 aws cloud watch같은 경우 버튼 몇번과 해당 디렉토리 설정해주는 config만 변경시 모든 로그를 땡겨서 쓸수 있다. cloud watch의 filter 로그 검색기능은 환상적이다.</p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Java/">#Java</a> <a class="fw3 ph1 dib" href="/tags/File-Walk/">#File Walk</a> <a class="fw3 ph1 dib" href="/tags/WatchService/">#WatchService</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="beanbroker">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            Good to see you! have a fun
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Java/">Java</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Java/File-Walk/">File Walk</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Java/File-Walk/WatchService/">WatchService</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2019/08/11/Java/file_observer/">Java File 모니터링</a>
+        </p>
+    
+        <p>
+            <a href="/2019/08/11/Java/walk_file1/">Java File Walk</a>
+        </p>
+    
+        <p>
+            <a href="/2019/08/04/Spring/spring_jpa_rollback_tip/">Spring Jpa Rollback이 안될 떄</a>
+        </p>
+    
+        <p>
+            <a href="/2019/07/28/Spring/restTemplate/">Spring RestTemplate 실무 적용 추상화</a>
+        </p>
+    
+        <p>
+            <a href="/2019/07/27/Spring/test_code_0727/">Spring test code (일단 해보자)</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Beanbroker blog All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/" rel="external nofollow noopener noreferrer" target="_blank">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
