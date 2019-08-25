@@ -21,14 +21,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Amazon/CodeStar/CI/</loc>
+        <loc>http://yoursite.com/categories/Aurora/</loc>
         <lastmod>2019-07-07T08:12:45.322Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Aurora/</loc>
+        <loc>http://yoursite.com/categories/ETC/</loc>
         <lastmod>2019-07-07T08:12:45.322Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -42,7 +42,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/ETC/</loc>
+        <loc>http://yoursite.com/categories/Amazon/CodeStar/CI/</loc>
         <lastmod>2019-07-07T08:12:45.322Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -63,14 +63,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Java/generic/</loc>
+        <loc>http://yoursite.com/categories/intelliJ/</loc>
         <lastmod>2019-07-07T08:12:45.324Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/intelliJ/</loc>
+        <loc>http://yoursite.com/categories/Java/generic/</loc>
         <lastmod>2019-07-07T08:12:45.324Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -210,14 +210,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/AWS/</loc>
+        <loc>http://yoursite.com/categories/Spring/JMS/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Nginx/Docker/</loc>
+        <loc>http://yoursite.com/categories/AWS/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -238,7 +238,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/JMS/</loc>
+        <loc>http://yoursite.com/categories/Nginx/Docker/</loc>
+        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Spring/JMS/MQ/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -259,13 +266,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/JMS/MQ/</loc>
-        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/categories/AWS/elastic-beanstalk/SpringBoot/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -280,14 +280,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/Oauth/</loc>
+        <loc>http://yoursite.com/categories/Spring/Profile/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/Profile/</loc>
+        <loc>http://yoursite.com/categories/Spring/Oauth/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -301,14 +301,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/Redis/</loc>
+        <loc>http://yoursite.com/categories/Spring/Session/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/Session/</loc>
+        <loc>http://yoursite.com/categories/Spring/Redis/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -406,20 +406,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/</loc>
-        <lastmod>2019-08-04T09:51:31.208Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/Spring/jpa/</loc>
-        <lastmod>2019-08-04T09:51:31.208Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/categories/Spring/jpa/rollback/</loc>
         <lastmod>2019-08-04T09:51:31.208Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -443,6 +429,41 @@
     <url>
         <loc>http://yoursite.com/categories/Java/File-Walk/WatchService/</loc>
         <lastmod>2019-08-11T07:24:36.701Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Spring/</loc>
+        <lastmod>2019-08-25T07:46:25.197Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Spring/jpa/</loc>
+        <lastmod>2019-08-25T07:46:25.197Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Spring/jpa/audit/</loc>
+        <lastmod>2019-08-25T07:46:25.197Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Spring/jpa/audit/querydsl/</loc>
+        <lastmod>2019-08-25T07:46:25.197Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Spring/jpa/audit/querydsl/kotlin/</loc>
+        <lastmod>2019-08-25T07:46:25.197Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
