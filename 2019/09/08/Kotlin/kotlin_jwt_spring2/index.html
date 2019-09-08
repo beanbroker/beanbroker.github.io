@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="개발관련">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="beanbroker">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Kotlin, Auth with JWT 2장">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="개발관련">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="beanbroker blog">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>Kotlin, Auth with JWT 2장 - beanbroker blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-86502943-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+<link rel="canonical" href="http://yoursite.com/2019/09/08/kotlin/kotlin_jwt_spring2/">
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="beanbroker blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="beanbroker blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about.html" title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/contact.html" title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Kotlin, Auth with JWT 2장</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-09-08</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a> <a class="fw3 ph1 dib" href="/tags/Kotlin/">#Kotlin</a> <a class="fw3 ph1 dib" href="/tags/JWT/">#JWT</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="Kotlin-Auth-with-JWT-2장"><a href="#Kotlin-Auth-with-JWT-2장" class="headerlink" title="Kotlin, Auth with JWT 2장"></a>Kotlin, Auth with JWT 2장</h1><p><a href="https://github.com/beanbroker/kotlin_querydsl" rel="external nofollow noopener noreferrer" target="_blank">git source</a> 샘플소스 링크</p>
+<p>대충 다만들고 나니.. 순서대로 어떻게 해야할지를 까먹어 모든 소스 첨부</p>
+<h2 id="인터셉터에-토큰-검증-해보기"><a href="#인터셉터에-토큰-검증-해보기" class="headerlink" title="인터셉터에 토큰 검증 해보기"></a>인터셉터에 토큰 검증 해보기</h2><blockquote>
+<p>SampleAuthInterceptor.class</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SampleAuthInterceptor</span>(</span></span><br><span class="line">        val tokenService: SampleTokenService</span><br><span class="line">) : HandlerInterceptor &#123;</span><br><span class="line"></span><br><span class="line">    companion object &#123;</span><br><span class="line"></span><br><span class="line">        val HEADER_NAME = <span class="string">"X-token"</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> val HEADER_NAME = <span class="string">"X-token"</span></span><br><span class="line"></span><br><span class="line">     <span class="function">override fun <span class="title">preHandle</span><span class="params">(request: HttpServletRequest, response: HttpServletResponse, handler: Any)</span>: Boolean </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (handler !is HandlerMethod) <span class="keyword">return</span> <span class="keyword">true</span></span><br><span class="line">        val handlerMethod = handler</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!handlerMethod.hasMethodAnnotation(SampleAuthorization::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>))</span></span><br><span class="line"><span class="class">            <span class="title">return</span> <span class="title">true</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">        <span class="title">val</span> <span class="title">token</span> </span>= request.getHeader(HEADER_NAME)</span><br><span class="line"></span><br><span class="line">        token?.let &#123;</span><br><span class="line">            tokenService.decodeToken(it)</span><br><span class="line">        &#125;?: <span class="keyword">throw</span> RuntimeException(<span class="string">"없으면 앙대유"</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>handlerMethod.hasMethodAnnotation(SampleAuthorization::class.java)<br> 해당 메소드에 SampleAuthorization어노테이션이 붙어있는지 없는지?</p>
+</li>
+<li><p>있을경우에는 토큰 검증</p>
+</li>
+<li><p>token없으면 안됨 팅겨버림</p>
+</li>
+</ol>
+<h2 id="어노테이션을-만들어보자"><a href="#어노테이션을-만들어보자" class="headerlink" title="어노테이션을 만들어보자"></a>어노테이션을 만들어보자</h2><p>어노테이션을 만들기전에 아래의 링크 필수 참고</p>
+<p><a href="https://kotlinlang.org/docs/reference/annotations.html" rel="external nofollow noopener noreferrer" target="_blank">kotlin annotation</a> 링크</p>
+<p>ava annotations are 100% compatible with Kotlin ( 기존 자바 하시던 분들은 이해하는데 문제가 전혀 없음 )</p>
+<blockquote>
+<p>SampleAuthorization<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Target</span>(AnnotationTarget.FUNCTION)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="function">annotation class <span class="title">SampleAuthorization</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">        val data: Int = <span class="number">0</span></span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="위의-interceptor를-등록하자"><a href="#위의-interceptor를-등록하자" class="headerlink" title="위의 interceptor를 등록하자"></a>위의 interceptor를 등록하자</h2><blockquote>
+<p>SampleAuthConfig.class</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SampleAuthConfig</span>(</span></span><br><span class="line">        val tokenService: SampleTokenService</span><br><span class="line">) : WebMvcConfigurer &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function">override fun <span class="title">addInterceptors</span><span class="params">(registry: InterceptorRegistry)</span> </span>&#123;</span><br><span class="line">        registry.addInterceptor(SampleAuthInterceptor(tokenService))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>InterceptorRegistry에  직접 구현한 SampleAuthInterceptor를 등록 또는 추가</li>
+<li>정상작동</li>
+</ol>
+<h2 id="테스트를-해보자"><a href="#테스트를-해보자" class="headerlink" title="테스트를 해보자"></a>테스트를 해보자</h2><ul>
+<li>예를 들어 토큰이 있어야만 볼수 있는 유저의 정보가 있다고 가정하였을 때 아래와같이 정보를 제공한다</li>
+<li>SampleAuthorization를 붙임으로서 위의 토큰 검증</li>
+</ul>
+<blockquote>
+<p>AuthController</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/auth"</span>)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AuthController</span></span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@SampleAuthorization</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/test"</span>)</span><br><span class="line">    <span class="function">fun <span class="title">testGetInfo</span><span class="params">()</span>: String </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"success"</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>테스트 진행</p>
+<ol>
+<li><p>header 에 토큰이 없을 경우</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"timestamp"</span>: <span class="string">"2019-09-08T08:24:31.358+0000"</span>,</span><br><span class="line">    <span class="attr">"status"</span>: <span class="number">500</span>,</span><br><span class="line">    <span class="attr">"error"</span>: <span class="string">"Internal Server Error"</span>,</span><br><span class="line">    <span class="attr">"message"</span>: <span class="string">"없으면 앙대유"</span>,</span><br><span class="line">    <span class="attr">"path"</span>: <span class="string">"/auth/test"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>이상한 토큰이 있을 경우</p>
+</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"timestamp"</span>: <span class="string">"2019-09-08T08:30:51.329+0000"</span>,</span><br><span class="line">    <span class="attr">"status"</span>: <span class="number">500</span>,</span><br><span class="line">    <span class="attr">"error"</span>: <span class="string">"Internal Server Error"</span>,</span><br><span class="line">    <span class="attr">"message"</span>: <span class="string">"The token was expected to have 3 parts, but got 1."</span>,</span><br><span class="line">    <span class="attr">"path"</span>: <span class="string">"/auth/test"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>정상일 경우<br>success리턴</li>
+</ol>
+<h2 id="마치며"><a href="#마치며" class="headerlink" title="마치며"></a>마치며</h2><ol>
+<li>jwt와 auth를 꼭 스프링 시큐리티 없이도 간단하게 구현 할수 있다.</li>
+<li>스프링 시큐리티는 해도해도 어렵다. 그래서 위처럼 샘플 코드를 만들어보았다.</li>
+<li>에러가 발생시 위처럼 뜨는데 이상하지 않나요? -&gt; 직접 runtimeExeption을 상속받아 자신만의 Exception객체 생성하여 던지고 RestControllerAdvice에서 처리</li>
+</ol>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a> <a class="fw3 ph1 dib" href="/tags/Kotlin/">#Kotlin</a> <a class="fw3 ph1 dib" href="/tags/JWT/">#JWT</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="beanbroker">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            Good to see you! have a fun
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Spring/">Spring</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Spring/Kotlin/">Kotlin</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Spring/Kotlin/JWT/">JWT</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2019/09/08/Kotlin/kotlin_jwt_spring2/">Kotlin, Auth with JWT 2장</a>
+        </p>
+    
+        <p>
+            <a href="/2019/09/08/Kotlin/kotlin_jwt_spring1/">Kotlin, Auth with JWT 1장</a>
+        </p>
+    
+        <p>
+            <a href="/2019/08/31/etc/redis_cloud/">redis 무료 cloud 사용해보기</a>
+        </p>
+    
+        <p>
+            <a href="/2019/08/25/Kotlin/kotlin_queryDsl5/">Kotlin, Querydsl 5장(audit 추가분)</a>
+        </p>
+    
+        <p>
+            <a href="/2019/08/11/Java/file_observer/">Java File 모니터링</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Beanbroker blog All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/" rel="external nofollow noopener noreferrer" target="_blank">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

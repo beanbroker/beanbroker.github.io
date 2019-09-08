@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="개발관련">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="beanbroker">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Kotlin, Auth with JWT 1장">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="개발관련">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="beanbroker blog">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>Kotlin, Auth with JWT 1장 - beanbroker blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-86502943-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+<link rel="canonical" href="http://yoursite.com/2019/09/08/kotlin/kotlin_jwt_spring1/">
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="beanbroker blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="beanbroker blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about.html" title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/contact.html" title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Kotlin, Auth with JWT 1장</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-09-08</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a> <a class="fw3 ph1 dib" href="/tags/Kotlin/">#Kotlin</a> <a class="fw3 ph1 dib" href="/tags/JWT/">#JWT</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="Kotlin-Auth-with-JWT-1장"><a href="#Kotlin-Auth-with-JWT-1장" class="headerlink" title="Kotlin, Auth with JWT 1장"></a>Kotlin, Auth with JWT 1장</h1><p><a href="https://github.com/beanbroker/kotlin_querydsl" rel="external nofollow noopener noreferrer" target="_blank">git source</a> 샘플소스 링크</p>
+<h2 id="사전작업"><a href="#사전작업" class="headerlink" title="사전작업"></a>사전작업</h2><blockquote>
+<p>build.gradle</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation(<span class="string">"com.auth0:java-jwt:3.8.1"</span>)</span><br></pre></td></tr></table></figure>
+<p>jwt관련 부분 추가!</p>
+<h2 id="우선-토큰을-생성해보자"><a href="#우선-토큰을-생성해보자" class="headerlink" title="우선 토큰을 생성해보자"></a>우선 토큰을 생성해보자</h2><blockquote>
+<p>SampleTokenService.class</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SampleTokenService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    companion object &#123;</span><br><span class="line"></span><br><span class="line">        val ISSURE = <span class="string">"BEANBROKER"</span></span><br><span class="line">        val SCRET = <span class="string">"1234"</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">fun <span class="title">publish</span><span class="params">(id: Long, authType: String)</span>: String? </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//60 * 60 * 24</span></span><br><span class="line">        val now = LocalDateTime.now()</span><br><span class="line">        val expiredAt = now.plusSeconds(<span class="number">86400</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> JWT.create()</span><br><span class="line">                .withClaim(<span class="string">"id"</span>, id)</span><br><span class="line">                .withClaim(<span class="string">"authType"</span>, authType)</span><br><span class="line">                .withIssuedAt(Date.from(now.atZone(ZoneId.systemDefault()).toInstant()))</span><br><span class="line">                .withIssuer(ISSURE)</span><br><span class="line">                .withExpiresAt(Date.from(expiredAt.atZone(ZoneId.systemDefault()).toInstant()))</span><br><span class="line">                .sign(Algorithm.HMAC256(SCRET))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>해당 토큰의 만료기간은 하루</li>
+<li>ISSURE: 토큰 발급자</li>
+</ol>
+<blockquote>
+<p>SampleAuthTests.class</p>
+</blockquote>
+<p>테스트코드 짜기 귀찮으니 콘솔로 확인하자</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@RunWith</span>(SpringRunner::<span class="class"><span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">@<span class="title">SpringBootTest</span></span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">SampleAuthTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> lateinit <span class="keyword">var</span> tokenService: SampleTokenService</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function">fun <span class="title">createToken</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        val token = tokenService.publish(<span class="number">1000</span>, <span class="string">"USER"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        println(token)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>결과 : eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJCRUFOQlJPS0VSIiwiaWQiOjEwMDAsImF1dGhUeXBlIjoiVVNFUiIsImV4cCI6MTU2ODAxNTE1MywiaWF0IjoxNTY3OTI4NzUzfQ.-9_1Cq7Tc19lo3lcNc0G4Y_CjVZDWmoHzWAE7iWNWYM</p>
+<h2 id="토큰을-생성했으니-토큰을-decode해보자"><a href="#토큰을-생성했으니-토큰을-decode해보자" class="headerlink" title="토큰을 생성했으니 토큰을 decode해보자"></a>토큰을 생성했으니 토큰을 decode해보자</h2><blockquote>
+<p>SampleTokenService.class 에 추가</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">fun <span class="title">decodeToken</span><span class="params">(token : String)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       val jwt = JWT.require(Algorithm.HMAC256(SCRET))</span><br><span class="line">               .withIssuer(ISSURE)</span><br><span class="line">               .build()</span><br><span class="line">               .verify(token)</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>위와같이 jwt 생성 및 디코드를 진행해보았다.</p>
+<p>자… 그럼 이걸 서비스 로직에서 쓰일 정도로 올리는 작업을 해보자</p>
+<h2 id="리팩토링을-해보자"><a href="#리팩토링을-해보자" class="headerlink" title="리팩토링을 해보자"></a>리팩토링을 해보자</h2><ul>
+<li>우선 client에게 제공할수 있도록 데이터를 만들어보자</li>
+</ul>
+<blockquote>
+<p>BeanbrokerToken.class</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BeanbrokerToken</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> token: String = <span class="string">""</span></span><br><span class="line">    <span class="keyword">var</span> expireDate: LocalDateTime? = <span class="keyword">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>token : 방금 위에서 생성한 토큰<br>expireDate : 만료시간(클라이언트에게 만료시간 전달)</p>
+<blockquote>
+<p>SampleTokenService.class createToken변경</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">fun <span class="title">createToken</span><span class="params">(id: Long, authType: String)</span>: BeanbrokerToken </span>&#123;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//60 * 60 * 24</span></span><br><span class="line">       val now = LocalDateTime.now()</span><br><span class="line">       val expiredAt = now.plusSeconds(<span class="number">86400</span>)</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> BeanbrokerToken().apply &#123;</span><br><span class="line">           <span class="keyword">this</span>.expireDate = expiredAt</span><br><span class="line">           <span class="keyword">this</span>.token = JWT.create()</span><br><span class="line">                   .withClaim(<span class="string">"id"</span>, id)</span><br><span class="line">                   .withClaim(<span class="string">"authType"</span>, authType)</span><br><span class="line">                   .withIssuedAt(Date.from(now.atZone(ZoneId.systemDefault()).toInstant()))</span><br><span class="line">                   .withIssuer(ISSURE)</span><br><span class="line">                   .withExpiresAt(Date.from(expiredAt.atZone(ZoneId.systemDefault()).toInstant()))</span><br><span class="line">                   .sign(Algorithm.HMAC256(SCRET))</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="만약에-위와같이-하고-사용하게-한다면"><a href="#만약에-위와같이-하고-사용하게-한다면" class="headerlink" title="만약에 위와같이 하고 사용하게 한다면?"></a>만약에 위와같이 하고 사용하게 한다면?</h2><p>header에 토큰 정보를 심어 보낸다고 가정하였을때 컨트롤러 단에서 헤더 매번까서 확인하는게 좋을가요…? 아니면 interceptor(AOP)에서 검증하는게 좋을가요?</p>
+<p>라는 고민을 하였을 때 당연히 후자! 해당 부분을 추가해보자 2장에서</p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a> <a class="fw3 ph1 dib" href="/tags/Kotlin/">#Kotlin</a> <a class="fw3 ph1 dib" href="/tags/JWT/">#JWT</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="beanbroker">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            Good to see you! have a fun
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Spring/">Spring</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Spring/Kotlin/">Kotlin</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Spring/Kotlin/JWT/">JWT</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2019/09/08/Kotlin/kotlin_jwt_spring2/">Kotlin, Auth with JWT 2장</a>
+        </p>
+    
+        <p>
+            <a href="/2019/09/08/Kotlin/kotlin_jwt_spring1/">Kotlin, Auth with JWT 1장</a>
+        </p>
+    
+        <p>
+            <a href="/2019/08/31/etc/redis_cloud/">redis 무료 cloud 사용해보기</a>
+        </p>
+    
+        <p>
+            <a href="/2019/08/25/Kotlin/kotlin_queryDsl5/">Kotlin, Querydsl 5장(audit 추가분)</a>
+        </p>
+    
+        <p>
+            <a href="/2019/08/11/Java/file_observer/">Java File 모니터링</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Beanbroker blog All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/" rel="external nofollow noopener noreferrer" target="_blank">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
