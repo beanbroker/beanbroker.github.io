@@ -126,13 +126,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Kotlin/</loc>
-        <lastmod>2019-07-07T08:12:45.327Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/categories/Kotlin/Querydsl/</loc>
         <lastmod>2019-07-07T08:12:45.327Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -217,6 +210,13 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/categories/Nginx/docker/</loc>
+        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://yoursite.com/categories/Nginx/Docker/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -225,13 +225,6 @@
 
     <url>
         <loc>http://yoursite.com/categories/Nginx/Proxy/</loc>
-        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/Nginx/docker/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -280,7 +273,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/Profile/</loc>
+        <loc>http://yoursite.com/categories/Spring/Oauth/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -288,6 +281,13 @@
 
     <url>
         <loc>http://yoursite.com/categories/Spring/Java/</loc>
+        <lastmod>2019-07-07T08:12:45.331Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Spring/Profile/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -302,13 +302,6 @@
 
     <url>
         <loc>http://yoursite.com/categories/Spring/Redis/</loc>
-        <lastmod>2019-07-07T08:12:45.331Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/Spring/Oauth/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -492,6 +485,27 @@
     <url>
         <loc>http://yoursite.com/categories/Spring/Kotlin/JWT/</loc>
         <lastmod>2019-09-08T08:32:57.985Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Kotlin/</loc>
+        <lastmod>2019-10-05T08:55:59.141Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Kotlin/Redis/</loc>
+        <lastmod>2019-10-05T08:55:59.141Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Kotlin/Redis/Spring/</loc>
+        <lastmod>2019-10-05T08:55:59.141Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
