@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="개발관련">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="beanbroker">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Effective Java 10장 예외 - 1">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="개발관련">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="beanbroker blog">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>Effective Java 10장 예외 - 1 - beanbroker blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-86502943-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+<link rel="canonical" href="http://yoursite.com/2019/10/06/effective_java/effective_10-1/">
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="beanbroker blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="beanbroker blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about.html" title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/contact.html" title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Effective Java 10장 예외 - 1</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-10-06</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Java/">#Java</a> <a class="fw3 ph1 dib" href="/tags/Kotlin/">#Kotlin</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="Effective-Java-10장-예외-1"><a href="#Effective-Java-10장-예외-1" class="headerlink" title="Effective Java 10장 예외 - 1"></a>Effective Java 10장 예외 - 1</h1><p><a href="http://www.yes24.com/Product/Goods/65551284" rel="external nofollow noopener noreferrer" target="_blank">Effective Java 3/E</a> </p>
+<p>해당 블로그는 Effective 3을 읽고 공부한 내용을 정리한 블로그입니다.</p>
+<h2 id="P386-예외는-진자-예외-상황에서만-사용하라"><a href="#P386-예외는-진자-예외-상황에서만-사용하라" class="headerlink" title="P386 예외는 진자 예외 상황에서만 사용하라"></a>P386 예외는 진자 예외 상황에서만 사용하라</h2><ul>
+<li>예외는 오직 예외 상황에서만 써야 한다. 절대로 일상적인 제어 흐름용으로 쓰여선 안된다.</li>
+</ul>
+<h2 id="P390-복구할-수-있는-상황에서는-검사-예외를-프로그래밍-오류에는-런타임-예외를-사용하라"><a href="#P390-복구할-수-있는-상황에서는-검사-예외를-프로그래밍-오류에는-런타임-예외를-사용하라" class="headerlink" title="P390 복구할 수 있는 상황에서는 검사 예외를, 프로그래밍 오류에는 런타임 예외를 사용하라"></a>P390 복구할 수 있는 상황에서는 검사 예외를, 프로그래밍 오류에는 런타임 예외를 사용하라</h2><blockquote>
+<p>문제 상황을 알리는 타입(throwable)</p>
+</blockquote>
+<ul>
+<li>검사 예외 : 호출하는 쪽에서 복구를 해야하는 상황이면 검사 예외를 사용</li>
+<li>런타임 예외 : 프로그래밍 오류를 나타낼 때<ul>
+<li>ex : Array?IndexOutOfBoundsException이 발생 즉 전제조건을 만족하지 못할때 발생</li>
+</ul>
+</li>
+<li>에러 : JVM자원 부족, 불변식 깨짐 등 더 이상 수행을 계속할수 상황에 삳용<ul>
+<li>구현하는 비검사 throawable든 모두 RuntimeException의 하위 클래스</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://www.oracleimg.com/technetwork/articles/entarch/javaexceptions-107916.jpg" alt="Java Exception Class Hierarchy" title="Java Exception Class Hierarchy"></p>
+<p><img src="https://www.benchresources.net/wp-content/uploads/2017/02/exception-hierarchy-in-java.png" alt="Java Exception Error" title="Java Exception Error"></p>
+<blockquote>
+<p>Exception - Error 간단 정리</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Exception</th>
+<th>Error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>개발자가 프로그래밍상 핸들링 가능하다면</td>
+<td>Error like 메모리관련</td>
+</tr>
+<tr>
+<td>처리 가능</td>
+<td>불가능</td>
+</tr>
+<tr>
+<td>Exception is due to programmatic logic and it is recoverable. Therefore it must be handled using either try-catch block or throws clause</td>
+<td>Error is due to lack of system resources and it is non-recoverable. Therefore it isn’t feasible to handled by programmer</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>checked - unchecked 간단 정리</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>checked exception</th>
+<th>unchecked exception</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>처리 여부</td>
+<td>반드시 예외 처리해야함</td>
+<td>명시적인 처리를 강제하지 않음</td>
+</tr>
+<tr>
+<td>확인 시점</td>
+<td>컴파일 단계(실행 전에 알수 있음, ide에서 컴파일시 이미 체크를 다해줌, 아 좋은 세상)</td>
+<td>실행 단계(실행 해야 알수 있음)</td>
+</tr>
+<tr>
+<td>예외 발생시 transaction 처리</td>
+<td>롤백하지 않은</td>
+<td>롤백 함</td>
+</tr>
+<tr>
+<td>대표 예외</td>
+<td>RuntimeException을 제외한 모든 예외 <br> ex) SqlException,</td>
+<td>runtime에 발생하는 예외 <br> RuntimeExceoption 하위의 모든 예외 <br> 널포인터익셉션 <br> IndexOutOfBoundExcepiton</td>
+</tr>
+</tbody>
+</table>
+<h2 id="P393-필요-없는-검사-예외-사용은-피하라"><a href="#P393-필요-없는-검사-예외-사용은-피하라" class="headerlink" title="P393 필요 없는 검사 예외 사용은 피하라"></a>P393 필요 없는 검사 예외 사용은 피하라</h2><ul>
+<li>꼭 필요한 곳에서 사용하면 프로그램의 안전성을 높여주지만, 남용하면 쓰레기(직역…) 가 된다. Api 호출시 예외 상황에서 복수할 방법이 없다면 비검사 예외를 던지자. </li>
+</ul>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Java/">#Java</a> <a class="fw3 ph1 dib" href="/tags/Kotlin/">#Kotlin</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="beanbroker">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            Good to see you! have a fun
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Java/">Java</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Java/Kotlin/">Kotlin</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2019/10/06/effective_java/effective_10-1/">Effective Java 10장 예외 - 1</a>
+        </p>
+    
+        <p>
+            <a href="/2019/10/05/Java/test_after_before/">Junit @Before vs @BeforeClass</a>
+        </p>
+    
+        <p>
+            <a href="/2019/10/05/Kotlin/spring_redis_client_kotlin/">Redis Client with Kotlin Spring</a>
+        </p>
+    
+        <p>
+            <a href="/2019/09/08/Kotlin/kotlin_jwt_spring2/">Kotlin, Auth with JWT 2장</a>
+        </p>
+    
+        <p>
+            <a href="/2019/09/08/Kotlin/kotlin_jwt_spring1/">Kotlin, Auth with JWT 1장</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Beanbroker blog All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/" rel="external nofollow noopener noreferrer" target="_blank">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
