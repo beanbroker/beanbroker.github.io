@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Effective Java 10장 예외 - 1">
+        <meta property="og:title" content="Effective Java 10장 예외 - 2">
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Effective Java 10장 예외 - 1 - beanbroker blog</title>
+    <title>Effective Java 10장 예외 - 2 - beanbroker blog</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
@@ -79,7 +79,7 @@
 
 </head>
 
-<link rel="canonical" href="http://yoursite.com/2019/10/06/effective_java/effective_10-1/">
+<link rel="canonical" href="http://yoursite.com/2019/10/06/effective_java/effective_10-2/">
 
 <body>
 
@@ -116,7 +116,7 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">Effective Java 10장 예외 - 1</h1>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Effective Java 10장 예외 - 2</h1>
             <p class="f4 fw3 pab-100px tc tc-m tl-ns">2019-10-06</p>
         </div>
     </div>
@@ -143,89 +143,46 @@
                     
 
                     <!-- Main Post Content -->
-                    <h1 id="Effective-Java-10장-예외-1"><a href="#Effective-Java-10장-예외-1" class="headerlink" title="Effective Java 10장 예외 - 1"></a>Effective Java 10장 예외 - 1</h1><p><a href="http://www.yes24.com/Product/Goods/65551284" rel="external nofollow noopener noreferrer" target="_blank">Effective Java 3/E</a> </p>
+                    <h1 id="Effective-Java-10장-예외-2"><a href="#Effective-Java-10장-예외-2" class="headerlink" title="Effective Java 10장 예외 - 2"></a>Effective Java 10장 예외 - 2</h1><p><a href="http://www.yes24.com/Product/Goods/65551284" rel="external nofollow noopener noreferrer" target="_blank">Effective Java 3/E</a> </p>
 <p>해당 블로그는 Effective 3을 읽고 공부한 내용을 정리한 블로그입니다.</p>
-<h2 id="P386-예외는-진자-예외-상황에서만-사용하라"><a href="#P386-예외는-진자-예외-상황에서만-사용하라" class="headerlink" title="P386 예외는 진자 예외 상황에서만 사용하라"></a>P386 예외는 진자 예외 상황에서만 사용하라</h2><ul>
-<li>예외는 오직 예외 상황에서만 써야 한다. 절대로 일상적인 제어 흐름용으로 쓰여선 안된다.</li>
+<h2 id="P396-표준-예외를-사용하라"><a href="#P396-표준-예외를-사용하라" class="headerlink" title="P396 표준 예외를 사용하라"></a>P396 표준 예외를 사용하라</h2><ul>
+<li>Exception, RuntimeException, Throwable, error는 직접 재사용하지 말자. 해당 클래스들은 추상 클래스라 생각하자</li>
 </ul>
-<h2 id="P390-복구할-수-있는-상황에서는-검사-예외를-프로그래밍-오류에는-런타임-예외를-사용하라"><a href="#P390-복구할-수-있는-상황에서는-검사-예외를-프로그래밍-오류에는-런타임-예외를-사용하라" class="headerlink" title="P390 복구할 수 있는 상황에서는 검사 예외를, 프로그래밍 오류에는 런타임 예외를 사용하라"></a>P390 복구할 수 있는 상황에서는 검사 예외를, 프로그래밍 오류에는 런타임 예외를 사용하라</h2><blockquote>
-<p>문제 상황을 알리는 타입(throwable)</p>
+<h2 id="P399-추상화-수준에-맞는-예외를-던지라"><a href="#P399-추상화-수준에-맞는-예외를-던지라" class="headerlink" title="P399 추상화 수준에 맞는 예외를 던지라"></a>P399 추상화 수준에 맞는 예외를 던지라</h2><ul>
+<li>무작정 예외를 전파하는 것보다 예외 번역이 우수한 방법이지만, 그렇다고 남용해서는 안된다.</li>
+</ul>
+<h2 id="P402-메서드가-던지는-모든-예외를-문서화하라"><a href="#P402-메서드가-던지는-모든-예외를-문서화하라" class="headerlink" title="P402 메서드가 던지는 모든 예외를 문서화하라"></a>P402 메서드가 던지는 모든 예외를 문서화하라</h2><ul>
+<li>검사 예외는 항상 별도로 선언하고, 각 예외가 발생하는 상황을 자바독의 @throws 태그를 사용하여 정확히 문서화하자.</li>
+<li>비검사 예외는 메서드 선언의 throws 목록에 넣지말자.</li>
+</ul>
+<h2 id="P404-예외의-상세-메시지에-실패-관련-정보를-담으라"><a href="#P404-예외의-상세-메시지에-실패-관련-정보를-담으라" class="headerlink" title="P404 예외의 상세 메시지에 실패 관련 정보를 담으라"></a>P404 예외의 상세 메시지에 실패 관련 정보를 담으라</h2><h1 id="예외-처리-중요-키워드"><a href="#예외-처리-중요-키워드" class="headerlink" title="예외 처리 중요 키워드"></a>예외 처리 중요 키워드</h1><blockquote>
+<p>중요 키워드</p>
 </blockquote>
 <ul>
-<li>검사 예외 : 호출하는 쪽에서 복구를 해야하는 상황이면 검사 예외를 사용</li>
-<li>런타임 예외 : 프로그래밍 오류를 나타낼 때<ul>
-<li>ex : Array?IndexOutOfBoundsException이 발생 즉 전제조건을 만족하지 못할때 발생</li>
+<li>try</li>
+<li>catch</li>
+<li>finally</li>
+<li>throw</li>
 </ul>
-</li>
-<li>에러 : JVM자원 부족, 불변식 깨짐 등 더 이상 수행을 계속할수 상황에 삳용<ul>
-<li>구현하는 비검사 throawable든 모두 RuntimeException의 하위 클래스</li>
+<h2 id="1-try"><a href="#1-try" class="headerlink" title="1. try"></a>1. try</h2><ul>
+<li>코드를 작성하며 아마 Exception이 발생 할 곳을 block 할 때</li>
+<li>try-block은 반드시 catch-block 또는 finally-block이 따라온다</li>
 </ul>
-</li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//에러가 발생 할수 있는 코드 블록</span></span><br><span class="line">    <span class="comment">//요즘은 ide에서 알아서 경고를 내줌</span></span><br><span class="line">&#125;<span class="keyword">catch</span> (e: Exception)&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-catch"><a href="#2-catch" class="headerlink" title="2. catch"></a>2. catch</h2><ul>
+<li>try block에서 발생한 에러를 핸들링</li>
 </ul>
-<p><img src="https://www.oracleimg.com/technetwork/articles/entarch/javaexceptions-107916.jpg" alt="Java Exception Class Hierarchy" title="Java Exception Class Hierarchy"></p>
-<p><img src="https://www.benchresources.net/wp-content/uploads/2017/02/exception-hierarchy-in-java.png" alt="Java Exception Error" title="Java Exception Error"></p>
-<blockquote>
-<p>Exception - Error 간단 정리</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>Exception</th>
-<th>Error</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>개발자가 프로그래밍상 핸들링 가능하다면</td>
-<td>Error like 메모리관련</td>
-</tr>
-<tr>
-<td>처리 가능</td>
-<td>불가능</td>
-</tr>
-<tr>
-<td>Exception is due to programmatic logic and it is recoverable. Therefore it must be handled using either try-catch block or throws clause</td>
-<td>Error is due to lack of system resources and it is non-recoverable. Therefore it isn’t feasible to handled by programmer</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>checked - unchecked 간단 정리</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>checked exception</th>
-<th>unchecked exception</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>처리 여부</td>
-<td>반드시 예외 처리해야함</td>
-<td>명시적인 처리를 강제하지 않음</td>
-</tr>
-<tr>
-<td>확인 시점</td>
-<td>컴파일 단계(실행 전에 알수 있음, ide에서 컴파일시 이미 체크를 다해줌, 아 좋은 세상)</td>
-<td>실행 단계(실행 해야 알수 있음)</td>
-</tr>
-<tr>
-<td>예외 발생시 transaction 처리</td>
-<td>롤백하지 않은</td>
-<td>롤백 함</td>
-</tr>
-<tr>
-<td>대표 예외</td>
-<td>RuntimeException을 제외한 모든 예외 <br> ex) SqlException,</td>
-<td>runtime에 발생하는 예외 <br> RuntimeExceoption 하위의 모든 예외 <br> 널포인터익셉션 <br> IndexOutOfBoundExcepiton</td>
-</tr>
-</tbody>
-</table>
-<h2 id="P393-필요-없는-검사-예외-사용은-피하라"><a href="#P393-필요-없는-검사-예외-사용은-피하라" class="headerlink" title="P393 필요 없는 검사 예외 사용은 피하라"></a>P393 필요 없는 검사 예외 사용은 피하라</h2><ul>
-<li>꼭 필요한 곳에서 사용하면 프로그램의 안전성을 높여주지만, 남용하면 쓰레기(직역…) 가 된다. Api 호출시 예외 상황에서 복수할 방법이 없다면 비검사 예외를 던지자. </li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">catch</span> (e: Exception)&#123;</span><br><span class="line">    <span class="comment">//try block에서 발생한 에러를 핸들링</span></span><br><span class="line">    <span class="comment">//또는 발생한 예외를 전환해서 throw</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-finally"><a href="#3-finally" class="headerlink" title="3. finally"></a>3. finally</h2><ul>
+<li>try-catch 블록과 연관지어져 있다.</li>
+<li>connection(database, socket, filestream) 을 할때 커넥션을 닫을 때</li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//에러가 발생 할수 있는 코드 블록</span></span><br><span class="line">        <span class="comment">//요즘은 ide에서 알아서 경고를 내줌</span></span><br><span class="line">    &#125;<span class="keyword">catch</span> (e: Exception)&#123;</span><br><span class="line">         <span class="comment">//try block에서 발생한 에러를 핸들링</span></span><br><span class="line">        <span class="comment">//또는 발생한 예외를 전환해서 throw</span></span><br><span class="line"></span><br><span class="line">    &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="comment">//try-catch 블록이 끝난 후 진행</span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-throw"><a href="#4-throw" class="headerlink" title="4. throw"></a>4. throw</h2><ul>
+<li>말 그대로 예외를 던진다</li>
+</ul>
+<p>정말 말이 안되지만 아래와 같은 코드가 있다 가정해보자</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line"></span><br><span class="line">    println(<span class="string">"사장님 마표대교는 막혔는데요?"</span>)</span><br><span class="line">    <span class="keyword">throw</span> NullPointerException(<span class="string">"마표대교가 막힘"</span>)</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">catch</span> (e : Exception)&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1. 한강에 다리가 하나냐? 한남대교로 가 &lt;--</span></span><br><span class="line">    <span class="comment">// 2. 또는 정의한 예외를 던짐</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                     
                     <!-- Tags Bottom -->
