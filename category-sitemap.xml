@@ -182,14 +182,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/node-js/express/Session/</loc>
+        <loc>http://yoursite.com/categories/node-js/sequelize/Rest/</loc>
         <lastmod>2019-07-07T08:12:45.329Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/node-js/sequelize/Rest/</loc>
+        <loc>http://yoursite.com/categories/node-js/express/Session/</loc>
         <lastmod>2019-07-07T08:12:45.329Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -210,14 +210,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/JMS/</loc>
+        <loc>http://yoursite.com/categories/AWS/elastic-beanstalk/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/AWS/elastic-beanstalk/</loc>
+        <loc>http://yoursite.com/categories/Spring/JMS/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -231,13 +231,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Nginx/Docker/</loc>
-        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/categories/Nginx/Proxy/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -245,7 +238,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/JMS/MQ/</loc>
+        <loc>http://yoursite.com/categories/Nginx/Docker/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -253,6 +246,13 @@
 
     <url>
         <loc>http://yoursite.com/categories/AWS/elastic-beanstalk/SpringBoot/</loc>
+        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Spring/JMS/MQ/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -518,15 +518,29 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Java/</loc>
+        <loc>http://yoursite.com/categories/Java/Spring/</loc>
         <lastmod>2019-10-12T11:35:02.030Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Java/Spring/</loc>
-        <lastmod>2019-10-12T11:35:02.030Z</lastmod>
+        <loc>http://yoursite.com/categories/Java/</loc>
+        <lastmod>2019-11-09T12:15:52.126Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Java/default-method/</loc>
+        <lastmod>2019-11-09T12:15:52.126Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Java/default-method/Java8/</loc>
+        <lastmod>2019-11-09T12:15:52.126Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

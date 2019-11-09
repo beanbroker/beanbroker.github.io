@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2019/11/09/Java/Java8_default_method/</loc>
+        <lastmod>2019-11-09T12:15:52.126Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2019/10/12/Spring/understanding_proxy/</loc>
         <lastmod>2019-10-12T11:35:02.030Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -199,7 +207,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/08/04/Spring/test_code3/</loc>
+        <loc>http://yoursite.com/2018/08/04/Spring/test_code2/</loc>
         <lastmod>2019-07-07T08:12:45.332Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -207,7 +215,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/08/04/Spring/test_code2/</loc>
+        <loc>http://yoursite.com/2018/08/04/Spring/test_code3/</loc>
         <lastmod>2019-07-07T08:12:45.332Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -255,14 +263,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/08/05/Spring/spring_session3/</loc>
-        <lastmod>2019-07-07T08:12:45.331Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://yoursite.com/2018/08/04/Spring/spring_session2/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -271,8 +271,8 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/11/10/Spring/messageQ/</loc>
-        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
+        <loc>http://yoursite.com/2018/08/05/Spring/spring_session3/</loc>
+        <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -280,6 +280,14 @@
 
     <url>
         <loc>http://yoursite.com/2018/11/17/Spring/spring_elasticBeanstalk1/</loc>
+        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/11/10/Spring/messageQ/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -295,7 +303,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2019/05/19/Server/nginx2/</loc>
+        <loc>http://yoursite.com/2019/06/02/Server/study_nginx1/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -311,7 +319,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2019/06/02/Server/study_nginx1/</loc>
+        <loc>http://yoursite.com/2019/05/19/Server/nginx2/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -351,14 +359,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/08/25/nodejs/sequelize1/</loc>
-        <lastmod>2019-07-07T08:12:45.329Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://yoursite.com/2018/08/26/nodejs/sequelize2/</loc>
         <lastmod>2019-07-07T08:12:45.329Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -367,7 +367,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/08/12/nodejs/supervisor/</loc>
+        <loc>http://yoursite.com/2018/08/27/nodejs/sequelize3/</loc>
         <lastmod>2019-07-07T08:12:45.329Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -375,7 +375,15 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/08/27/nodejs/sequelize3/</loc>
+        <loc>http://yoursite.com/2018/08/25/nodejs/sequelize1/</loc>
+        <lastmod>2019-07-07T08:12:45.329Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/08/12/nodejs/supervisor/</loc>
         <lastmod>2019-07-07T08:12:45.329Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -407,7 +415,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/08/19/nodejs/module_of_node/</loc>
+        <loc>http://yoursite.com/2018/08/19/nodejs/errorHandling/</loc>
         <lastmod>2019-07-07T08:12:45.328Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -439,7 +447,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/08/19/nodejs/errorHandling/</loc>
+        <loc>http://yoursite.com/2018/08/19/nodejs/module_of_node/</loc>
         <lastmod>2019-07-07T08:12:45.328Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -511,7 +519,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/11/11/Kotlin/kotlin_class/</loc>
+        <loc>http://yoursite.com/2019/02/02/Kotlin/kotlin_coroutine1/</loc>
         <lastmod>2019-07-07T08:12:45.326Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -527,7 +535,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2019/02/02/Kotlin/kotlin_coroutine1/</loc>
+        <loc>http://yoursite.com/2018/11/11/Kotlin/kotlin_class/</loc>
         <lastmod>2019-07-07T08:12:45.326Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -545,22 +553,6 @@
     <url>
         <loc>http://yoursite.com/2019/02/10/Kotlin/kotlin_queryDsl1/</loc>
         <lastmod>2019-07-07T08:12:45.326Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/09/02/JavaScript/iterator/</loc>
-        <lastmod>2019-07-07T08:12:45.325Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/08/19/JavaScript/basic/</loc>
-        <lastmod>2019-07-07T08:12:45.325Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -591,8 +583,16 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/12/25/Java/RxJava2/</loc>
-        <lastmod>2019-07-07T08:12:45.324Z</lastmod>
+        <loc>http://yoursite.com/2018/08/19/JavaScript/basic/</loc>
+        <lastmod>2019-07-07T08:12:45.325Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/09/02/JavaScript/iterator/</loc>
+        <lastmod>2019-07-07T08:12:45.325Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -600,6 +600,14 @@
 
     <url>
         <loc>http://yoursite.com/2018/12/09/Java/RxJava1/</loc>
+        <lastmod>2019-07-07T08:12:45.324Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/12/25/Java/RxJava2/</loc>
         <lastmod>2019-07-07T08:12:45.324Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
