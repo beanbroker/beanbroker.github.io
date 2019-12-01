@@ -170,21 +170,28 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/AWS/</loc>
+        <loc>http://yoursite.com/tags/Nginx/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/elastic-beanstalk/</loc>
+        <loc>http://yoursite.com/tags/docker/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/SpringBoot/</loc>
+        <loc>http://yoursite.com/tags/Docker-compose/</loc>
+        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Proxy/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -205,28 +212,21 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Nginx/</loc>
+        <loc>http://yoursite.com/tags/AWS/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/docker/</loc>
+        <loc>http://yoursite.com/tags/elastic-beanstalk/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Proxy/</loc>
-        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/Docker-compose/</loc>
+        <loc>http://yoursite.com/tags/SpringBoot/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -438,6 +438,13 @@
     <url>
         <loc>http://yoursite.com/tags/Java8/</loc>
         <lastmod>2019-11-09T12:15:52.126Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/CORS/</loc>
+        <lastmod>2019-12-01T06:58:02.479Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
