@@ -100,13 +100,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/JavaScript/</loc>
-        <lastmod>2019-07-07T08:12:45.326Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/tags/functional/</loc>
         <lastmod>2019-07-07T08:12:45.326Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -115,6 +108,13 @@
 
     <url>
         <loc>http://yoursite.com/tags/coroutines/</loc>
+        <lastmod>2019-07-07T08:12:45.326Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/JavaScript/</loc>
         <lastmod>2019-07-07T08:12:45.326Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -177,14 +177,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Docker-compose/</loc>
+        <loc>http://yoursite.com/tags/docker/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/docker/</loc>
+        <loc>http://yoursite.com/tags/Docker-compose/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -233,13 +233,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Oauth/</loc>
-        <lastmod>2019-07-07T08:12:45.331Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/tags/MongoDb/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -248,6 +241,13 @@
 
     <url>
         <loc>http://yoursite.com/tags/config/</loc>
+        <lastmod>2019-07-07T08:12:45.331Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/Oauth/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
