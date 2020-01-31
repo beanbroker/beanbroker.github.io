@@ -63,13 +63,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Java/generic/</loc>
-        <lastmod>2019-07-07T08:12:45.324Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/categories/intelliJ/</loc>
         <lastmod>2019-07-07T08:12:45.324Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -78,6 +71,13 @@
 
     <url>
         <loc>http://yoursite.com/categories/Intellij/</loc>
+        <lastmod>2019-07-07T08:12:45.324Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Java/generic/</loc>
         <lastmod>2019-07-07T08:12:45.324Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -126,14 +126,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Kotlin/Querydsl/</loc>
+        <loc>http://yoursite.com/categories/Kotlin/QueryDsl/</loc>
         <lastmod>2019-07-07T08:12:45.327Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Kotlin/QueryDsl/</loc>
+        <loc>http://yoursite.com/categories/Kotlin/Querydsl/</loc>
         <lastmod>2019-07-07T08:12:45.327Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -182,13 +182,6 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/node-js/sequelize/Rest/</loc>
-        <lastmod>2019-07-07T08:12:45.329Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite.com/categories/node-js/express/router/</loc>
         <lastmod>2019-07-07T08:12:45.329Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -196,7 +189,21 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/categories/node-js/sequelize/Rest/</loc>
+        <lastmod>2019-07-07T08:12:45.329Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://yoursite.com/categories/Nginx/</loc>
+        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/Spring/JMS/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -231,7 +238,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/categories/Spring/JMS/</loc>
+        <loc>http://yoursite.com/categories/Spring/JMS/MQ/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -246,13 +253,6 @@
 
     <url>
         <loc>http://yoursite.com/categories/Nginx/Docker/Docker-compose/</loc>
-        <lastmod>2019-07-07T08:12:45.330Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/Spring/JMS/MQ/</loc>
         <lastmod>2019-07-07T08:12:45.330Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
