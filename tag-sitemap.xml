@@ -121,14 +121,14 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/Predicate/</loc>
+        <loc>http://yoursite.com/tags/QueryDsl/</loc>
         <lastmod>2019-07-07T08:12:45.327Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite.com/tags/QueryDsl/</loc>
+        <loc>http://yoursite.com/tags/Predicate/</loc>
         <lastmod>2019-07-07T08:12:45.327Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -247,6 +247,13 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/tags/Profile/</loc>
+        <lastmod>2019-07-07T08:12:45.331Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://yoursite.com/tags/Oauth/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -255,13 +262,6 @@
 
     <url>
         <loc>http://yoursite.com/tags/Session/</loc>
-        <lastmod>2019-07-07T08:12:45.331Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/tags/Profile/</loc>
         <lastmod>2019-07-07T08:12:45.331Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

@@ -598,9 +598,9 @@
       <category term="Java" scheme="http://yoursite.com/categories/Obejct/Java/"/>
     
     
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
       <category term="Obejct" scheme="http://yoursite.com/tags/Obejct/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
   </entry>
   
