@@ -195,35 +195,6 @@
   </entry>
   
   <entry>
-    <title>Junit @Before vs @BeforeClass</title>
-    <link href="https://beanbroker.github.io/2019/10/05/Java/test_after_before/"/>
-    <id>https://beanbroker.github.io/2019/10/05/Java/test_after_before/</id>
-    <published>2019-10-05T10:00:00.000Z</published>
-    <updated>2019-10-06T06:33:04.386Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Junit-Before-Beforeclass"><a href="#Junit-Before-Beforeclass" class="headerlink" title="Junit Before? Beforeclass?"></a>Junit Before? Beforeclass?</h2><p>테스트 코드를 짜며 (더 잘짜고 싶다… 하..) 짠 테스크 코드에 대한 리뷰를 받았다. 선배 개발자로부터 @Before과 @BeforeClass 차이를 아냐 물어보시기에 저는 ㅠㅠㅠㅠ를 외쳤다. 요즘 항상 좋으신 말을 해주시는 선배 개발자이시다.</p><p>현재 개발하는 환경이 Junit4이지만 해당 블로그는 Junit5로 작성할 예정이다</p><p><a href="https://github.com/beanbroker/kotlin_querydsl" rel="external nofollow noopener noreferrer" target="_blank">code sample github</a> </p><h2 id="Junit4-gt-Junit5"><a href="#Junit4-gt-Junit5" class="headerlink" title="Junit4 -&gt; Junit5"></a>Junit4 -&gt; Junit5</h2><table><thead><tr><th>Junit4</th><th>Junit5</th><th>특징</th></tr></thead><tbody><tr><td>@BeforeClass</td><td>@BeforeAll</td><td><br> - 테스트 클래스의 모든 테스트 메소드가 실행되기 전에 실행 <br>-  static method <br>- 초기화 코드가 들어갈수 있음</td></tr><tr><td>@AfterClass</td><td>@AfterAll</td><td><br> - 테스트 클래스의 모든 테스트 메소드가 종료된 후 실행 <br>-  static method <br>- 코드를 클린업 할수 있음</td></tr><tr><td>@Before</td><td>@BeforeEach</td><td><br> - 테스트 클래스 안의 테스트 메소드가 한번 실행 될때 마다 실행   <br>-  초기화 코드를 재설정 할수 있음 하지만 초기화 처럼 쓰면 테스트시 힘들어짐</td></tr><tr><td>@After</td><td>@AfterEach</td><td><br> -테스트 클래스 안의 테스트 메소드가 한번 실행 될때 마다 실행  <br>- 예를 들어 테스트가 끝나고 롤백해야 할때</td></tr></tbody></table><blockquote><p>이미지 설명</p></blockquote><p><img src="https://i.stack.imgur.com/HKspz.png" alt="실행 순서" title="실행 순서"></p><p>위의 이미지 순서대로 테스트 코드를 작성해보자</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeAll</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">beforeAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"BeforeAll"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeEach</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeEach</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"BeforeEach"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterEach</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterEach</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"AfterEach"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterAll</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">afterAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"AfterAll"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCodeOne</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"testCodeOne start "</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCodeTwo</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"testCodetwo start "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>실행결과 아래와 같은 결과를 얻는다<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">BeforeAll</span><br><span class="line">BeforeEach</span><br><span class="line">testCodeOne start </span><br><span class="line">AfterEach</span><br><span class="line">BeforeEach</span><br><span class="line">testCodetwo start </span><br><span class="line">AfterEach</span><br><span class="line">AfterAll</span><br></pre></td></tr></table></figure></p><p>Junit5에 어노테이션 명이 좀더 정확하게 의미를 알려주는것 같다.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;Junit-Before-Beforeclass&quot;&gt;&lt;a href=&quot;#Junit-Before-Beforeclass&quot; class=&quot;headerlink&quot; title=&quot;Junit Before? Beforeclass?&quot;&gt;&lt;/a&gt;Junit Before
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://beanbroker.github.io/categories/Java/"/>
-    
-      <category term="Junit" scheme="https://beanbroker.github.io/categories/Java/Junit/"/>
-    
-    
-      <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
-    
-      <category term="Junit" scheme="https://beanbroker.github.io/tags/Junit/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Redis Client with Kotlin Spring</title>
     <link href="https://beanbroker.github.io/2019/10/05/Kotlin/spring_redis_client_kotlin/"/>
     <id>https://beanbroker.github.io/2019/10/05/Kotlin/spring_redis_client_kotlin/</id>
@@ -253,6 +224,35 @@
       <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
     
       <category term="Redis" scheme="https://beanbroker.github.io/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Junit @Before vs @BeforeClass</title>
+    <link href="https://beanbroker.github.io/2019/10/05/Java/test_after_before/"/>
+    <id>https://beanbroker.github.io/2019/10/05/Java/test_after_before/</id>
+    <published>2019-10-05T10:00:00.000Z</published>
+    <updated>2019-10-06T06:33:04.386Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Junit-Before-Beforeclass"><a href="#Junit-Before-Beforeclass" class="headerlink" title="Junit Before? Beforeclass?"></a>Junit Before? Beforeclass?</h2><p>테스트 코드를 짜며 (더 잘짜고 싶다… 하..) 짠 테스크 코드에 대한 리뷰를 받았다. 선배 개발자로부터 @Before과 @BeforeClass 차이를 아냐 물어보시기에 저는 ㅠㅠㅠㅠ를 외쳤다. 요즘 항상 좋으신 말을 해주시는 선배 개발자이시다.</p><p>현재 개발하는 환경이 Junit4이지만 해당 블로그는 Junit5로 작성할 예정이다</p><p><a href="https://github.com/beanbroker/kotlin_querydsl" rel="external nofollow noopener noreferrer" target="_blank">code sample github</a> </p><h2 id="Junit4-gt-Junit5"><a href="#Junit4-gt-Junit5" class="headerlink" title="Junit4 -&gt; Junit5"></a>Junit4 -&gt; Junit5</h2><table><thead><tr><th>Junit4</th><th>Junit5</th><th>특징</th></tr></thead><tbody><tr><td>@BeforeClass</td><td>@BeforeAll</td><td><br> - 테스트 클래스의 모든 테스트 메소드가 실행되기 전에 실행 <br>-  static method <br>- 초기화 코드가 들어갈수 있음</td></tr><tr><td>@AfterClass</td><td>@AfterAll</td><td><br> - 테스트 클래스의 모든 테스트 메소드가 종료된 후 실행 <br>-  static method <br>- 코드를 클린업 할수 있음</td></tr><tr><td>@Before</td><td>@BeforeEach</td><td><br> - 테스트 클래스 안의 테스트 메소드가 한번 실행 될때 마다 실행   <br>-  초기화 코드를 재설정 할수 있음 하지만 초기화 처럼 쓰면 테스트시 힘들어짐</td></tr><tr><td>@After</td><td>@AfterEach</td><td><br> -테스트 클래스 안의 테스트 메소드가 한번 실행 될때 마다 실행  <br>- 예를 들어 테스트가 끝나고 롤백해야 할때</td></tr></tbody></table><blockquote><p>이미지 설명</p></blockquote><p><img src="https://i.stack.imgur.com/HKspz.png" alt="실행 순서" title="실행 순서"></p><p>위의 이미지 순서대로 테스트 코드를 작성해보자</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeAll</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">beforeAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"BeforeAll"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeEach</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeEach</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"BeforeEach"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterEach</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterEach</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"AfterEach"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterAll</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">afterAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"AfterAll"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCodeOne</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"testCodeOne start "</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCodeTwo</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"testCodetwo start "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>실행결과 아래와 같은 결과를 얻는다<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">BeforeAll</span><br><span class="line">BeforeEach</span><br><span class="line">testCodeOne start </span><br><span class="line">AfterEach</span><br><span class="line">BeforeEach</span><br><span class="line">testCodetwo start </span><br><span class="line">AfterEach</span><br><span class="line">AfterAll</span><br></pre></td></tr></table></figure></p><p>Junit5에 어노테이션 명이 좀더 정확하게 의미를 알려주는것 같다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Junit-Before-Beforeclass&quot;&gt;&lt;a href=&quot;#Junit-Before-Beforeclass&quot; class=&quot;headerlink&quot; title=&quot;Junit Before? Beforeclass?&quot;&gt;&lt;/a&gt;Junit Before
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://beanbroker.github.io/categories/Java/"/>
+    
+      <category term="Junit" scheme="https://beanbroker.github.io/categories/Java/Junit/"/>
+    
+    
+      <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
+    
+      <category term="Junit" scheme="https://beanbroker.github.io/tags/Junit/"/>
     
   </entry>
   
@@ -2692,19 +2692,20 @@
   </entry>
   
   <entry>
-    <title>intelliJ 로컬maven repo사용하기</title>
-    <link href="https://beanbroker.github.io/2018/07/28/intelliJ/mavensetting/"/>
-    <id>https://beanbroker.github.io/2018/07/28/intelliJ/mavensetting/</id>
+    <title>maven deafult setting use true or false</title>
+    <link href="https://beanbroker.github.io/2018/07/28/intelliJ/mavenlocasetting/"/>
+    <id>https://beanbroker.github.io/2018/07/28/intelliJ/mavenlocasetting/</id>
     <published>2018-07-28T06:50:00.000Z</published>
     <updated>2019-07-07T08:12:45.324Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="m2-밑에-있는-maven파일과-상관없이-진행하는-법"><a href="#m2-밑에-있는-maven파일과-상관없이-진행하는-법" class="headerlink" title=".m2 밑에 있는 maven파일과 상관없이 진행하는 법"></a>.m2 밑에 있는 maven파일과 상관없이 진행하는 법</h2><ol><li>preperence (단축키 command ,)</li><li>maven 검색</li><li>local repository (메이븐 환경설정 마지막 부분) override check</li></ol>]]></content>
+    <content type="html"><![CDATA[<h1 id="메이븐-로컬-셋팅-디폴트-셋팅하기"><a href="#메이븐-로컬-셋팅-디폴트-셋팅하기" class="headerlink" title="메이븐 로컬 셋팅 디폴트 셋팅하기"></a>메이븐 로컬 셋팅 디폴트 셋팅하기</h1><ol><li>cd /Users/username/.m2</li><li>vim setting.xml</li><li>profile 안에 있는activeByDefault true or false 직접입력 후 저장</li></ol>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;m2-밑에-있는-maven파일과-상관없이-진행하는-법&quot;&gt;&lt;a href=&quot;#m2-밑에-있는-maven파일과-상관없이-진행하는-법&quot; class=&quot;headerlink&quot; title=&quot;.m2 밑에 있는 maven파일과 상관없이 진행하는 법&quot;&gt;&lt;/
+        &lt;h1 id=&quot;메이븐-로컬-셋팅-디폴트-셋팅하기&quot;&gt;&lt;a href=&quot;#메이븐-로컬-셋팅-디폴트-셋팅하기&quot; class=&quot;headerlink&quot; title=&quot;메이븐 로컬 셋팅 디폴트 셋팅하기&quot;&gt;&lt;/a&gt;메이븐 로컬 셋팅 디폴트 셋팅하기&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;
       
     
     </summary>
@@ -2721,20 +2722,19 @@
   </entry>
   
   <entry>
-    <title>maven deafult setting use true or false</title>
-    <link href="https://beanbroker.github.io/2018/07/28/intelliJ/mavenlocasetting/"/>
-    <id>https://beanbroker.github.io/2018/07/28/intelliJ/mavenlocasetting/</id>
+    <title>intelliJ 로컬maven repo사용하기</title>
+    <link href="https://beanbroker.github.io/2018/07/28/intelliJ/mavensetting/"/>
+    <id>https://beanbroker.github.io/2018/07/28/intelliJ/mavensetting/</id>
     <published>2018-07-28T06:50:00.000Z</published>
     <updated>2019-07-07T08:12:45.324Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="메이븐-로컬-셋팅-디폴트-셋팅하기"><a href="#메이븐-로컬-셋팅-디폴트-셋팅하기" class="headerlink" title="메이븐 로컬 셋팅 디폴트 셋팅하기"></a>메이븐 로컬 셋팅 디폴트 셋팅하기</h1><ol><li>cd /Users/username/.m2</li><li>vim setting.xml</li><li>profile 안에 있는activeByDefault true or false 직접입력 후 저장</li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="m2-밑에-있는-maven파일과-상관없이-진행하는-법"><a href="#m2-밑에-있는-maven파일과-상관없이-진행하는-법" class="headerlink" title=".m2 밑에 있는 maven파일과 상관없이 진행하는 법"></a>.m2 밑에 있는 maven파일과 상관없이 진행하는 법</h2><ol><li>preperence (단축키 command ,)</li><li>maven 검색</li><li>local repository (메이븐 환경설정 마지막 부분) override check</li></ol>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;메이븐-로컬-셋팅-디폴트-셋팅하기&quot;&gt;&lt;a href=&quot;#메이븐-로컬-셋팅-디폴트-셋팅하기&quot; class=&quot;headerlink&quot; title=&quot;메이븐 로컬 셋팅 디폴트 셋팅하기&quot;&gt;&lt;/a&gt;메이븐 로컬 셋팅 디폴트 셋팅하기&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;
+        &lt;h2 id=&quot;m2-밑에-있는-maven파일과-상관없이-진행하는-법&quot;&gt;&lt;a href=&quot;#m2-밑에-있는-maven파일과-상관없이-진행하는-법&quot; class=&quot;headerlink&quot; title=&quot;.m2 밑에 있는 maven파일과 상관없이 진행하는 법&quot;&gt;&lt;/
       
     
     </summary>
