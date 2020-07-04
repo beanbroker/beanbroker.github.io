@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://beanbroker.github.io/"/>
-  <updated>2020-05-29T15:51:24.081Z</updated>
+  <updated>2020-07-04T08:49:38.035Z</updated>
   <id>https://beanbroker.github.io/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring Elastic Search 연동(docker)</title>
+    <link href="https://beanbroker.github.io/2020/07/04/Spring/spring_es_search1/"/>
+    <id>https://beanbroker.github.io/2020/07/04/Spring/spring_es_search1/</id>
+    <published>2020-07-04T08:00:00.000Z</published>
+    <updated>2020-07-04T08:49:38.035Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Spring-Elastic-Search-연동-docker-1편"><a href="#Spring-Elastic-Search-연동-docker-1편" class="headerlink" title="Spring Elastic Search 연동(docker) 1편"></a>Spring Elastic Search 연동(docker) 1편</h1><h1 id="1-Docker-Elastic-Search-설치"><a href="#1-Docker-Elastic-Search-설치" class="headerlink" title="1. Docker Elastic Search 설치"></a>1. Docker Elastic Search 설치</h1><p>docker 설치 방법은! 다른 블로그에서 참고하자</p><blockquote><p>docker 이미지 받아오기<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull docker.elastic.co/elasticsearch/elasticsearch:7.7.1</span><br></pre></td></tr></table></figure></p></blockquote><blockquote><p>7.x 버전에서는 싱글노드 실행시 아래와 같이 실행</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; docker.elastic.co/elasticsearch/elasticsearch:7.7.1</span><br></pre></td></tr></table></figure><p> 위와 같이 실행시 아래와 같이 실행이 되어진다.<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> &#123;&quot;type&quot;: &quot;server&quot;, &quot;timestamp&quot;: &quot;2020-06-28T10:31:35,754Z&quot;, &quot;level&quot;: &quot;INFO&quot;, &quot;component&quot;: &quot;o.e.e.NodeEnvironment&quot;, &quot;cluster.name&quot;: &quot;docker-cluster&quot;, &quot;node.name&quot;: &quot;dbd93832ee71&quot;, &quot;message&quot;: &quot;using [1] data paths, mounts [[/ (overlay)]], net usable_space [52.7gb], net total_space [58.4gb], types [overlay]&quot; &#125;</span><br><span class="line">&#123;&quot;type&quot;: &quot;server&quot;, &quot;timestamp&quot;: &quot;2020-06-28T10:31:35,758Z&quot;, &quot;level&quot;: &quot;INFO&quot;, &quot;component&quot;: &quot;o.e.e.NodeEnvironment&quot;, &quot;cluster.name&quot;: &quot;docker-cluster&quot;, &quot;node.name&quot;: &quot;dbd93832ee71&quot;, &quot;message&quot;: &quot;heap size [1gb], compressed ordinary object pointers [true]&quot; &#125;</span><br><span class="line">&#123;&quot;type&quot;: &quot;server&quot;, &quot;timestamp&quot;: &quot;2020-06-28T10:31:35,842Z&quot;, &quot;level&quot;: &quot;INFO&quot;, &quot;component&quot;: &quot;o.e.n.Node&quot;, &quot;cluster.name&quot;: &quot;docker-cluster&quot;, &quot;node.name&quot;: &quot;dbd93832ee71&quot;, &quot;message&quot;: &quot;node name [dbd93832ee71], node ID [sxcEM2FoQKO5w4Coh2uK6A], cluster name [docker-cluster]&quot; &#125;</span><br><span class="line">&#123;&quot;type&quot;: &quot;server&quot;, &quot;timestamp&quot;: &quot;2020-06-28T10:31:35,847Z&quot;, &quot;level&quot;: &quot;INFO&quot;, &quot;component&quot;: &quot;o.e.n.Node&quot;, &quot;cluster.name&quot;: &quot;docker-cluster&quot;, &quot;node.name&quot;: &quot;dbd93832ee71&quot;, &quot;message&quot;: &quot;version[7.7.1], pid[6], build[default/docker/ad56dce891c901a492bb1ee393f12dfff473a423/2020-05-28T16:30:01.040088Z], OS[Linux/4.9.125-linuxkit/amd64], JVM[AdoptOpenJDK/OpenJDK 64-Bit Server VM/14.0.1/14.0.1+7]&quot; &#125;</span><br></pre></td></tr></table></figure></p><blockquote><p>정상 실행 확인 방법</p></blockquote><p>postman 또는 그냥 웹브라우저에서 <a href="http://localhost:9200/" rel="external nofollow noopener noreferrer" target="_blank">http://localhost:9200/</a> 접근시 아래와 같은 응답을 받은 것을 확인.</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span> : <span class="string">"dbd93832ee71"</span>,</span><br><span class="line">  <span class="attr">"cluster_name"</span> : <span class="string">"docker-cluster"</span>,</span><br><span class="line">  <span class="attr">"cluster_uuid"</span> : <span class="string">"AxvSUvrpRk6lrJSEG5fe5w"</span>,</span><br><span class="line">  <span class="attr">"version"</span> : &#123;</span><br><span class="line">    <span class="attr">"number"</span> : <span class="string">"7.7.1"</span>,</span><br><span class="line">    <span class="attr">"build_flavor"</span> : <span class="string">"default"</span>,</span><br><span class="line">    <span class="attr">"build_type"</span> : <span class="string">"docker"</span>,</span><br><span class="line">    <span class="attr">"build_hash"</span> : <span class="string">"ad56dce891c901a492bb1ee393f12dfff473a423"</span>,</span><br><span class="line">    <span class="attr">"build_date"</span> : <span class="string">"2020-05-28T16:30:01.040088Z"</span>,</span><br><span class="line">    <span class="attr">"build_snapshot"</span> : <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"lucene_version"</span> : <span class="string">"8.5.1"</span>,</span><br><span class="line">    <span class="attr">"minimum_wire_compatibility_version"</span> : <span class="string">"6.8.0"</span>,</span><br><span class="line">    <span class="attr">"minimum_index_compatibility_version"</span> : <span class="string">"6.0.0-beta1"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"tagline"</span> : <span class="string">"You Know, for Search"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="2-spirng과-연동-해보자"><a href="#2-spirng과-연동-해보자" class="headerlink" title="2. spirng과 연동 해보자"></a>2. spirng과 연동 해보자</h1><h2 id="spring-boot-version-2-3-1"><a href="#spring-boot-version-2-3-1" class="headerlink" title="spring boot version : 2.3.1"></a>spring boot version : 2.3.1</h2><p>연동시에 여러가집 방법이 있지만 해당 블로그에선 HighLevelRestClient를 쓸 예정</p><p>비교 정리내용 : <a href="https://kok202.tistory.com/102" rel="external nofollow noopener noreferrer" target="_blank">https://kok202.tistory.com/102</a> 블로그</p><p>rest high level client 부터는 tcp connection 이 아닌 http connection 을 맺는다.</p><blockquote><p>github sample code</p></blockquote><p>클릭 -&gt; <a href="https://github.com/beanbroker/sample_elastic_search" rel="external nofollow noopener noreferrer" target="_blank">Spring ES sample code</a></p><blockquote><p>아래처럼 high-level-client 디펜던시 추가</p></blockquote><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">compile</span> <span class="string">'org.elasticsearch:elasticsearch:7.7.0'</span></span><br><span class="line"><span class="keyword">compile</span> <span class="string">'org.elasticsearch.client:elasticsearch-rest-high-level-client:7.7.0'</span></span><br></pre></td></tr></table></figure><blockquote><p>application.yml</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 9000</span><br><span class="line">spring:</span><br><span class="line">  elasticsearch:</span><br><span class="line">    rest:</span><br><span class="line">      uris: http://localhost:9200</span><br></pre></td></tr></table></figure><p>기존에는 아래의 코드 처럼 esconfig를 직접 설정해주어야 했는데 spring boot 2.2 인지 2.3에서 편하게 yml로 config를 설정할수 있게 도와주는 것 같다. 정확하게 어느 버전인지는 찾아보지 않았음.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ElasticsearchConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Bean</span>(destroyMethod = <span class="string">"close"</span>)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> RestHighLevelClient <span class="title">elasticsearchClient</span><span class="params">(ElasticsearchProperties properties)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> RestHighLevelClient(RestClient.builder(properties.hosts()));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>UserController.java </p></blockquote><p>인덱스 생성과 생성된 index를 가져오는 테스트만을 진행할 것이다.</p><p>물론 query build를 통한 search도 가능하나 간단하게 연동을 위한 블로그임을!!! 미리 말씀드린다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> UserService userService;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">UserController</span><span class="params">(UserService userService)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.userService = userService;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@PostMapping</span>(<span class="string">"/users"</span>)</span><br><span class="line">  <span class="meta">@ResponseStatus</span>(HttpStatus.CREATED)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">createUserProfile</span><span class="params">(@RequestBody UserProfileDto profile)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> userService.createUserIndex(profile.toBeanbrokerUser());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@GetMapping</span>(<span class="string">"/users/&#123;userKey&#125;"</span>)</span><br><span class="line">  <span class="meta">@ResponseStatus</span>(HttpStatus.CREATED)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> GetResponse <span class="title">getUserProfile</span><span class="params">(@PathVariable(<span class="string">"userKey"</span>)</span> String userKey) <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> userService.getUserIndex(userKey);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>UserService.java</p></blockquote><p>테스트를 위해 사용하려는 IndexRequest, GetRequest가 Deprecated되었다.. 일단 잘 작동하나 왜 Deprecated되었는지는 알수 없다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Autowired</span> <span class="keyword">private</span> RestHighLevelClient restHighLevelClient;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Autowired</span> <span class="keyword">private</span> ObjectMapper objectMapper;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String USER_DOC_TYPE = <span class="string">"_doc"</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String USER_INDEX = <span class="string">"user"</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">createUserIndex</span><span class="params">(BeanbrokerUser user)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// set unique index on User</span></span><br><span class="line">    String uniqueId = UUID.randomUUID().toString();</span><br><span class="line">    user.setUniqueId(uniqueId);</span><br><span class="line"></span><br><span class="line">    Map&lt;String, Object&gt; userDocument = objectMapper.convertValue(user, Map.class);</span><br><span class="line"></span><br><span class="line">    IndexRequest indexRequest = <span class="keyword">new</span> IndexRequest(USER_INDEX, USER_DOC_TYPE, uniqueId);</span><br><span class="line">    indexRequest.source(userDocument, XContentType.JSON);</span><br><span class="line"></span><br><span class="line">    IndexResponse indexResponse = restHighLevelClient.index(indexRequest, RequestOptions.DEFAULT);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="string">"CREATED"</span>.equals(indexResponse.getResult().name())) &#123;</span><br><span class="line">      <span class="keyword">return</span> uniqueId;</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> indexResponse.getResult().name();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> GetResponse <span class="title">getUserIndex</span><span class="params">(String userKey)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">    GetRequest getRequest = <span class="keyword">new</span> GetRequest(USER_INDEX, USER_DOC_TYPE, userKey);</span><br><span class="line"></span><br><span class="line">    GetResponse getResponse = restHighLevelClient.get(getRequest, RequestOptions.DEFAULT);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> getResponse;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="테스트-해보자"><a href="#테스트-해보자" class="headerlink" title="테스트 해보자"></a>테스트 해보자</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">curl --location --request POST <span class="string">'http://localhost:9000/users'</span> \</span><br><span class="line">--header <span class="string">'Content-Type: application/json'</span> \</span><br><span class="line">--header <span class="string">'Content-Type: text/plain'</span> \</span><br><span class="line">--header <span class="string">'Cookie: JSESSIONID=CAA019F0C3D0B5129E22A4DC86CDC7B7'</span> \</span><br><span class="line">--data-raw <span class="string">'&#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"userId" : "beanbroker",</span></span><br><span class="line"><span class="string">"name" : "pkj",</span></span><br><span class="line"><span class="string">"email" : "beanbroker@test.com"</span></span><br><span class="line"><span class="string">&#125;'</span></span><br></pre></td></tr></table></figure><p>위처럼 유저 생성 curl 후 성공 일경우 ‘f860b9c2-3f45-48ae-95bf-bf43d58ec6bb’ 와 같은 id를 받게 된다. 잘생성되었는지 확인해봐야하지 않겠는가?</p><p><a href="http://localhost:9200/_search" rel="external nofollow noopener noreferrer" target="_blank">http://localhost:9200/_search</a> 접근 아래처럼 정상적으로 노출</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"took"</span>:<span class="number">107</span>,</span><br><span class="line">   <span class="attr">"timed_out"</span>:<span class="literal">false</span>,</span><br><span class="line">   <span class="attr">"_shards"</span>:&#123;</span><br><span class="line">      <span class="attr">"total"</span>:<span class="number">1</span>,</span><br><span class="line">      <span class="attr">"successful"</span>:<span class="number">1</span>,</span><br><span class="line">      <span class="attr">"skipped"</span>:<span class="number">0</span>,</span><br><span class="line">      <span class="attr">"failed"</span>:<span class="number">0</span></span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="attr">"hits"</span>:&#123;</span><br><span class="line">      <span class="attr">"total"</span>:&#123;</span><br><span class="line">         <span class="attr">"value"</span>:<span class="number">1</span>,</span><br><span class="line">         <span class="attr">"relation"</span>:<span class="string">"eq"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">"max_score"</span>:<span class="number">1.0</span>,</span><br><span class="line">      <span class="attr">"hits"</span>:[</span><br><span class="line">         &#123;</span><br><span class="line">            <span class="attr">"_index"</span>:<span class="string">"user"</span>,</span><br><span class="line">            <span class="attr">"_type"</span>:<span class="string">"_doc"</span>,</span><br><span class="line">            <span class="attr">"_id"</span>:<span class="string">"f860b9c2-3f45-48ae-95bf-bf43d58ec6bb"</span>,</span><br><span class="line">            <span class="attr">"_score"</span>:<span class="number">1.0</span>,</span><br><span class="line">            <span class="attr">"_source"</span>:&#123;</span><br><span class="line">               <span class="attr">"uniqueId"</span>:<span class="string">"f860b9c2-3f45-48ae-95bf-bf43d58ec6bb"</span>,</span><br><span class="line">               <span class="attr">"userId"</span>:<span class="string">"beanbroker"</span>,</span><br><span class="line">               <span class="attr">"name"</span>:<span class="string">"pkj"</span>,</span><br><span class="line">               <span class="attr">"email"</span>:<span class="string">"beanbroker@test.com"</span>,</span><br><span class="line">               <span class="attr">"createdAt"</span>:<span class="string">"2020-07-04T17:43:17.726"</span></span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">      ]</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>생성에서 받은 유저의 uniqueid를 users/{value} value에 집어 넣어보자</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">curl --location --request GET <span class="string">'http://localhost:9000/users/f860b9c2-3f45-48ae-95bf-bf43d58ec6bb'</span> \</span><br><span class="line">--header <span class="string">'Content-Type: application/json'</span> \</span><br><span class="line">--header <span class="string">'Content-Type: text/plain'</span> \</span><br><span class="line">--header <span class="string">'Cookie: JSESSIONID=CAA019F0C3D0B5129E22A4DC86CDC7B7'</span> \</span><br><span class="line">--data-raw <span class="string">'&#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"userId" : "beanbroker",</span></span><br><span class="line"><span class="string">"name" : "pkj",</span></span><br><span class="line"><span class="string">"email" : "beanbroker@test.com"</span></span><br><span class="line"><span class="string">&#125;'</span></span><br></pre></td></tr></table></figure><p>아래 처럼 결과가 나온다.</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"fields"</span>: &#123;&#125;,</span><br><span class="line">    <span class="attr">"id"</span>: <span class="string">"f860b9c2-3f45-48ae-95bf-bf43d58ec6bb"</span>,</span><br><span class="line">    <span class="attr">"type"</span>: <span class="string">"_doc"</span>,</span><br><span class="line">    <span class="attr">"version"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">"seqNo"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"exists"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"primaryTerm"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">"sourceEmpty"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"sourceAsBytes"</span>: <span class="string">"eyJ1bmlxdWVJZCI6ImY4NjBiOWMyLTNmNDUtNDhhZS05NWJmLWJmNDNkNThlYzZiYiIsInVzZXJJZCI6ImJlYW5icm9rZXIiLCJuYW1lIjoicGtqIiwiZW1haWwiOiJiZWFuYnJva2VyQHRlc3QuY29tIiwiY3JlYXRlZEF0IjoiMjAyMC0wNy0wNFQxNzo0MzoxNy43MjYifQ=="</span>,</span><br><span class="line">    <span class="attr">"sourceInternal"</span>: &#123;</span><br><span class="line">        <span class="attr">"fragment"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"sourceAsBytesRef"</span>: &#123;</span><br><span class="line">        <span class="attr">"fragment"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"sourceAsString"</span>: <span class="string">"&#123;\"uniqueId\":\"f860b9c2-3f45-48ae-95bf-bf43d58ec6bb\",\"userId\":\"beanbroker\",\"name\":\"pkj\",\"email\":\"beanbroker@test.com\",\"createdAt\":\"2020-07-04T17:43:17.726\"&#125;"</span>,</span><br><span class="line">    <span class="attr">"sourceAsMap"</span>: &#123;</span><br><span class="line">        <span class="attr">"createdAt"</span>: <span class="string">"2020-07-04T17:43:17.726"</span>,</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"pkj"</span>,</span><br><span class="line">        <span class="attr">"userId"</span>: <span class="string">"beanbroker"</span>,</span><br><span class="line">        <span class="attr">"uniqueId"</span>: <span class="string">"f860b9c2-3f45-48ae-95bf-bf43d58ec6bb"</span>,</span><br><span class="line">        <span class="attr">"email"</span>: <span class="string">"beanbroker@test.com"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"user"</span>,</span><br><span class="line">    <span class="attr">"source"</span>: &#123;</span><br><span class="line">        <span class="attr">"createdAt"</span>: <span class="string">"2020-07-04T17:43:17.726"</span>,</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"pkj"</span>,</span><br><span class="line">        <span class="attr">"userId"</span>: <span class="string">"beanbroker"</span>,</span><br><span class="line">        <span class="attr">"uniqueId"</span>: <span class="string">"f860b9c2-3f45-48ae-95bf-bf43d58ec6bb"</span>,</span><br><span class="line">        <span class="attr">"email"</span>: <span class="string">"beanbroker@test.com"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"fragment"</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><a href="http://localhost:9200/user/_search" rel="external nofollow noopener noreferrer" target="_blank">http://localhost:9200/user/_search</a> 이렇게하면 user index에 대한 search가 된다.</p><p>물론 실제로 서비스로 사용하기 위해선 강력하게 kibana가 셋팅되어야 함을 공유드리며 끝!!! 좀더 자세히 적고 설명도 붙이고 싶으나 약속이 있어서 후려쳐서.. 올려본다……</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Spring-Elastic-Search-연동-docker-1편&quot;&gt;&lt;a href=&quot;#Spring-Elastic-Search-연동-docker-1편&quot; class=&quot;headerlink&quot; title=&quot;Spring Elastic Search 연동
+      
+    
+    </summary>
+    
+      <category term="Spring" scheme="https://beanbroker.github.io/categories/Spring/"/>
+    
+      <category term="Elastic Search" scheme="https://beanbroker.github.io/categories/Spring/Elastic-Search/"/>
+    
+      <category term="ES" scheme="https://beanbroker.github.io/categories/Spring/Elastic-Search/ES/"/>
+    
+      <category term="docker" scheme="https://beanbroker.github.io/categories/Spring/Elastic-Search/ES/docker/"/>
+    
+    
+      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
+    
+      <category term="docker" scheme="https://beanbroker.github.io/tags/docker/"/>
+    
+      <category term="Elastic Search" scheme="https://beanbroker.github.io/tags/Elastic-Search/"/>
+    
+      <category term="ES" scheme="https://beanbroker.github.io/tags/ES/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring Test Code 4</title>
@@ -76,9 +113,9 @@
       <category term="Redis" scheme="https://beanbroker.github.io/categories/Java/Security/Spring/Redis/"/>
     
     
-      <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
-    
       <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
+    
+      <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
     
       <category term="Redis" scheme="https://beanbroker.github.io/tags/Redis/"/>
     
@@ -113,9 +150,9 @@
       <category term="Redis" scheme="https://beanbroker.github.io/categories/Java/Security/Spring/Redis/"/>
     
     
-      <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
-    
       <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
+    
+      <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
     
       <category term="Redis" scheme="https://beanbroker.github.io/tags/Redis/"/>
     
@@ -237,9 +274,9 @@
       <category term="Spring" scheme="https://beanbroker.github.io/categories/Java/Spring/"/>
     
     
-      <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
-    
       <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
+    
+      <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
     
   </entry>
   
@@ -266,9 +303,9 @@
       <category term="Kotlin" scheme="https://beanbroker.github.io/categories/Java/Kotlin/"/>
     
     
-      <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
-    
       <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
+    
+      <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
     
   </entry>
   
@@ -295,9 +332,9 @@
       <category term="Kotlin" scheme="https://beanbroker.github.io/categories/Java/Kotlin/"/>
     
     
-      <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
-    
       <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
+    
+      <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
     
   </entry>
   
@@ -355,9 +392,9 @@
       <category term="Spring" scheme="https://beanbroker.github.io/categories/Kotlin/Redis/Spring/"/>
     
     
-      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
-    
       <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
+    
+      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
     
       <category term="Redis" scheme="https://beanbroker.github.io/tags/Redis/"/>
     
@@ -388,9 +425,9 @@
       <category term="JWT" scheme="https://beanbroker.github.io/categories/Spring/Kotlin/JWT/"/>
     
     
-      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
-    
       <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
+    
+      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
     
       <category term="JWT" scheme="https://beanbroker.github.io/tags/JWT/"/>
     
@@ -421,9 +458,9 @@
       <category term="JWT" scheme="https://beanbroker.github.io/categories/Spring/Kotlin/JWT/"/>
     
     
-      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
-    
       <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
+    
+      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
     
       <category term="JWT" scheme="https://beanbroker.github.io/tags/JWT/"/>
     
@@ -1321,9 +1358,9 @@
       <category term="Predicate" scheme="https://beanbroker.github.io/categories/Kotlin/Querydsl/Predicate/"/>
     
     
-      <category term="Querydsl" scheme="https://beanbroker.github.io/tags/Querydsl/"/>
-    
       <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
+    
+      <category term="Querydsl" scheme="https://beanbroker.github.io/tags/Querydsl/"/>
     
       <category term="Predicate" scheme="https://beanbroker.github.io/tags/Predicate/"/>
     
@@ -1352,9 +1389,9 @@
       <category term="Querydsl" scheme="https://beanbroker.github.io/categories/Kotlin/Querydsl/"/>
     
     
-      <category term="Querydsl" scheme="https://beanbroker.github.io/tags/Querydsl/"/>
-    
       <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
+    
+      <category term="Querydsl" scheme="https://beanbroker.github.io/tags/Querydsl/"/>
     
   </entry>
   
@@ -1381,9 +1418,9 @@
       <category term="Querydsl" scheme="https://beanbroker.github.io/categories/Kotlin/Querydsl/"/>
     
     
-      <category term="Querydsl" scheme="https://beanbroker.github.io/tags/Querydsl/"/>
-    
       <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
+    
+      <category term="Querydsl" scheme="https://beanbroker.github.io/tags/Querydsl/"/>
     
   </entry>
   
@@ -1990,6 +2027,31 @@
   </entry>
   
   <entry>
+    <title>NodeJs 생각정리</title>
+    <link href="https://beanbroker.github.io/2018/08/29/nodejs/thinknodejs/"/>
+    <id>https://beanbroker.github.io/2018/08/29/nodejs/thinknodejs/</id>
+    <published>2018-08-29T09:30:00.000Z</published>
+    <updated>2019-07-07T08:12:45.329Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NodeJs-잠깐-생각정리"><a href="#NodeJs-잠깐-생각정리" class="headerlink" title="NodeJs 잠깐 생각정리"></a>NodeJs 잠깐 생각정리</h1><p>항상 멀티쓰레드환경에서 개발을 하다가 node.js를 개발하다보니 궁금점들이 생긴다.</p><p>궁금점?</p><ol><li>싱글스레드다</li><li>was는 멀티스레드 환경! 노드는 어떻게 싱글스레드로 처리를 해야하는가?</li></ol><p>다양한 문서와 혼자 공부를 하면서 느낀점을 간단히 정리하면 아래와 같다</p><h3 id="싱글-스레드-이벤트-루프방식"><a href="#싱글-스레드-이벤트-루프방식" class="headerlink" title="싱글 스레드 - 이벤트 루프방식"></a>싱글 스레드 - 이벤트 루프방식</h3><p>진입점이 하나! 발생한 모든 이벤트들을 줄세워서 처리!</p><p>즉 node.js의 작동원리를 햄버거가게로 생각하면 된다.<br>아래의 조건들이 있다면</p><ol><li>주문하는사람</li><li>주문받는사람 한명 </li><li>패티굽는사람</li></ol><p>주문하는 사람을 유저로 생각하자!<br>주문받는사람 한명이 싱글스레드라 생각한다. 주문(이벤트 발생)이 들어오면 패티굽는사람(백단 스레드)로 이벤트를 넘긴다.</p><p>즉, 수많은! 주문이 들어온다하더라도 이벤트를 줄세우고 주문을 받기만 하면된다.(기본적으로 백단 스레드는 4개, but 환경변수를 통해 늘릴수 있다는 점!)</p><h3 id="좀-더-발전된-방향의-개발을-하려면"><a href="#좀-더-발전된-방향의-개발을-하려면" class="headerlink" title="좀 더 발전된 방향의 개발을 하려면?"></a>좀 더 발전된 방향의 개발을 하려면?</h3><p>서버 개발자라면! IO걱정을 하며 개발을 진행하게 된다. 데이터베이스에 접근할때도 Join을 남발을 하게 되면 IO가 더 커진다. 항상 비용을 생각하며 개발을 진행을 하는 습관을 가져야한다. 보통 하드웨어 성능을 빵빵하게 해서 하면 해결이 되긴하지만.. 그건 너무 비양심적인 행동이라 생각한다…<br>그렇다면! nodeJs로 개발을 진행하게 된다면! 좀더 서비스로직 개선에 관련하여 더 많은 생각을 해야한다 판단이된다. 노력해야할점이다…</p><p>지금까지 느낀점을.. 잠깐 적은….. 글… 더 좋은글을 쓸 수 있는 날까지… </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;NodeJs-잠깐-생각정리&quot;&gt;&lt;a href=&quot;#NodeJs-잠깐-생각정리&quot; class=&quot;headerlink&quot; title=&quot;NodeJs 잠깐 생각정리&quot;&gt;&lt;/a&gt;NodeJs 잠깐 생각정리&lt;/h1&gt;&lt;p&gt;항상 멀티쓰레드환경에서 개발을 하다가 n
+      
+    
+    </summary>
+    
+      <category term="node.js" scheme="https://beanbroker.github.io/categories/node-js/"/>
+    
+    
+      <category term="node.js" scheme="https://beanbroker.github.io/tags/node-js/"/>
+    
+  </entry>
+  
+  <entry>
     <title>RestApi with sequelize 1장</title>
     <link href="https://beanbroker.github.io/2018/08/29/nodejs/restapi1/"/>
     <id>https://beanbroker.github.io/2018/08/29/nodejs/restapi1/</id>
@@ -2019,31 +2081,6 @@
       <category term="node.js" scheme="https://beanbroker.github.io/tags/node-js/"/>
     
       <category term="sequelize" scheme="https://beanbroker.github.io/tags/sequelize/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NodeJs 생각정리</title>
-    <link href="https://beanbroker.github.io/2018/08/29/nodejs/thinknodejs/"/>
-    <id>https://beanbroker.github.io/2018/08/29/nodejs/thinknodejs/</id>
-    <published>2018-08-29T09:30:00.000Z</published>
-    <updated>2019-07-07T08:12:45.329Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="NodeJs-잠깐-생각정리"><a href="#NodeJs-잠깐-생각정리" class="headerlink" title="NodeJs 잠깐 생각정리"></a>NodeJs 잠깐 생각정리</h1><p>항상 멀티쓰레드환경에서 개발을 하다가 node.js를 개발하다보니 궁금점들이 생긴다.</p><p>궁금점?</p><ol><li>싱글스레드다</li><li>was는 멀티스레드 환경! 노드는 어떻게 싱글스레드로 처리를 해야하는가?</li></ol><p>다양한 문서와 혼자 공부를 하면서 느낀점을 간단히 정리하면 아래와 같다</p><h3 id="싱글-스레드-이벤트-루프방식"><a href="#싱글-스레드-이벤트-루프방식" class="headerlink" title="싱글 스레드 - 이벤트 루프방식"></a>싱글 스레드 - 이벤트 루프방식</h3><p>진입점이 하나! 발생한 모든 이벤트들을 줄세워서 처리!</p><p>즉 node.js의 작동원리를 햄버거가게로 생각하면 된다.<br>아래의 조건들이 있다면</p><ol><li>주문하는사람</li><li>주문받는사람 한명 </li><li>패티굽는사람</li></ol><p>주문하는 사람을 유저로 생각하자!<br>주문받는사람 한명이 싱글스레드라 생각한다. 주문(이벤트 발생)이 들어오면 패티굽는사람(백단 스레드)로 이벤트를 넘긴다.</p><p>즉, 수많은! 주문이 들어온다하더라도 이벤트를 줄세우고 주문을 받기만 하면된다.(기본적으로 백단 스레드는 4개, but 환경변수를 통해 늘릴수 있다는 점!)</p><h3 id="좀-더-발전된-방향의-개발을-하려면"><a href="#좀-더-발전된-방향의-개발을-하려면" class="headerlink" title="좀 더 발전된 방향의 개발을 하려면?"></a>좀 더 발전된 방향의 개발을 하려면?</h3><p>서버 개발자라면! IO걱정을 하며 개발을 진행하게 된다. 데이터베이스에 접근할때도 Join을 남발을 하게 되면 IO가 더 커진다. 항상 비용을 생각하며 개발을 진행을 하는 습관을 가져야한다. 보통 하드웨어 성능을 빵빵하게 해서 하면 해결이 되긴하지만.. 그건 너무 비양심적인 행동이라 생각한다…<br>그렇다면! nodeJs로 개발을 진행하게 된다면! 좀더 서비스로직 개선에 관련하여 더 많은 생각을 해야한다 판단이된다. 노력해야할점이다…</p><p>지금까지 느낀점을.. 잠깐 적은….. 글… 더 좋은글을 쓸 수 있는 날까지… </p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;NodeJs-잠깐-생각정리&quot;&gt;&lt;a href=&quot;#NodeJs-잠깐-생각정리&quot; class=&quot;headerlink&quot; title=&quot;NodeJs 잠깐 생각정리&quot;&gt;&lt;/a&gt;NodeJs 잠깐 생각정리&lt;/h1&gt;&lt;p&gt;항상 멀티쓰레드환경에서 개발을 하다가 n
-      
-    
-    </summary>
-    
-      <category term="node.js" scheme="https://beanbroker.github.io/categories/node-js/"/>
-    
-    
-      <category term="node.js" scheme="https://beanbroker.github.io/tags/node-js/"/>
     
   </entry>
   
@@ -2792,9 +2829,9 @@
       <category term="Java" scheme="https://beanbroker.github.io/categories/Spring/Java/"/>
     
     
-      <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
-    
       <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
+    
+      <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
     
   </entry>
   

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="naver-site-verification" content="67083ed945b6af7f93ba51ef87f7f48745abe975">
+<script data-ad-client="ca-pub-7332507555012085" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<link rel="canonical" href="https://beanbroker.github.io/2020/07/04/spring/spring_es_search1/">    
+
+    <!--Description-->
+    
+        <meta name="description" content="개발관련">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="beanbroker">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Spring Elastic Search 연동(docker)">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="개발관련">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="beanbroker blog">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>Spring Elastic Search 연동(docker) - beanbroker blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-86502943-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+<link rel="canonical" href="https://beanbroker.github.io/2020/07/04/spring/spring_es_search1/">
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="beanbroker blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="beanbroker blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about.html" title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/contact.html" title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Spring Elastic Search 연동(docker)</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2020-07-04</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a> <a class="fw3 ph1 dib" href="/tags/docker/">#docker</a> <a class="fw3 ph1 dib" href="/tags/Elastic-Search/">#Elastic Search</a> <a class="fw3 ph1 dib" href="/tags/ES/">#ES</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="Spring-Elastic-Search-연동-docker-1편"><a href="#Spring-Elastic-Search-연동-docker-1편" class="headerlink" title="Spring Elastic Search 연동(docker) 1편"></a>Spring Elastic Search 연동(docker) 1편</h1><h1 id="1-Docker-Elastic-Search-설치"><a href="#1-Docker-Elastic-Search-설치" class="headerlink" title="1. Docker Elastic Search 설치"></a>1. Docker Elastic Search 설치</h1><p>docker 설치 방법은! 다른 블로그에서 참고하자</p>
+<blockquote>
+<p>docker 이미지 받아오기<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull docker.elastic.co/elasticsearch/elasticsearch:7.7.1</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>7.x 버전에서는 싱글노드 실행시 아래와 같이 실행</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; docker.elastic.co/elasticsearch/elasticsearch:7.7.1</span><br></pre></td></tr></table></figure>
+<p> 위와 같이 실행시 아래와 같이 실행이 되어진다.<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> &#123;&quot;type&quot;: &quot;server&quot;, &quot;timestamp&quot;: &quot;2020-06-28T10:31:35,754Z&quot;, &quot;level&quot;: &quot;INFO&quot;, &quot;component&quot;: &quot;o.e.e.NodeEnvironment&quot;, &quot;cluster.name&quot;: &quot;docker-cluster&quot;, &quot;node.name&quot;: &quot;dbd93832ee71&quot;, &quot;message&quot;: &quot;using [1] data paths, mounts [[/ (overlay)]], net usable_space [52.7gb], net total_space [58.4gb], types [overlay]&quot; &#125;</span><br><span class="line">&#123;&quot;type&quot;: &quot;server&quot;, &quot;timestamp&quot;: &quot;2020-06-28T10:31:35,758Z&quot;, &quot;level&quot;: &quot;INFO&quot;, &quot;component&quot;: &quot;o.e.e.NodeEnvironment&quot;, &quot;cluster.name&quot;: &quot;docker-cluster&quot;, &quot;node.name&quot;: &quot;dbd93832ee71&quot;, &quot;message&quot;: &quot;heap size [1gb], compressed ordinary object pointers [true]&quot; &#125;</span><br><span class="line">&#123;&quot;type&quot;: &quot;server&quot;, &quot;timestamp&quot;: &quot;2020-06-28T10:31:35,842Z&quot;, &quot;level&quot;: &quot;INFO&quot;, &quot;component&quot;: &quot;o.e.n.Node&quot;, &quot;cluster.name&quot;: &quot;docker-cluster&quot;, &quot;node.name&quot;: &quot;dbd93832ee71&quot;, &quot;message&quot;: &quot;node name [dbd93832ee71], node ID [sxcEM2FoQKO5w4Coh2uK6A], cluster name [docker-cluster]&quot; &#125;</span><br><span class="line">&#123;&quot;type&quot;: &quot;server&quot;, &quot;timestamp&quot;: &quot;2020-06-28T10:31:35,847Z&quot;, &quot;level&quot;: &quot;INFO&quot;, &quot;component&quot;: &quot;o.e.n.Node&quot;, &quot;cluster.name&quot;: &quot;docker-cluster&quot;, &quot;node.name&quot;: &quot;dbd93832ee71&quot;, &quot;message&quot;: &quot;version[7.7.1], pid[6], build[default/docker/ad56dce891c901a492bb1ee393f12dfff473a423/2020-05-28T16:30:01.040088Z], OS[Linux/4.9.125-linuxkit/amd64], JVM[AdoptOpenJDK/OpenJDK 64-Bit Server VM/14.0.1/14.0.1+7]&quot; &#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>정상 실행 확인 방법</p>
+</blockquote>
+<p>postman 또는 그냥 웹브라우저에서 <a href="http://localhost:9200/" rel="external nofollow noopener noreferrer" target="_blank">http://localhost:9200/</a> 접근시 아래와 같은 응답을 받은 것을 확인.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span> : <span class="string">"dbd93832ee71"</span>,</span><br><span class="line">  <span class="attr">"cluster_name"</span> : <span class="string">"docker-cluster"</span>,</span><br><span class="line">  <span class="attr">"cluster_uuid"</span> : <span class="string">"AxvSUvrpRk6lrJSEG5fe5w"</span>,</span><br><span class="line">  <span class="attr">"version"</span> : &#123;</span><br><span class="line">    <span class="attr">"number"</span> : <span class="string">"7.7.1"</span>,</span><br><span class="line">    <span class="attr">"build_flavor"</span> : <span class="string">"default"</span>,</span><br><span class="line">    <span class="attr">"build_type"</span> : <span class="string">"docker"</span>,</span><br><span class="line">    <span class="attr">"build_hash"</span> : <span class="string">"ad56dce891c901a492bb1ee393f12dfff473a423"</span>,</span><br><span class="line">    <span class="attr">"build_date"</span> : <span class="string">"2020-05-28T16:30:01.040088Z"</span>,</span><br><span class="line">    <span class="attr">"build_snapshot"</span> : <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"lucene_version"</span> : <span class="string">"8.5.1"</span>,</span><br><span class="line">    <span class="attr">"minimum_wire_compatibility_version"</span> : <span class="string">"6.8.0"</span>,</span><br><span class="line">    <span class="attr">"minimum_index_compatibility_version"</span> : <span class="string">"6.0.0-beta1"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"tagline"</span> : <span class="string">"You Know, for Search"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="2-spirng과-연동-해보자"><a href="#2-spirng과-연동-해보자" class="headerlink" title="2. spirng과 연동 해보자"></a>2. spirng과 연동 해보자</h1><h2 id="spring-boot-version-2-3-1"><a href="#spring-boot-version-2-3-1" class="headerlink" title="spring boot version : 2.3.1"></a>spring boot version : 2.3.1</h2><p>연동시에 여러가집 방법이 있지만 해당 블로그에선 HighLevelRestClient를 쓸 예정</p>
+<p>비교 정리내용 : <a href="https://kok202.tistory.com/102" rel="external nofollow noopener noreferrer" target="_blank">https://kok202.tistory.com/102</a> 블로그</p>
+<p>rest high level client 부터는 tcp connection 이 아닌 http connection 을 맺는다.</p>
+<blockquote>
+<p>github sample code</p>
+</blockquote>
+<p>클릭 -&gt; <a href="https://github.com/beanbroker/sample_elastic_search" rel="external nofollow noopener noreferrer" target="_blank">Spring ES sample code</a></p>
+<blockquote>
+<p>아래처럼 high-level-client 디펜던시 추가</p>
+</blockquote>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">compile</span> <span class="string">'org.elasticsearch:elasticsearch:7.7.0'</span></span><br><span class="line"><span class="keyword">compile</span> <span class="string">'org.elasticsearch.client:elasticsearch-rest-high-level-client:7.7.0'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>application.yml</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 9000</span><br><span class="line">spring:</span><br><span class="line">  elasticsearch:</span><br><span class="line">    rest:</span><br><span class="line">      uris: http://localhost:9200</span><br></pre></td></tr></table></figure>
+<p>기존에는 아래의 코드 처럼 esconfig를 직접 설정해주어야 했는데 spring boot 2.2 인지 2.3에서 편하게 yml로 config를 설정할수 있게 도와주는 것 같다. 정확하게 어느 버전인지는 찾아보지 않았음.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ElasticsearchConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Bean</span>(destroyMethod = <span class="string">"close"</span>)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> RestHighLevelClient <span class="title">elasticsearchClient</span><span class="params">(ElasticsearchProperties properties)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> RestHighLevelClient(RestClient.builder(properties.hosts()));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>UserController.java </p>
+</blockquote>
+<p>인덱스 생성과 생성된 index를 가져오는 테스트만을 진행할 것이다.</p>
+<p>물론 query build를 통한 search도 가능하나 간단하게 연동을 위한 블로그임을!!! 미리 말씀드린다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> UserService userService;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">UserController</span><span class="params">(UserService userService)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.userService = userService;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@PostMapping</span>(<span class="string">"/users"</span>)</span><br><span class="line">  <span class="meta">@ResponseStatus</span>(HttpStatus.CREATED)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">createUserProfile</span><span class="params">(@RequestBody UserProfileDto profile)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> userService.createUserIndex(profile.toBeanbrokerUser());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@GetMapping</span>(<span class="string">"/users/&#123;userKey&#125;"</span>)</span><br><span class="line">  <span class="meta">@ResponseStatus</span>(HttpStatus.CREATED)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> GetResponse <span class="title">getUserProfile</span><span class="params">(@PathVariable(<span class="string">"userKey"</span>)</span> String userKey) <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> userService.getUserIndex(userKey);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>UserService.java</p>
+</blockquote>
+<p>테스트를 위해 사용하려는 IndexRequest, GetRequest가 Deprecated되었다.. 일단 잘 작동하나 왜 Deprecated되었는지는 알수 없다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Autowired</span> <span class="keyword">private</span> RestHighLevelClient restHighLevelClient;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Autowired</span> <span class="keyword">private</span> ObjectMapper objectMapper;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String USER_DOC_TYPE = <span class="string">"_doc"</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String USER_INDEX = <span class="string">"user"</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">createUserIndex</span><span class="params">(BeanbrokerUser user)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// set unique index on User</span></span><br><span class="line">    String uniqueId = UUID.randomUUID().toString();</span><br><span class="line">    user.setUniqueId(uniqueId);</span><br><span class="line"></span><br><span class="line">    Map&lt;String, Object&gt; userDocument = objectMapper.convertValue(user, Map.class);</span><br><span class="line"></span><br><span class="line">    IndexRequest indexRequest = <span class="keyword">new</span> IndexRequest(USER_INDEX, USER_DOC_TYPE, uniqueId);</span><br><span class="line">    indexRequest.source(userDocument, XContentType.JSON);</span><br><span class="line"></span><br><span class="line">    IndexResponse indexResponse = restHighLevelClient.index(indexRequest, RequestOptions.DEFAULT);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="string">"CREATED"</span>.equals(indexResponse.getResult().name())) &#123;</span><br><span class="line">      <span class="keyword">return</span> uniqueId;</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> indexResponse.getResult().name();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> GetResponse <span class="title">getUserIndex</span><span class="params">(String userKey)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">    GetRequest getRequest = <span class="keyword">new</span> GetRequest(USER_INDEX, USER_DOC_TYPE, userKey);</span><br><span class="line"></span><br><span class="line">    GetResponse getResponse = restHighLevelClient.get(getRequest, RequestOptions.DEFAULT);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> getResponse;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="테스트-해보자"><a href="#테스트-해보자" class="headerlink" title="테스트 해보자"></a>테스트 해보자</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">curl --location --request POST <span class="string">'http://localhost:9000/users'</span> \</span><br><span class="line">--header <span class="string">'Content-Type: application/json'</span> \</span><br><span class="line">--header <span class="string">'Content-Type: text/plain'</span> \</span><br><span class="line">--header <span class="string">'Cookie: JSESSIONID=CAA019F0C3D0B5129E22A4DC86CDC7B7'</span> \</span><br><span class="line">--data-raw <span class="string">'&#123;</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">	"userId" : "beanbroker",</span></span><br><span class="line"><span class="string">	"name" : "pkj",</span></span><br><span class="line"><span class="string">	"email" : "beanbroker@test.com"</span></span><br><span class="line"><span class="string">&#125;'</span></span><br></pre></td></tr></table></figure>
+<p>위처럼 유저 생성 curl 후 성공 일경우 ‘f860b9c2-3f45-48ae-95bf-bf43d58ec6bb’ 와 같은 id를 받게 된다. 잘생성되었는지 확인해봐야하지 않겠는가?</p>
+<p><a href="http://localhost:9200/_search" rel="external nofollow noopener noreferrer" target="_blank">http://localhost:9200/_search</a> 접근 아래처럼 정상적으로 노출</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"took"</span>:<span class="number">107</span>,</span><br><span class="line">   <span class="attr">"timed_out"</span>:<span class="literal">false</span>,</span><br><span class="line">   <span class="attr">"_shards"</span>:&#123;</span><br><span class="line">      <span class="attr">"total"</span>:<span class="number">1</span>,</span><br><span class="line">      <span class="attr">"successful"</span>:<span class="number">1</span>,</span><br><span class="line">      <span class="attr">"skipped"</span>:<span class="number">0</span>,</span><br><span class="line">      <span class="attr">"failed"</span>:<span class="number">0</span></span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="attr">"hits"</span>:&#123;</span><br><span class="line">      <span class="attr">"total"</span>:&#123;</span><br><span class="line">         <span class="attr">"value"</span>:<span class="number">1</span>,</span><br><span class="line">         <span class="attr">"relation"</span>:<span class="string">"eq"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">"max_score"</span>:<span class="number">1.0</span>,</span><br><span class="line">      <span class="attr">"hits"</span>:[</span><br><span class="line">         &#123;</span><br><span class="line">            <span class="attr">"_index"</span>:<span class="string">"user"</span>,</span><br><span class="line">            <span class="attr">"_type"</span>:<span class="string">"_doc"</span>,</span><br><span class="line">            <span class="attr">"_id"</span>:<span class="string">"f860b9c2-3f45-48ae-95bf-bf43d58ec6bb"</span>,</span><br><span class="line">            <span class="attr">"_score"</span>:<span class="number">1.0</span>,</span><br><span class="line">            <span class="attr">"_source"</span>:&#123;</span><br><span class="line">               <span class="attr">"uniqueId"</span>:<span class="string">"f860b9c2-3f45-48ae-95bf-bf43d58ec6bb"</span>,</span><br><span class="line">               <span class="attr">"userId"</span>:<span class="string">"beanbroker"</span>,</span><br><span class="line">               <span class="attr">"name"</span>:<span class="string">"pkj"</span>,</span><br><span class="line">               <span class="attr">"email"</span>:<span class="string">"beanbroker@test.com"</span>,</span><br><span class="line">               <span class="attr">"createdAt"</span>:<span class="string">"2020-07-04T17:43:17.726"</span></span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">      ]</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>생성에서 받은 유저의 uniqueid를 users/{value} value에 집어 넣어보자</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">curl --location --request GET <span class="string">'http://localhost:9000/users/f860b9c2-3f45-48ae-95bf-bf43d58ec6bb'</span> \</span><br><span class="line">--header <span class="string">'Content-Type: application/json'</span> \</span><br><span class="line">--header <span class="string">'Content-Type: text/plain'</span> \</span><br><span class="line">--header <span class="string">'Cookie: JSESSIONID=CAA019F0C3D0B5129E22A4DC86CDC7B7'</span> \</span><br><span class="line">--data-raw <span class="string">'&#123;</span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">	"userId" : "beanbroker",</span></span><br><span class="line"><span class="string">	"name" : "pkj",</span></span><br><span class="line"><span class="string">	"email" : "beanbroker@test.com"</span></span><br><span class="line"><span class="string">&#125;'</span></span><br></pre></td></tr></table></figure>
+<p>아래 처럼 결과가 나온다.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"fields"</span>: &#123;&#125;,</span><br><span class="line">    <span class="attr">"id"</span>: <span class="string">"f860b9c2-3f45-48ae-95bf-bf43d58ec6bb"</span>,</span><br><span class="line">    <span class="attr">"type"</span>: <span class="string">"_doc"</span>,</span><br><span class="line">    <span class="attr">"version"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">"seqNo"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"exists"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"primaryTerm"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">"sourceEmpty"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"sourceAsBytes"</span>: <span class="string">"eyJ1bmlxdWVJZCI6ImY4NjBiOWMyLTNmNDUtNDhhZS05NWJmLWJmNDNkNThlYzZiYiIsInVzZXJJZCI6ImJlYW5icm9rZXIiLCJuYW1lIjoicGtqIiwiZW1haWwiOiJiZWFuYnJva2VyQHRlc3QuY29tIiwiY3JlYXRlZEF0IjoiMjAyMC0wNy0wNFQxNzo0MzoxNy43MjYifQ=="</span>,</span><br><span class="line">    <span class="attr">"sourceInternal"</span>: &#123;</span><br><span class="line">        <span class="attr">"fragment"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"sourceAsBytesRef"</span>: &#123;</span><br><span class="line">        <span class="attr">"fragment"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"sourceAsString"</span>: <span class="string">"&#123;\"uniqueId\":\"f860b9c2-3f45-48ae-95bf-bf43d58ec6bb\",\"userId\":\"beanbroker\",\"name\":\"pkj\",\"email\":\"beanbroker@test.com\",\"createdAt\":\"2020-07-04T17:43:17.726\"&#125;"</span>,</span><br><span class="line">    <span class="attr">"sourceAsMap"</span>: &#123;</span><br><span class="line">        <span class="attr">"createdAt"</span>: <span class="string">"2020-07-04T17:43:17.726"</span>,</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"pkj"</span>,</span><br><span class="line">        <span class="attr">"userId"</span>: <span class="string">"beanbroker"</span>,</span><br><span class="line">        <span class="attr">"uniqueId"</span>: <span class="string">"f860b9c2-3f45-48ae-95bf-bf43d58ec6bb"</span>,</span><br><span class="line">        <span class="attr">"email"</span>: <span class="string">"beanbroker@test.com"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"user"</span>,</span><br><span class="line">    <span class="attr">"source"</span>: &#123;</span><br><span class="line">        <span class="attr">"createdAt"</span>: <span class="string">"2020-07-04T17:43:17.726"</span>,</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"pkj"</span>,</span><br><span class="line">        <span class="attr">"userId"</span>: <span class="string">"beanbroker"</span>,</span><br><span class="line">        <span class="attr">"uniqueId"</span>: <span class="string">"f860b9c2-3f45-48ae-95bf-bf43d58ec6bb"</span>,</span><br><span class="line">        <span class="attr">"email"</span>: <span class="string">"beanbroker@test.com"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"fragment"</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="http://localhost:9200/user/_search" rel="external nofollow noopener noreferrer" target="_blank">http://localhost:9200/user/_search</a> 이렇게하면 user index에 대한 search가 된다.</p>
+<p>물론 실제로 서비스로 사용하기 위해선 강력하게 kibana가 셋팅되어야 함을 공유드리며 끝!!! 좀더 자세히 적고 설명도 붙이고 싶으나 약속이 있어서 후려쳐서.. 올려본다……</p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a> <a class="fw3 ph1 dib" href="/tags/docker/">#docker</a> <a class="fw3 ph1 dib" href="/tags/Elastic-Search/">#Elastic Search</a> <a class="fw3 ph1 dib" href="/tags/ES/">#ES</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="beanbroker">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            Good to see you! have a fun
+        </div>
+    </article>
+ <!-- vertical_google ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- vertical -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7332507555012085" data-ad-slot="7532778343" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<!-- vertical_google ads -->
+
+</div>
+
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Spring/">Spring</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Spring/Elastic-Search/">Elastic Search</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Spring/Elastic-Search/ES/">ES</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Spring/Elastic-Search/ES/docker/">docker</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2020/07/04/Spring/spring_es_search1/">Spring Elastic Search 연동(docker)</a>
+        </p>
+    
+        <p>
+            <a href="/2020/05/30/Spring/test_code4/">Spring Test Code 4</a>
+        </p>
+    
+        <p>
+            <a href="/2020/02/16/Spring/spring_security2/">Spring Security 2장 버젼 업그레이드</a>
+        </p>
+    
+        <p>
+            <a href="/2020/02/15/Spring/spring_security1/">Spring Security 1장 간단 구현</a>
+        </p>
+    
+        <p>
+            <a href="/2019/12/14/Kotlin/kotlin_webflux_sse/">SSE(Server-Sent Events) with Spring kotlin</a>
+        </p>
+    
+        <p>
+            <a href="/2019/12/01/etc/cors_curl/">CORS 체크 curl</a>
+        </p>
+    
+        <p>
+            <a href="/2019/11/09/Java/Java8_default_method/">Java8 default method</a>
+        </p>
+    
+        <p>
+            <a href="/2019/10/12/Spring/understanding_proxy/">understanding proxy usage in Spring</a>
+        </p>
+    
+
+	<script src="https://ads-partners.coupang.com/g.js"></script>
+<script>
+	new PartnersCoupang.G({ id: AF0184271 });
+</script>
+
+
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/beanbroker" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Beanbroker blog All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/" rel="external nofollow noopener noreferrer" target="_blank">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+ <!-- horizontal_google Top -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- horizontal -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7332507555012085" data-ad-slot="3920642873" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<!-- horizontal_google Top -->
+
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
