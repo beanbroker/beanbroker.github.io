@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://beanbroker.github.io/"/>
-  <updated>2020-07-04T08:49:38.035Z</updated>
+  <updated>2020-07-12T11:54:27.242Z</updated>
   <id>https://beanbroker.github.io/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring MongoDB Docker replica 설정</title>
+    <link href="https://beanbroker.github.io/2020/07/12/Spring/spring_mongodb_docker_replica/"/>
+    <id>https://beanbroker.github.io/2020/07/12/Spring/spring_mongodb_docker_replica/</id>
+    <published>2020-07-12T12:00:00.000Z</published>
+    <updated>2020-07-12T11:54:27.242Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Spring-MongoDB-연동-docker-1편"><a href="#Spring-MongoDB-연동-docker-1편" class="headerlink" title="Spring MongoDB 연동(docker) 1편"></a>Spring MongoDB 연동(docker) 1편</h1><h1 id="1-Docker-MongoDB-replica-Setting-하기"><a href="#1-Docker-MongoDB-replica-Setting-하기" class="headerlink" title="1. Docker MongoDB replica Setting 하기"></a>1. Docker MongoDB replica Setting 하기</h1><p>docker 설치 방법은! 다른 블로그에서 참고하자(잘 정리되어있는 블로그가 많다… 귀찮아도.. 찾아서 하시길..)</p><h2 id="1-docker-이미지-받아오기-최신-버전을-받아옴-특정-버젼을-받아온다하여도-문제되지-않음"><a href="#1-docker-이미지-받아오기-최신-버전을-받아옴-특정-버젼을-받아온다하여도-문제되지-않음" class="headerlink" title="1. docker 이미지 받아오기(최신 버전을 받아옴, 특정 버젼을 받아온다하여도 문제되지 않음)"></a>1. docker 이미지 받아오기(최신 버전을 받아옴, 특정 버젼을 받아온다하여도 문제되지 않음)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mongo</span><br></pre></td></tr></table></figure><h2 id="2-docker-images-해당-명령어를-통해-정상적으로-설치되었음을-확인"><a href="#2-docker-images-해당-명령어를-통해-정상적으로-설치되었음을-확인" class="headerlink" title="2. docker images (해당 명령어를 통해 정상적으로 설치되었음을 확인)"></a>2. docker images (해당 명령어를 통해 정상적으로 설치되었음을 확인)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">REPOSITORY                                      TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">mongo                                           latest              2b2cc1f48aed        3 weeks ago         388MB</span><br><span class="line">docker.elastic.co/elasticsearch/elasticsearch   7.7.1               830a894845e3        6 weeks ago         804MB</span><br><span class="line">redis                                           latest              44d36d2c2374        5 months ago        98.2MB</span><br><span class="line">mysql                                           5.7                 a1aa4f76fab9        13 months ago       373MB</span><br></pre></td></tr></table></figure><h2 id="3-docker-네트워크-생성"><a href="#3-docker-네트워크-생성" class="headerlink" title="3. docker 네트워크 생성"></a>3. docker 네트워크 생성</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create mongo-cluster-dev</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker network ls 명령어를 치게 되면 아래처럼 mongo-cluster-dev가 보임</span><br><span class="line"></span><br><span class="line">fbcc93ab4ca3        mongo-cluster-dev   bridge              local</span><br></pre></td></tr></table></figure><h2 id="4-mongodb-컨테이너를-생성해보자-터미널-3개를-열어서-해야한다-다른방법-아시는분"><a href="#4-mongodb-컨테이너를-생성해보자-터미널-3개를-열어서-해야한다-다른방법-아시는분" class="headerlink" title="4. mongodb 컨테이너를 생성해보자 (터미널 3개를 열어서 해야한다 다른방법 아시는분?)"></a>4. mongodb 컨테이너를 생성해보자 (터미널 3개를 열어서 해야한다 다른방법 아시는분?)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1번</span><br><span class="line">docker run -p 20001:27017 --name mongo-dev1 --net mongo-cluster-dev mongo mongod --replSet mongo-replica</span><br><span class="line"></span><br><span class="line">2번</span><br><span class="line">docker run -p 20002:27017 --name mongo-dev2 --net mongo-cluster-dev mongo mongod --replSet mongo-replica</span><br><span class="line"></span><br><span class="line">3번</span><br><span class="line">docker run -p 20003:27017 --name mongo-dev3 --net mongo-cluster-dev mongo mongod --replSet mongo-replica</span><br></pre></td></tr></table></figure><h2 id="5-정상적으로-컨테이너가-기동되었는지-확인"><a href="#5-정상적으로-컨테이너가-기동되었는지-확인" class="headerlink" title="5. 정상적으로 컨테이너가 기동되었는지 확인"></a>5. 정상적으로 컨테이너가 기동되었는지 확인</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker ps 명령어 입력하면 아래처럼 나온다</span><br><span class="line"></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                      NAMES</span><br><span class="line">7deb4a92e83b        mongo               &quot;docker-entrypoint.s…&quot;   About a minute ago   Up About a minute   0.0.0.0:20003-&gt;27017/tcp   mongo-dev3</span><br><span class="line">ace5ceba26c4        mongo               &quot;docker-entrypoint.s…&quot;   About a minute ago   Up About a minute   0.0.0.0:20002-&gt;27017/tcp   mongo-dev2</span><br><span class="line">31ab9062e419        mongo               &quot;docker-entrypoint.s…&quot;   2 minutes ago        Up 2 minutes        0.0.0.0:20001-&gt;27017/tcp   mongo-dev1</span><br></pre></td></tr></table></figure><h2 id="6-mongodb-replica-setting하기"><a href="#6-mongodb-replica-setting하기" class="headerlink" title="6. mongodb replica setting하기"></a>6. mongodb replica setting하기</h2><blockquote><p>mongo-dev1 컨네이너 접속</p></blockquote><h3 id="1-mongon-dev1-컨테이너-접근"><a href="#1-mongon-dev1-컨테이너-접근" class="headerlink" title="1. mongon-dev1 컨테이너 접근"></a>1. mongon-dev1 컨테이너 접근</h3><ul><li>docker exec -it mongo-dev1 mongo</li></ul><h3 id="2-디비-생성"><a href="#2-디비-생성" class="headerlink" title="2. 디비 생성"></a>2. 디비 생성</h3><ul><li>db = (new Mongo(‘localhost:27017’)).getDB(‘beanbroker’)</li></ul><h3 id="3-replica-set-config"><a href="#3-replica-set-config" class="headerlink" title="3. replica set config"></a>3. replica set config</h3><ul><li>config = {“_id” : “mongo-replica”,”members” : [{“_id” : 0,”host” : “mongo-dev1:27017”},{    “_id” : 1, “host” : “mongo-dev2:27017”}, {“_id” : 2, “host” : “mongo-dev3:27017”}]}</li></ul><h3 id="4-레플리카-실행"><a href="#4-레플리카-실행" class="headerlink" title="4. 레플리카 실행"></a>4. 레플리카 실행</h3><ul><li>rs.initiate(config)</li></ul><h3 id="5-command-c를-통해-나온다-또는-터미널을-끄고-다시-킨다"><a href="#5-command-c를-통해-나온다-또는-터미널을-끄고-다시-킨다" class="headerlink" title="5. command c를 통해 나온다, 또는 터미널을 끄고 다시 킨다."></a>5. command c를 통해 나온다, 또는 터미널을 끄고 다시 킨다.</h3><h3 id="6-설정되었는지-확인"><a href="#6-설정되었는지-확인" class="headerlink" title="6. 설정되었는지 확인"></a>6. 설정되었는지 확인</h3><ul><li>docker exec -it mongo-dev1 mongo<ul><li>mongo-replica:PRIMARY 접근시 PRIMARY라 나옴</li></ul></li><li>docker exec -it mongo-dev2 mongo<ul><li>mongo-replica:SECONDARY 접근시 SECONDARY라 나옴</li></ul></li><li>docker exec -it mongo-dev3 mongo<ul><li>mongo-replica:SECONDARY 접근시 SECONDARY라 나옴   </li></ul></li></ul><h3 id="7-2번-3번에-접근-하여"><a href="#7-2번-3번에-접근-하여" class="headerlink" title="7. 2번 3번에 접근 하여"></a>7. 2번 3번에 접근 하여</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">db = (new Mongo(&apos;mongo-dev2:27017&apos;)).getDB(&apos;beanbroker&apos;)</span><br><span class="line">db.setSlaveOk()</span><br><span class="line"></span><br><span class="line">db = (new Mongo(&apos;mongo-dev3:27017&apos;)).getDB(&apos;beanbroker&apos;)</span><br><span class="line">db.setSlaveOk()</span><br></pre></td></tr></table></figure><h3 id="8-레플리카-정상-작동-확인-방법"><a href="#8-레플리카-정상-작동-확인-방법" class="headerlink" title="8. 레플리카 정상 작동 확인 방법"></a>8. 레플리카 정상 작동 확인 방법</h3><p>2번 또는 3번에서 아래를 입력<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.mycollection.insert(&#123;name : &apos;test-data-beanbroker&apos;&#125;)</span><br></pre></td></tr></table></figure></p><p>당연히 안된다 slave 며 read만 가능한 노드이다.</p><p>1번에 접속하여 위의 insert 입력</p><p>1번 2번 3번에 접속하여<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.mycollection.find()</span><br></pre></td></tr></table></figure></p><p>위를 입력하면 { “_id” : ObjectId(“5f0af7f488f68fcdd45f7b66”), “name” : “test-data-beanbroker” } 가 나온다</p><p>레플리카 셋팅완료</p><ul><li>마스터 노드에만 insert update가 작동한다</li><li>슬레이브 노드들에서만 read만 된다.</li><li>마스터 노드에 데이터 변경이 이뤄지었을 경우 slave로 전파 된다</li></ul><p>아…. 스프링 연동을 하기전에 도커 셋팅하느라 시간이 다간다… 그냥 무료 mongodb 클라우드를 찾아서 직접 연동해야겠다. 다음 편에는 위처럼 안하고 무료 mongodb 클라우드 찾아서 편하게 스프링 연동하는 글을…. 작성하겠습니다. </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Spring-MongoDB-연동-docker-1편&quot;&gt;&lt;a href=&quot;#Spring-MongoDB-연동-docker-1편&quot; class=&quot;headerlink&quot; title=&quot;Spring MongoDB 연동(docker) 1편&quot;&gt;&lt;/a&gt;Spri
+      
+    
+    </summary>
+    
+      <category term="Spring" scheme="https://beanbroker.github.io/categories/Spring/"/>
+    
+      <category term="MongoDB" scheme="https://beanbroker.github.io/categories/Spring/MongoDB/"/>
+    
+      <category term="replica" scheme="https://beanbroker.github.io/categories/Spring/MongoDB/replica/"/>
+    
+      <category term="docker" scheme="https://beanbroker.github.io/categories/Spring/MongoDB/replica/docker/"/>
+    
+    
+      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
+    
+      <category term="docker" scheme="https://beanbroker.github.io/tags/docker/"/>
+    
+      <category term="MongoDB" scheme="https://beanbroker.github.io/tags/MongoDB/"/>
+    
+      <category term="replica" scheme="https://beanbroker.github.io/tags/replica/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring Elastic Search 연동(docker)</title>
@@ -113,9 +150,9 @@
       <category term="Redis" scheme="https://beanbroker.github.io/categories/Java/Security/Spring/Redis/"/>
     
     
-      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
-    
       <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
+    
+      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
     
       <category term="Redis" scheme="https://beanbroker.github.io/tags/Redis/"/>
     
@@ -150,9 +187,9 @@
       <category term="Redis" scheme="https://beanbroker.github.io/categories/Java/Security/Spring/Redis/"/>
     
     
-      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
-    
       <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
+    
+      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
     
       <category term="Redis" scheme="https://beanbroker.github.io/tags/Redis/"/>
     
@@ -274,9 +311,9 @@
       <category term="Spring" scheme="https://beanbroker.github.io/categories/Java/Spring/"/>
     
     
-      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
-    
       <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
+    
+      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -303,9 +340,9 @@
       <category term="Kotlin" scheme="https://beanbroker.github.io/categories/Java/Kotlin/"/>
     
     
-      <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
-    
       <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
+    
+      <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -332,9 +369,42 @@
       <category term="Kotlin" scheme="https://beanbroker.github.io/categories/Java/Kotlin/"/>
     
     
+      <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
+    
       <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
     
-      <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
+  </entry>
+  
+  <entry>
+    <title>Redis Client with Kotlin Spring</title>
+    <link href="https://beanbroker.github.io/2019/10/05/Kotlin/spring_redis_client_kotlin/"/>
+    <id>https://beanbroker.github.io/2019/10/05/Kotlin/spring_redis_client_kotlin/</id>
+    <published>2019-10-05T10:00:00.000Z</published>
+    <updated>2019-10-05T08:55:59.141Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="자바-Redis-Client"><a href="#자바-Redis-Client" class="headerlink" title="자바 Redis Client"></a>자바 Redis Client</h1><p><a href="https://github.com/xetorthio/jedis" rel="external nofollow noopener noreferrer" target="_blank">jedis github</a> </p><p><a href="https://github.com/lettuce-io/lettuce-core" rel="external nofollow noopener noreferrer" target="_blank">lettuce github</a> </p><p><a href="https://lettuce.io/core/release/reference/" rel="external nofollow noopener noreferrer" target="_blank">lettuce spring</a> </p><p>자바에서 Redis를 쓸 때 대표적으로 2개의 클라이언트가 있다.</p><p>Jedis와 lettuce</p><p>Lettuce - Advanced Java Redis client 라 소개 되어있으며, 비동기를 지원한다. 또한 스프링부트 2.0 위의 버젼부터는 lettuce를 기본적으로 redis client로 사용하고 있다. 즉…. Redis를 사용할 때 lettuce를 쓰자이다.. 물론.. 이미 부트 2.0에서 lettuce를 default로 물고 있으니 자연스럽게 2.0버젼부터는 쓰게 될것이다.</p><blockquote><p>Lettuce is a scalable thread-safe Redis client based on netty and Reactor. Lettuce provides synchronous, asynchronous and reactive APIs to interact with Redis.</p></blockquote><p>2.0 이하 버젼에서 lettuce를 적용해본적은 없으나 지금 테스트 해보는 부분은 부트2.0 이상이다.</p><h1 id="간단-Spring-boot-2-0-redis-설정"><a href="#간단-Spring-boot-2-0-redis-설정" class="headerlink" title="간단 Spring boot 2.0 redis 설정"></a>간단 Spring boot 2.0 redis 설정</h1><p>블로그를 어디 찾다가 보면 무료 redis cloud를 쓸수 있지만 귀찮으므로 내장 redis를 활용해보자.. 상용환경에서는 절대 쓰면 안된다. </p><p>코드는 kotlin으로 작성</p><blockquote><p>EmbeddedRedisConfig<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EmbeddedRedisConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"\$&#123;spring.redis.port&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> val redisPort: Int = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> redisServer: RedisServer? = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="meta">@Throws</span>(IOException::<span class="class"><span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    <span class="title">fun</span> <span class="title">redisServer</span>() </span>&#123;</span><br><span class="line">        redisServer = RedisServer(redisPort)</span><br><span class="line">        redisServer!!.start()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PreDestroy</span></span><br><span class="line">    <span class="function">fun <span class="title">stopRedis</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (redisServer != <span class="keyword">null</span>) &#123;</span><br><span class="line">            redisServer!!.stop()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></blockquote><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">'org.springframework.boot:spring-boot-starter-data-redis'</span></span><br><span class="line"><span class="keyword">compile</span> <span class="keyword">group</span>: <span class="string">'it.ozimov'</span>, name: <span class="string">'embedded-redis'</span>, version: <span class="string">'0.7.2'</span></span><br></pre></td></tr></table></figure><p>build.gradle추가 </p><h2 id="A-Lettuce-설정"><a href="#A-Lettuce-설정" class="headerlink" title="A - Lettuce 설정"></a>A - Lettuce 설정</h2><p>아래와 같이 default spring redis client인 lettuce설정</p><p>정상적으로 작동함을 확인 할수 있으며 물론 CacheErrorHandler 오버라이드 해서 반드시 더 자세한 에러처리를 해야한다.</p><p>또한 value 시리얼라이져를 왜 잭슨 2로 해야 하는지 고민해야한다. 다른것으로 해보고 테스트 해야하지만 이번 블로그는 이와 해당내용되지 않기 때문에 패스</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableRedisRepositories</span></span><br><span class="line"><span class="meta">@EnableCaching</span></span><br><span class="line">class RedisConfig : CachingConfigurerSupport() &#123;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"\$&#123;spring.redis.host&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> val redisHost: String? = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"\$&#123;spring.redis.port&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> val redisPort: Int = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"\$&#123;spring.redis.password&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> val redisPassword: String? = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span>()</span><br><span class="line">    <span class="function">fun <span class="title">lettuceConnectionFactory</span><span class="params">()</span>: RedisConnectionFactory </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> LettuceConnectionFactory(redisHost!!, redisPort)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span>(<span class="string">"redisTemplateWithLettuce"</span>)</span><br><span class="line">    <span class="function">fun <span class="title">redisTemplateWithLettuce</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    )</span>: RedisTemplate&lt;*, *&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">        val template = RedisTemplate&lt;String, Any&gt;()</span><br><span class="line">        template.keySerializer = StringRedisSerializer()</span><br><span class="line">        template.valueSerializer = GenericJackson2JsonRedisSerializer()</span><br><span class="line">        template.hashKeySerializer = StringRedisSerializer()</span><br><span class="line">        template.hashValueSerializer = GenericJackson2JsonRedisSerializer()</span><br><span class="line"></span><br><span class="line">        template.setConnectionFactory(lettuceConnectionFactory())</span><br><span class="line">        template.setEnableTransactionSupport(<span class="keyword">true</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> template</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="B-Jeddis-설정"><a href="#B-Jeddis-설정" class="headerlink" title="B - Jeddis 설정"></a>B - Jeddis 설정</h2><p>아래와 같이 설정하면 에러가 발생한다 왜일가?</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableRedisRepositories</span></span><br><span class="line"><span class="meta">@EnableCaching</span></span><br><span class="line">class RedisConfig : CachingConfigurerSupport() &#123;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"\$&#123;spring.redis.host&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> val redisHost: String? = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"\$&#123;spring.redis.port&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> val redisPort: Int = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"\$&#123;spring.redis.password&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> val redisPassword: String? = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span>()</span><br><span class="line">    <span class="function">fun <span class="title">jedisConnectionFactory</span><span class="params">()</span>: JedisConnectionFactory </span>&#123;</span><br><span class="line"></span><br><span class="line">        val redisStandaloneConfiguration = RedisStandaloneConfiguration(redisHost!!, redisPort)</span><br><span class="line">        redisStandaloneConfiguration.setPassword(redisPassword)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> JedisConnectionFactory(redisStandaloneConfiguration)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span>(<span class="string">"redisTemplateWithJedis"</span>)</span><br><span class="line">    <span class="function">fun <span class="title">redisTemplateWithJedis</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    )</span>: RedisTemplate&lt;*, *&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">        val template = RedisTemplate&lt;String, Any&gt;()</span><br><span class="line">        template.keySerializer = StringRedisSerializer()</span><br><span class="line">        template.valueSerializer = GenericJackson2JsonRedisSerializer()</span><br><span class="line">        template.hashKeySerializer = StringRedisSerializer()</span><br><span class="line">        template.hashValueSerializer = GenericJackson2JsonRedisSerializer()</span><br><span class="line"></span><br><span class="line">        template.setConnectionFactory(jedisConnectionFactory())</span><br><span class="line">        template.setEnableTransactionSupport(<span class="keyword">true</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> template</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &apos;cacheManager&apos; defined in class path resource [org/springframework/boot/autoconfigure/cache/RedisCacheConfiguration.class]: Unsatisfied dependency expressed through method &apos;cacheManager&apos; parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name &apos;jedisConnectionFactory&apos; defined in class path resource [com/beanbroker/sample/config/cache/RedisConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.data.redis.connection.jedis.JedisConnectionFactory]: Factory method &apos;jedisConnectionFactory&apos; threw exception; nested exception is java.lang.NoClassDefFoundError: redis/clients/jedis/Tuple</span><br></pre></td></tr></table></figure><p>스프링 2.0이상으로 올라오면서 jedis와 관련된 dependency를 추가해주지 않으면 deprecated되었기 때문에 올릴수가 없다. 아래와 같이 build.gradle에 추가하고 사용해야한다.</p><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">'redis.clients:jedis'</span></span><br></pre></td></tr></table></figure><p>스프리 부트1.5에서 정말 만약에 2.0으로 올렸을 경우 너무나도 많은 설정이 변경되어야 한다. 가능할지는 모르겠지만….</p><p>끝으로 물론 성능 테스트나 다른 테스트를 진행해야 하지만 이미 많은 선배개발자들이 성능관련 테스트를 이미 많이 진행해주었기에 글을 마치며! 사실 예외와 관련된 글을 쓰려고 하였으나 너무나……. 부족하여.. 블로그에 올릴수가 없다…</p><p><a href="https://github.com/beanbroker/kotlin_querydsl" rel="external nofollow noopener noreferrer" target="_blank">code sample github</a> </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;자바-Redis-Client&quot;&gt;&lt;a href=&quot;#자바-Redis-Client&quot; class=&quot;headerlink&quot; title=&quot;자바 Redis Client&quot;&gt;&lt;/a&gt;자바 Redis Client&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://g
+      
+    
+    </summary>
+    
+      <category term="Kotlin" scheme="https://beanbroker.github.io/categories/Kotlin/"/>
+    
+      <category term="Redis" scheme="https://beanbroker.github.io/categories/Kotlin/Redis/"/>
+    
+      <category term="Spring" scheme="https://beanbroker.github.io/categories/Kotlin/Redis/Spring/"/>
+    
+    
+      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
+    
+      <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
+    
+      <category term="Redis" scheme="https://beanbroker.github.io/tags/Redis/"/>
     
   </entry>
   
@@ -368,39 +438,6 @@
   </entry>
   
   <entry>
-    <title>Redis Client with Kotlin Spring</title>
-    <link href="https://beanbroker.github.io/2019/10/05/Kotlin/spring_redis_client_kotlin/"/>
-    <id>https://beanbroker.github.io/2019/10/05/Kotlin/spring_redis_client_kotlin/</id>
-    <published>2019-10-05T10:00:00.000Z</published>
-    <updated>2019-10-05T08:55:59.141Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="자바-Redis-Client"><a href="#자바-Redis-Client" class="headerlink" title="자바 Redis Client"></a>자바 Redis Client</h1><p><a href="https://github.com/xetorthio/jedis" rel="external nofollow noopener noreferrer" target="_blank">jedis github</a> </p><p><a href="https://github.com/lettuce-io/lettuce-core" rel="external nofollow noopener noreferrer" target="_blank">lettuce github</a> </p><p><a href="https://lettuce.io/core/release/reference/" rel="external nofollow noopener noreferrer" target="_blank">lettuce spring</a> </p><p>자바에서 Redis를 쓸 때 대표적으로 2개의 클라이언트가 있다.</p><p>Jedis와 lettuce</p><p>Lettuce - Advanced Java Redis client 라 소개 되어있으며, 비동기를 지원한다. 또한 스프링부트 2.0 위의 버젼부터는 lettuce를 기본적으로 redis client로 사용하고 있다. 즉…. Redis를 사용할 때 lettuce를 쓰자이다.. 물론.. 이미 부트 2.0에서 lettuce를 default로 물고 있으니 자연스럽게 2.0버젼부터는 쓰게 될것이다.</p><blockquote><p>Lettuce is a scalable thread-safe Redis client based on netty and Reactor. Lettuce provides synchronous, asynchronous and reactive APIs to interact with Redis.</p></blockquote><p>2.0 이하 버젼에서 lettuce를 적용해본적은 없으나 지금 테스트 해보는 부분은 부트2.0 이상이다.</p><h1 id="간단-Spring-boot-2-0-redis-설정"><a href="#간단-Spring-boot-2-0-redis-설정" class="headerlink" title="간단 Spring boot 2.0 redis 설정"></a>간단 Spring boot 2.0 redis 설정</h1><p>블로그를 어디 찾다가 보면 무료 redis cloud를 쓸수 있지만 귀찮으므로 내장 redis를 활용해보자.. 상용환경에서는 절대 쓰면 안된다. </p><p>코드는 kotlin으로 작성</p><blockquote><p>EmbeddedRedisConfig<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EmbeddedRedisConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"\$&#123;spring.redis.port&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> val redisPort: Int = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> redisServer: RedisServer? = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="meta">@Throws</span>(IOException::<span class="class"><span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    <span class="title">fun</span> <span class="title">redisServer</span>() </span>&#123;</span><br><span class="line">        redisServer = RedisServer(redisPort)</span><br><span class="line">        redisServer!!.start()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PreDestroy</span></span><br><span class="line">    <span class="function">fun <span class="title">stopRedis</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (redisServer != <span class="keyword">null</span>) &#123;</span><br><span class="line">            redisServer!!.stop()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></blockquote><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">'org.springframework.boot:spring-boot-starter-data-redis'</span></span><br><span class="line"><span class="keyword">compile</span> <span class="keyword">group</span>: <span class="string">'it.ozimov'</span>, name: <span class="string">'embedded-redis'</span>, version: <span class="string">'0.7.2'</span></span><br></pre></td></tr></table></figure><p>build.gradle추가 </p><h2 id="A-Lettuce-설정"><a href="#A-Lettuce-설정" class="headerlink" title="A - Lettuce 설정"></a>A - Lettuce 설정</h2><p>아래와 같이 default spring redis client인 lettuce설정</p><p>정상적으로 작동함을 확인 할수 있으며 물론 CacheErrorHandler 오버라이드 해서 반드시 더 자세한 에러처리를 해야한다.</p><p>또한 value 시리얼라이져를 왜 잭슨 2로 해야 하는지 고민해야한다. 다른것으로 해보고 테스트 해야하지만 이번 블로그는 이와 해당내용되지 않기 때문에 패스</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableRedisRepositories</span></span><br><span class="line"><span class="meta">@EnableCaching</span></span><br><span class="line">class RedisConfig : CachingConfigurerSupport() &#123;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"\$&#123;spring.redis.host&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> val redisHost: String? = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"\$&#123;spring.redis.port&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> val redisPort: Int = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"\$&#123;spring.redis.password&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> val redisPassword: String? = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span>()</span><br><span class="line">    <span class="function">fun <span class="title">lettuceConnectionFactory</span><span class="params">()</span>: RedisConnectionFactory </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> LettuceConnectionFactory(redisHost!!, redisPort)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span>(<span class="string">"redisTemplateWithLettuce"</span>)</span><br><span class="line">    <span class="function">fun <span class="title">redisTemplateWithLettuce</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    )</span>: RedisTemplate&lt;*, *&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">        val template = RedisTemplate&lt;String, Any&gt;()</span><br><span class="line">        template.keySerializer = StringRedisSerializer()</span><br><span class="line">        template.valueSerializer = GenericJackson2JsonRedisSerializer()</span><br><span class="line">        template.hashKeySerializer = StringRedisSerializer()</span><br><span class="line">        template.hashValueSerializer = GenericJackson2JsonRedisSerializer()</span><br><span class="line"></span><br><span class="line">        template.setConnectionFactory(lettuceConnectionFactory())</span><br><span class="line">        template.setEnableTransactionSupport(<span class="keyword">true</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> template</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="B-Jeddis-설정"><a href="#B-Jeddis-설정" class="headerlink" title="B - Jeddis 설정"></a>B - Jeddis 설정</h2><p>아래와 같이 설정하면 에러가 발생한다 왜일가?</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableRedisRepositories</span></span><br><span class="line"><span class="meta">@EnableCaching</span></span><br><span class="line">class RedisConfig : CachingConfigurerSupport() &#123;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"\$&#123;spring.redis.host&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> val redisHost: String? = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"\$&#123;spring.redis.port&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> val redisPort: Int = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"\$&#123;spring.redis.password&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> val redisPassword: String? = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span>()</span><br><span class="line">    <span class="function">fun <span class="title">jedisConnectionFactory</span><span class="params">()</span>: JedisConnectionFactory </span>&#123;</span><br><span class="line"></span><br><span class="line">        val redisStandaloneConfiguration = RedisStandaloneConfiguration(redisHost!!, redisPort)</span><br><span class="line">        redisStandaloneConfiguration.setPassword(redisPassword)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> JedisConnectionFactory(redisStandaloneConfiguration)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span>(<span class="string">"redisTemplateWithJedis"</span>)</span><br><span class="line">    <span class="function">fun <span class="title">redisTemplateWithJedis</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    )</span>: RedisTemplate&lt;*, *&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">        val template = RedisTemplate&lt;String, Any&gt;()</span><br><span class="line">        template.keySerializer = StringRedisSerializer()</span><br><span class="line">        template.valueSerializer = GenericJackson2JsonRedisSerializer()</span><br><span class="line">        template.hashKeySerializer = StringRedisSerializer()</span><br><span class="line">        template.hashValueSerializer = GenericJackson2JsonRedisSerializer()</span><br><span class="line"></span><br><span class="line">        template.setConnectionFactory(jedisConnectionFactory())</span><br><span class="line">        template.setEnableTransactionSupport(<span class="keyword">true</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> template</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &apos;cacheManager&apos; defined in class path resource [org/springframework/boot/autoconfigure/cache/RedisCacheConfiguration.class]: Unsatisfied dependency expressed through method &apos;cacheManager&apos; parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name &apos;jedisConnectionFactory&apos; defined in class path resource [com/beanbroker/sample/config/cache/RedisConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.data.redis.connection.jedis.JedisConnectionFactory]: Factory method &apos;jedisConnectionFactory&apos; threw exception; nested exception is java.lang.NoClassDefFoundError: redis/clients/jedis/Tuple</span><br></pre></td></tr></table></figure><p>스프링 2.0이상으로 올라오면서 jedis와 관련된 dependency를 추가해주지 않으면 deprecated되었기 때문에 올릴수가 없다. 아래와 같이 build.gradle에 추가하고 사용해야한다.</p><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">'redis.clients:jedis'</span></span><br></pre></td></tr></table></figure><p>스프리 부트1.5에서 정말 만약에 2.0으로 올렸을 경우 너무나도 많은 설정이 변경되어야 한다. 가능할지는 모르겠지만….</p><p>끝으로 물론 성능 테스트나 다른 테스트를 진행해야 하지만 이미 많은 선배개발자들이 성능관련 테스트를 이미 많이 진행해주었기에 글을 마치며! 사실 예외와 관련된 글을 쓰려고 하였으나 너무나……. 부족하여.. 블로그에 올릴수가 없다…</p><p><a href="https://github.com/beanbroker/kotlin_querydsl" rel="external nofollow noopener noreferrer" target="_blank">code sample github</a> </p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;자바-Redis-Client&quot;&gt;&lt;a href=&quot;#자바-Redis-Client&quot; class=&quot;headerlink&quot; title=&quot;자바 Redis Client&quot;&gt;&lt;/a&gt;자바 Redis Client&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://g
-      
-    
-    </summary>
-    
-      <category term="Kotlin" scheme="https://beanbroker.github.io/categories/Kotlin/"/>
-    
-      <category term="Redis" scheme="https://beanbroker.github.io/categories/Kotlin/Redis/"/>
-    
-      <category term="Spring" scheme="https://beanbroker.github.io/categories/Kotlin/Redis/Spring/"/>
-    
-    
-      <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
-    
-      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
-    
-      <category term="Redis" scheme="https://beanbroker.github.io/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Kotlin, Auth with JWT 2장</title>
     <link href="https://beanbroker.github.io/2019/09/08/Kotlin/kotlin_jwt_spring2/"/>
     <id>https://beanbroker.github.io/2019/09/08/Kotlin/kotlin_jwt_spring2/</id>
@@ -425,9 +462,9 @@
       <category term="JWT" scheme="https://beanbroker.github.io/categories/Spring/Kotlin/JWT/"/>
     
     
-      <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
-    
       <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
+    
+      <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
     
       <category term="JWT" scheme="https://beanbroker.github.io/tags/JWT/"/>
     
@@ -458,9 +495,9 @@
       <category term="JWT" scheme="https://beanbroker.github.io/categories/Spring/Kotlin/JWT/"/>
     
     
-      <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
-    
       <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
+    
+      <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
     
       <category term="JWT" scheme="https://beanbroker.github.io/tags/JWT/"/>
     
@@ -1358,9 +1395,9 @@
       <category term="Predicate" scheme="https://beanbroker.github.io/categories/Kotlin/Querydsl/Predicate/"/>
     
     
-      <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
-    
       <category term="Querydsl" scheme="https://beanbroker.github.io/tags/Querydsl/"/>
+    
+      <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
     
       <category term="Predicate" scheme="https://beanbroker.github.io/tags/Predicate/"/>
     
@@ -1389,9 +1426,9 @@
       <category term="Querydsl" scheme="https://beanbroker.github.io/categories/Kotlin/Querydsl/"/>
     
     
-      <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
-    
       <category term="Querydsl" scheme="https://beanbroker.github.io/tags/Querydsl/"/>
+    
+      <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -1418,9 +1455,9 @@
       <category term="Querydsl" scheme="https://beanbroker.github.io/categories/Kotlin/Querydsl/"/>
     
     
-      <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
-    
       <category term="Querydsl" scheme="https://beanbroker.github.io/tags/Querydsl/"/>
+    
+      <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -2829,9 +2866,9 @@
       <category term="Java" scheme="https://beanbroker.github.io/categories/Spring/Java/"/>
     
     
-      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
-    
       <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
+    
+      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
     
   </entry>
   
