@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://beanbroker.github.io/"/>
-  <updated>2020-08-01T06:26:48.873Z</updated>
+  <updated>2020-08-01T06:29:22.038Z</updated>
   <id>https://beanbroker.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>MongoDB</title>
+    <title>MongoDB-1</title>
     <link href="https://beanbroker.github.io/2020/08/01/MongoDb/mongodb1/"/>
     <id>https://beanbroker.github.io/2020/08/01/MongoDb/mongodb1/</id>
     <published>2020-08-01T06:30:00.000Z</published>
-    <updated>2020-08-01T06:26:48.873Z</updated>
+    <updated>2020-08-01T06:29:22.038Z</updated>
     
     <content type="html"><![CDATA[<p>해당 블로그는 몽고디비 인 액션 책을 참고하여 작성하였습니다.<br><a href="http://www.yes24.com/Product/Goods/60659843" rel="external nofollow noopener noreferrer" target="_blank">http://www.yes24.com/Product/Goods/60659843</a></p><blockquote><p>NoSQL의 등장배경</p></blockquote><ol><li>과거의 데이터의 비해 너무나도 많은 데이터를 기존의 RDBMS 방식으로 저장 할수 있는 한계</li><li>새로운 개념 도입</li></ol><blockquote><p>NoSQL = Not Only SQL<br>단어만 봐도 알 수 있듯이 SQL을 활용하는 형태가 아닌 다른 방식의 저장 기술을 의미</p></blockquote><h1 id="MongoDB란"><a href="#MongoDB란" class="headerlink" title="MongoDB란"></a>MongoDB란</h1><p><a href="https://www.mongodb.com/what-is-mongodb" rel="external nofollow noopener noreferrer" target="_blank">MongoDB 공홈</a></p><ol><li>MongoDB stores data in flexible, JSON-like documents, meaning fields can vary from document to document and data structure can be changed over time</li></ol><ul><li>이는 장점이긴 하나 어플리케이션레이어에서 데이터의 형태가 달라질 경우를 대비하여 마이그레이션이 필요하다 생각합니다.</li></ul><ol start="2"><li><p>The document model maps to the objects in your application code, making data easy to work with</p></li><li><p>Ad hoc queries, indexing, and real time aggregation provide powerful ways to access and analyze your data</p></li><li><p>MongoDB is a distributed database at its core, so high availability, horizontal scaling, and geographic distribution are built in and easy to use</p></li></ol><h1 id="MongoDB-핵심-기능"><a href="#MongoDB-핵심-기능" class="headerlink" title="MongoDB 핵심 기능"></a>MongoDB 핵심 기능</h1><h4 id="1-도큐먼트-지향적인-데이터베이스"><a href="#1-도큐먼트-지향적인-데이터베이스" class="headerlink" title="1. 도큐먼트 지향적인 데이터베이스"></a>1. 도큐먼트 지향적인 데이터베이스</h4><ul><li>JSON document</li><li>MongoDB는 Binary Json 혹은 BSON의 형태로 도큐먼트를 저장</li><li>document의 모음과 같이 데이터를 컬렉션에 document로 저장 (mysql의 경우 데이터를 테이블의 행에 저장)</li><li>스키마가 없는 모델의 장점 : 데이터 구조 비번히 변경되는 개발 초기 단계에서 새발 속도 단축</li></ul><h4 id="2-애드훅-쿼리-지원"><a href="#2-애드훅-쿼리-지원" class="headerlink" title="2. 애드훅 쿼리 지원"></a>2. 애드훅 쿼리 지원</h4><h4 id="3-인덱스"><a href="#3-인덱스" class="headerlink" title="3. 인덱스"></a>3. 인덱스</h4><p>MongoDB에서 인덱스는 B-tree로 구현</p><h4 id="4-복제"><a href="#4-복제" class="headerlink" title="4. 복제"></a>4. 복제</h4><ul><li><p>replicat set라고 부르는 구성을 통해 DB 복제 기능을 제공</p><ul><li>서버 또는 네트워크 장애 대비</li></ul></li><li><p>프라이머리 노드 - 세컨더리 - 세컨더리 : 이렇게 구성되어있을 경우 프라이머리가 셧다운 되면 세컨더리가 프라이머리가 된 후 프라이머리는 복구 후 자동으로 세컨더리로 복귀</p></li></ul><p><a href="https://beanbroker.github.io/2020/07/12/Spring/spring_mongodb_docker_replica/">https://beanbroker.github.io/2020/07/12/Spring/spring_mongodb_docker_replica/</a> 여기서 테스트 하면 확인 가능</p><h4 id="5-속도와-내구성"><a href="#5-속도와-내구성" class="headerlink" title="5. 속도와 내구성"></a>5. 속도와 내구성</h4><ul><li>속도와 내구성 사이를 선택할수 있는 옵션이 존재</li><li>필수적인 데이터에 대해서 안전모드 설정 권장</li></ul><h4 id="6-확장"><a href="#6-확장" class="headerlink" title="6. 확장"></a>6. 확장</h4><ul><li>수평적 확장 용이</li></ul><blockquote><p>MongoDB는 보통 64bit 시스템에서 실행되어야 한다. </p></blockquote>]]></content>
     
@@ -111,11 +111,11 @@
     
       <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
     
-      <category term="docker" scheme="https://beanbroker.github.io/tags/docker/"/>
-    
       <category term="Elastic Search" scheme="https://beanbroker.github.io/tags/Elastic-Search/"/>
     
       <category term="ES" scheme="https://beanbroker.github.io/tags/ES/"/>
+    
+      <category term="docker" scheme="https://beanbroker.github.io/tags/docker/"/>
     
   </entry>
   
@@ -405,6 +405,35 @@
   </entry>
   
   <entry>
+    <title>Junit @Before vs @BeforeClass</title>
+    <link href="https://beanbroker.github.io/2019/10/05/Java/test_after_before/"/>
+    <id>https://beanbroker.github.io/2019/10/05/Java/test_after_before/</id>
+    <published>2019-10-05T10:00:00.000Z</published>
+    <updated>2019-10-06T06:33:04.386Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Junit-Before-Beforeclass"><a href="#Junit-Before-Beforeclass" class="headerlink" title="Junit Before? Beforeclass?"></a>Junit Before? Beforeclass?</h2><p>테스트 코드를 짜며 (더 잘짜고 싶다… 하..) 짠 테스크 코드에 대한 리뷰를 받았다. 선배 개발자로부터 @Before과 @BeforeClass 차이를 아냐 물어보시기에 저는 ㅠㅠㅠㅠ를 외쳤다. 요즘 항상 좋으신 말을 해주시는 선배 개발자이시다.</p><p>현재 개발하는 환경이 Junit4이지만 해당 블로그는 Junit5로 작성할 예정이다</p><p><a href="https://github.com/beanbroker/kotlin_querydsl" rel="external nofollow noopener noreferrer" target="_blank">code sample github</a> </p><h2 id="Junit4-gt-Junit5"><a href="#Junit4-gt-Junit5" class="headerlink" title="Junit4 -&gt; Junit5"></a>Junit4 -&gt; Junit5</h2><table><thead><tr><th>Junit4</th><th>Junit5</th><th>특징</th></tr></thead><tbody><tr><td>@BeforeClass</td><td>@BeforeAll</td><td><br> - 테스트 클래스의 모든 테스트 메소드가 실행되기 전에 실행 <br>-  static method <br>- 초기화 코드가 들어갈수 있음</td></tr><tr><td>@AfterClass</td><td>@AfterAll</td><td><br> - 테스트 클래스의 모든 테스트 메소드가 종료된 후 실행 <br>-  static method <br>- 코드를 클린업 할수 있음</td></tr><tr><td>@Before</td><td>@BeforeEach</td><td><br> - 테스트 클래스 안의 테스트 메소드가 한번 실행 될때 마다 실행   <br>-  초기화 코드를 재설정 할수 있음 하지만 초기화 처럼 쓰면 테스트시 힘들어짐</td></tr><tr><td>@After</td><td>@AfterEach</td><td><br> -테스트 클래스 안의 테스트 메소드가 한번 실행 될때 마다 실행  <br>- 예를 들어 테스트가 끝나고 롤백해야 할때</td></tr></tbody></table><blockquote><p>이미지 설명</p></blockquote><p><img src="https://i.stack.imgur.com/HKspz.png" alt="실행 순서" title="실행 순서"></p><p>위의 이미지 순서대로 테스트 코드를 작성해보자</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeAll</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">beforeAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"BeforeAll"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeEach</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeEach</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"BeforeEach"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterEach</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterEach</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"AfterEach"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterAll</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">afterAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"AfterAll"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCodeOne</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"testCodeOne start "</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCodeTwo</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"testCodetwo start "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>실행결과 아래와 같은 결과를 얻는다<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">BeforeAll</span><br><span class="line">BeforeEach</span><br><span class="line">testCodeOne start </span><br><span class="line">AfterEach</span><br><span class="line">BeforeEach</span><br><span class="line">testCodetwo start </span><br><span class="line">AfterEach</span><br><span class="line">AfterAll</span><br></pre></td></tr></table></figure></p><p>Junit5에 어노테이션 명이 좀더 정확하게 의미를 알려주는것 같다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Junit-Before-Beforeclass&quot;&gt;&lt;a href=&quot;#Junit-Before-Beforeclass&quot; class=&quot;headerlink&quot; title=&quot;Junit Before? Beforeclass?&quot;&gt;&lt;/a&gt;Junit Before
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://beanbroker.github.io/categories/Java/"/>
+    
+      <category term="Junit" scheme="https://beanbroker.github.io/categories/Java/Junit/"/>
+    
+    
+      <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
+    
+      <category term="Junit" scheme="https://beanbroker.github.io/tags/Junit/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Redis Client with Kotlin Spring</title>
     <link href="https://beanbroker.github.io/2019/10/05/Kotlin/spring_redis_client_kotlin/"/>
     <id>https://beanbroker.github.io/2019/10/05/Kotlin/spring_redis_client_kotlin/</id>
@@ -434,35 +463,6 @@
       <category term="Kotlin" scheme="https://beanbroker.github.io/tags/Kotlin/"/>
     
       <category term="Redis" scheme="https://beanbroker.github.io/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Junit @Before vs @BeforeClass</title>
-    <link href="https://beanbroker.github.io/2019/10/05/Java/test_after_before/"/>
-    <id>https://beanbroker.github.io/2019/10/05/Java/test_after_before/</id>
-    <published>2019-10-05T10:00:00.000Z</published>
-    <updated>2019-10-06T06:33:04.386Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Junit-Before-Beforeclass"><a href="#Junit-Before-Beforeclass" class="headerlink" title="Junit Before? Beforeclass?"></a>Junit Before? Beforeclass?</h2><p>테스트 코드를 짜며 (더 잘짜고 싶다… 하..) 짠 테스크 코드에 대한 리뷰를 받았다. 선배 개발자로부터 @Before과 @BeforeClass 차이를 아냐 물어보시기에 저는 ㅠㅠㅠㅠ를 외쳤다. 요즘 항상 좋으신 말을 해주시는 선배 개발자이시다.</p><p>현재 개발하는 환경이 Junit4이지만 해당 블로그는 Junit5로 작성할 예정이다</p><p><a href="https://github.com/beanbroker/kotlin_querydsl" rel="external nofollow noopener noreferrer" target="_blank">code sample github</a> </p><h2 id="Junit4-gt-Junit5"><a href="#Junit4-gt-Junit5" class="headerlink" title="Junit4 -&gt; Junit5"></a>Junit4 -&gt; Junit5</h2><table><thead><tr><th>Junit4</th><th>Junit5</th><th>특징</th></tr></thead><tbody><tr><td>@BeforeClass</td><td>@BeforeAll</td><td><br> - 테스트 클래스의 모든 테스트 메소드가 실행되기 전에 실행 <br>-  static method <br>- 초기화 코드가 들어갈수 있음</td></tr><tr><td>@AfterClass</td><td>@AfterAll</td><td><br> - 테스트 클래스의 모든 테스트 메소드가 종료된 후 실행 <br>-  static method <br>- 코드를 클린업 할수 있음</td></tr><tr><td>@Before</td><td>@BeforeEach</td><td><br> - 테스트 클래스 안의 테스트 메소드가 한번 실행 될때 마다 실행   <br>-  초기화 코드를 재설정 할수 있음 하지만 초기화 처럼 쓰면 테스트시 힘들어짐</td></tr><tr><td>@After</td><td>@AfterEach</td><td><br> -테스트 클래스 안의 테스트 메소드가 한번 실행 될때 마다 실행  <br>- 예를 들어 테스트가 끝나고 롤백해야 할때</td></tr></tbody></table><blockquote><p>이미지 설명</p></blockquote><p><img src="https://i.stack.imgur.com/HKspz.png" alt="실행 순서" title="실행 순서"></p><p>위의 이미지 순서대로 테스트 코드를 작성해보자</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeAll</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">beforeAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"BeforeAll"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeEach</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeEach</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"BeforeEach"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterEach</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterEach</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"AfterEach"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterAll</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">afterAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"AfterAll"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCodeOne</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"testCodeOne start "</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCodeTwo</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"testCodetwo start "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>실행결과 아래와 같은 결과를 얻는다<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">BeforeAll</span><br><span class="line">BeforeEach</span><br><span class="line">testCodeOne start </span><br><span class="line">AfterEach</span><br><span class="line">BeforeEach</span><br><span class="line">testCodetwo start </span><br><span class="line">AfterEach</span><br><span class="line">AfterAll</span><br></pre></td></tr></table></figure></p><p>Junit5에 어노테이션 명이 좀더 정확하게 의미를 알려주는것 같다.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;Junit-Before-Beforeclass&quot;&gt;&lt;a href=&quot;#Junit-Before-Beforeclass&quot; class=&quot;headerlink&quot; title=&quot;Junit Before? Beforeclass?&quot;&gt;&lt;/a&gt;Junit Before
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://beanbroker.github.io/categories/Java/"/>
-    
-      <category term="Junit" scheme="https://beanbroker.github.io/categories/Java/Junit/"/>
-    
-    
-      <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
-    
-      <category term="Junit" scheme="https://beanbroker.github.io/tags/Junit/"/>
     
   </entry>
   
@@ -808,9 +808,9 @@
       <category term="Java" scheme="https://beanbroker.github.io/categories/Obejct/Java/"/>
     
     
-      <category term="Obejct" scheme="https://beanbroker.github.io/tags/Obejct/"/>
-    
       <category term="Java" scheme="https://beanbroker.github.io/tags/Java/"/>
+    
+      <category term="Obejct" scheme="https://beanbroker.github.io/tags/Obejct/"/>
     
   </entry>
   
@@ -1249,9 +1249,9 @@
       <category term="docker" scheme="https://beanbroker.github.io/categories/Nginx/docker/"/>
     
     
-      <category term="Nginx" scheme="https://beanbroker.github.io/tags/Nginx/"/>
-    
       <category term="docker" scheme="https://beanbroker.github.io/tags/docker/"/>
+    
+      <category term="Nginx" scheme="https://beanbroker.github.io/tags/Nginx/"/>
     
   </entry>
   
