@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://beanbroker.github.io/"/>
-  <updated>2020-08-01T06:29:22.038Z</updated>
+  <updated>2020-08-10T06:58:58.965Z</updated>
   <id>https://beanbroker.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MongoDB 2장 mlab 무료 클라우드</title>
+    <link href="https://beanbroker.github.io/2020/08/09/Spring/mongodb_srping1/"/>
+    <id>https://beanbroker.github.io/2020/08/09/Spring/mongodb_srping1/</id>
+    <published>2020-08-09T06:30:00.000Z</published>
+    <updated>2020-08-10T06:58:58.965Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="무료-몽고디비-cloud를-이용해보자"><a href="#무료-몽고디비-cloud를-이용해보자" class="headerlink" title="무료 몽고디비 cloud를 이용해보자"></a>무료 몽고디비 cloud를 이용해보자</h1><p>무료 클라우드에 가입하고 스프링 연동을 해보자! </p><p>기본적으로 무료 500메가를 제공한다. 몽고디비가 4.x버전위로 업그레이드 되면서 홈페이지가 많이 리뉴얼 된 모습이다.. 엄청 헤맴</p><p>아래의 사이트로 접속</p><h2 id="1-홈페이지-접근"><a href="#1-홈페이지-접근" class="headerlink" title="1. 홈페이지 접근"></a>1. 홈페이지 접근</h2><p><a href="https://www.mongodb.com/cloud" rel="external nofollow noopener noreferrer" target="_blank">Mlab_Homeage</a></p><p><img src="/images/mongodb/mlab_home.png" alt="Mlab_Homeage"></p><p>대충 가입을 누르고 무료 클러스터를 생성해보자</p><h2 id="2-Region선택"><a href="#2-Region선택" class="headerlink" title="2. Region선택"></a>2. Region선택</h2><blockquote><p>선택할 때 구글 클라우드를 선택하고 일본 region을 선택하자 한국과 가장 가까움</p></blockquote><p><img src="/images/mongodb/mlab_cluster_region.png" alt="mlab_cluster_region"></p><h2 id="3-총-3개의-노드가-생성되어-올라가고-있다"><a href="#3-총-3개의-노드가-생성되어-올라가고-있다" class="headerlink" title="3. 총 3개의 노드가 생성되어 올라가고 있다."></a>3. 총 3개의 노드가 생성되어 올라가고 있다.</h2><blockquote><p>중요! 생성하는데 5분정도 걸리니 그냥 기다리자</p></blockquote><p>프라이머리 노드 - 세컨더리 - 세컨더리 </p><p><img src="/images/mongodb/waiting.png" alt="waiting"></p><h2 id="4-db-access-유저를-생성"><a href="#4-db-access-유저를-생성" class="headerlink" title="4. db access 유저를 생성"></a>4. db access 유저를 생성</h2><p><img src="/images/mongodb/create_user.png" alt="create_user"></p><h2 id="5-network-access-설정"><a href="#5-network-access-설정" class="headerlink" title="5. network access 설정"></a>5. network access 설정</h2><p>0.0.0.0/0 전역으로 넣자! 물론 테스트이니가 가능한일..</p><h2 id="6-노드가-전부-올라감"><a href="#6-노드가-전부-올라감" class="headerlink" title="6. 노드가 전부 올라감"></a>6. 노드가 전부 올라감</h2><p><img src="/images/mongodb/all_node_activated.png" alt="all_node_activated"></p><h2 id="7-mongodb-uri-획득"><a href="#7-mongodb-uri-획득" class="headerlink" title="7. mongodb uri 획득"></a>7. mongodb uri 획득</h2><blockquote><p>A. Connect 클릭<br><img src="/images/mongodb/A.png" alt="A"></p></blockquote><blockquote><p>B. connect your application 클릭<br><img src="/images/mongodb/B.png" alt="B"></p></blockquote><blockquote><p>C. copy 클릭<br><img src="/images/mongodb/C.png" alt="C"></p></blockquote><blockquote><p>4번에서 설정한 username, password 기입 ( &lt;&gt; 해당 기호 제거)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongodb+srv://&lt;username&gt;:&lt;password&gt;@cluster0.yul3n.gcp.mongodb.net/&lt;dbname&gt;?retryWrites=true&amp;w=majority</span><br></pre></td></tr></table></figure></p></blockquote><h2 id="8-Spring-설정"><a href="#8-Spring-설정" class="headerlink" title="8. Spring 설정"></a>8. Spring 설정</h2><blockquote><p>build.gradle 디펜던시 추가<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">implementation <span class="string">'org.springframework.boot:spring-boot-starter-data-mongodb'</span></span><br><span class="line">implementation <span class="string">'org.springframework.boot:spring-boot-starter-web'</span></span><br><span class="line">compileOnly <span class="string">'org.projectlombok:lombok'</span></span><br><span class="line">developmentOnly <span class="string">'org.springframework.boot:spring-boot-devtools'</span></span><br><span class="line">annotationProcessor <span class="string">'org.projectlombok:lombok'</span></span><br><span class="line">testImplementation(<span class="string">'org.springframework.boot:spring-boot-starter-test'</span>) &#123;</span><br><span class="line">exclude group: <span class="string">'org.junit.vintage'</span>, <span class="keyword">module</span>: <span class="string">'junit-vintage-engine'</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></blockquote><blockquote><p>application.yml 추가, 위에서 따온 mongodb uri 입력<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  data:</span></span><br><span class="line"><span class="attr">    mongodb:</span></span><br><span class="line"><span class="attr">      uri:</span> <span class="string">mongodb+srv://username:password@cluster0.yul3n.gcp.mongodb.net/test?retryWrites=true&amp;w=majority</span></span><br><span class="line"><span class="attr">      database:</span> <span class="string">test</span></span><br></pre></td></tr></table></figure></p></blockquote><blockquote><p>application run</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">INFO <span class="number">54288</span> --- [ngodb.net:<span class="number">27017</span>] org.mongodb.driver.connection            : Opened connection [connectionId&#123;localValue:<span class="number">1</span>, serverValue:<span class="number">219779</span>&#125;] to cluster0-shard-<span class="number">00</span>-<span class="number">02</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span></span><br><span class="line">INFO <span class="number">54288</span> --- [ngodb.net:<span class="number">27017</span>] org.mongodb.driver.connection            : Opened connection [connectionId&#123;localValue:<span class="number">3</span>, serverValue:<span class="number">208437</span>&#125;] to cluster0-shard-<span class="number">00</span>-<span class="number">00</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span></span><br><span class="line">INFO <span class="number">54288</span> --- [ngodb.net:<span class="number">27017</span>] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription&#123;address=cluster0-shard-<span class="number">00</span>-<span class="number">00</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span>, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=<span class="keyword">true</span>, minWireVersion=<span class="number">0</span>, maxWireVersion=<span class="number">8</span>, maxDocumentSize=<span class="number">16777216</span>, logicalSessionTimeoutMinutes=<span class="number">30</span>, roundTripTimeNanos=<span class="number">41594384</span>, rd-<span class="number">0</span><span class="string">', canonicalAddress=cluster0-shard-00-00.yul3n.gcp.mongodb.net:27017, hosts=[cluster0-shard-00-02.yul3n.gcp.mongodb.net:27017, cluster0-shard-00-00.yul3n.gcp.mongodb.net:27017, cluster0-shard-00-01.yul3n.gcp.mongodb.net:27017], passives=[], arbiters=[], primary='</span>cluster0-shard-<span class="number">00</span>-<span class="number">01</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span><span class="string">', tagSet=TagSet&#123;[Tag&#123;name='</span>nodeType<span class="string">', value='</span>ELECTABLE<span class="string">'&#125;, Tag&#123;name='</span>provider<span class="string">', egion'</span>, value=<span class="string">'NORTHEASTERN_ASIA_PACIFIC'</span>&#125;]&#125;, electionId=<span class="keyword">null</span>, setVersion=<span class="number">4</span>, lastWriteDate=Mon Aug <span class="number">10</span> <span class="number">15</span>:<span class="number">11</span>:<span class="number">47</span> KST <span class="number">2020</span>, lastUpdateTimeNanos=<span class="number">253097206247824</span>&#125;</span><br><span class="line">INFO <span class="number">54288</span> --- [ngodb.net:<span class="number">27017</span>] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription&#123;address=cluster0-shard-<span class="number">00</span>-<span class="number">02</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span>, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=<span class="keyword">true</span>, minWireVersion=<span class="number">0</span>, maxWireVersion=<span class="number">8</span>, maxDocumentSize=<span class="number">16777216</span>, logicalSessionTimeoutMinutes=<span class="number">30</span>, roundTripTimeNanos=<span class="number">41947405</span>, rd-<span class="number">0</span><span class="string">', canonicalAddress=cluster0-shard-00-02.yul3n.gcp.mongodb.net:27017, hosts=[cluster0-shard-00-02.yul3n.gcp.mongodb.net:27017, cluster0-shard-00-00.yul3n.gcp.mongodb.net:27017, cluster0-shard-00-01.yul3n.gcp.mongodb.net:27017], passives=[], arbiters=[], primary='</span>cluster0-shard-<span class="number">00</span>-<span class="number">01</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span><span class="string">', tagSet=TagSet&#123;[Tag&#123;name='</span>nodeType<span class="string">', value='</span>ELECTABLE<span class="string">'&#125;, Tag&#123;name='</span>provider<span class="string">', egion'</span>, value=<span class="string">'NORTHEASTERN_ASIA_PACIFIC'</span>&#125;]&#125;, electionId=<span class="keyword">null</span>, setVersion=<span class="number">4</span>, lastWriteDate=Mon Aug <span class="number">10</span> <span class="number">15</span>:<span class="number">11</span>:<span class="number">47</span> KST <span class="number">2020</span>, lastUpdateTimeNanos=<span class="number">253097206247010</span>&#125;</span><br><span class="line">INFO <span class="number">54288</span> --- [ngodb.net:<span class="number">27017</span>] org.mongodb.driver.connection            : Opened connection [connectionId&#123;localValue:<span class="number">2</span>, serverValue:<span class="number">218330</span>&#125;] to cluster0-shard-<span class="number">00</span>-<span class="number">01</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span></span><br><span class="line">INFO <span class="number">54288</span> --- [ngodb.net:<span class="number">27017</span>] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription&#123;address=cluster0-shard-<span class="number">00</span>-<span class="number">01</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span>, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=<span class="keyword">true</span>, minWireVersion=<span class="number">0</span>, maxWireVersion=<span class="number">8</span>, maxDocumentSize=<span class="number">16777216</span>, logicalSessionTimeoutMinutes=<span class="number">30</span>, roundTripTimeNanos=<span class="number">40369006</span>, rd-<span class="number">0</span><span class="string">', canonicalAddress=cluster0-shard-00-01.yul3n.gcp.mongodb.net:27017, hosts=[cluster0-shard-00-02.yul3n.gcp.mongodb.net:27017, cluster0-shard-00-00.yul3n.gcp.mongodb.net:27017, cluster0-shard-00-01.yul3n.gcp.mongodb.net:27017], passives=[], arbiters=[], primary='</span>cluster0-shard-<span class="number">00</span>-<span class="number">01</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span><span class="string">', tagSet=TagSet&#123;[Tag&#123;name='</span>nodeType<span class="string">', value='</span>ELECTABLE<span class="string">'&#125;, Tag&#123;name='</span>provider<span class="string">', egion'</span>, value=<span class="string">'NORTHEASTERN_ASIA_PACIFIC'</span>&#125;]&#125;, electionId=<span class="number">7f</span>ffffff000000000000001f, setVersion=<span class="number">4</span>, lastWriteDate=Mon Aug <span class="number">10</span> <span class="number">15</span>:<span class="number">11</span>:<span class="number">47</span> KST <span class="number">2020</span>, lastUpdateTimeNanos=<span class="number">253097859619057</span>&#125;</span><br><span class="line">INFO <span class="number">54288</span> --- [ngodb.net:<span class="number">27017</span>] org.mongodb.driver.cluster               : Setting max election id to <span class="number">7f</span>ffffff000000000000001f from replica set primary cluster0-shard-<span class="number">00</span>-<span class="number">01</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span></span><br><span class="line">INFO <span class="number">54288</span> --- [ngodb.net:<span class="number">27017</span>] org.mongodb.driver.cluster               : Setting max set version to <span class="number">4</span> from replica set primary cluster0-shard-<span class="number">00</span>-<span class="number">01</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span></span><br><span class="line">INFO <span class="number">54288</span> --- [ngodb.net:<span class="number">27017</span>] org.mongodb.driver.cluster               : Discovered replica set primary cluster0-shard-<span class="number">00</span>-<span class="number">01</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span></span><br></pre></td></tr></table></figure><p>3개의 몽고디비 노드들이 정상적으로 붙었음을 확인</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;무료-몽고디비-cloud를-이용해보자&quot;&gt;&lt;a href=&quot;#무료-몽고디비-cloud를-이용해보자&quot; class=&quot;headerlink&quot; title=&quot;무료 몽고디비 cloud를 이용해보자&quot;&gt;&lt;/a&gt;무료 몽고디비 cloud를 이용해보자&lt;/h1&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="Spring" scheme="https://beanbroker.github.io/categories/Spring/"/>
+    
+      <category term="MongoDB" scheme="https://beanbroker.github.io/categories/Spring/MongoDB/"/>
+    
+      <category term="mlab" scheme="https://beanbroker.github.io/categories/Spring/MongoDB/mlab/"/>
+    
+    
+      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
+    
+      <category term="MongoDB" scheme="https://beanbroker.github.io/tags/MongoDB/"/>
+    
+      <category term="mlab" scheme="https://beanbroker.github.io/tags/mlab/"/>
+    
+  </entry>
   
   <entry>
     <title>MongoDB-1</title>
@@ -74,9 +107,9 @@
     
       <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
     
-      <category term="MongoDB" scheme="https://beanbroker.github.io/tags/MongoDB/"/>
-    
       <category term="docker" scheme="https://beanbroker.github.io/tags/docker/"/>
+    
+      <category term="MongoDB" scheme="https://beanbroker.github.io/tags/MongoDB/"/>
     
       <category term="replica" scheme="https://beanbroker.github.io/tags/replica/"/>
     
@@ -111,11 +144,11 @@
     
       <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
     
+      <category term="docker" scheme="https://beanbroker.github.io/tags/docker/"/>
+    
       <category term="Elastic Search" scheme="https://beanbroker.github.io/tags/Elastic-Search/"/>
     
       <category term="ES" scheme="https://beanbroker.github.io/tags/ES/"/>
-    
-      <category term="docker" scheme="https://beanbroker.github.io/tags/docker/"/>
     
   </entry>
   
@@ -1249,9 +1282,9 @@
       <category term="docker" scheme="https://beanbroker.github.io/categories/Nginx/docker/"/>
     
     
-      <category term="docker" scheme="https://beanbroker.github.io/tags/docker/"/>
-    
       <category term="Nginx" scheme="https://beanbroker.github.io/tags/Nginx/"/>
+    
+      <category term="docker" scheme="https://beanbroker.github.io/tags/docker/"/>
     
   </entry>
   
@@ -2093,6 +2126,31 @@
   </entry>
   
   <entry>
+    <title>NodeJs 생각정리</title>
+    <link href="https://beanbroker.github.io/2018/08/29/nodejs/thinknodejs/"/>
+    <id>https://beanbroker.github.io/2018/08/29/nodejs/thinknodejs/</id>
+    <published>2018-08-29T09:30:00.000Z</published>
+    <updated>2019-07-07T08:12:45.329Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NodeJs-잠깐-생각정리"><a href="#NodeJs-잠깐-생각정리" class="headerlink" title="NodeJs 잠깐 생각정리"></a>NodeJs 잠깐 생각정리</h1><p>항상 멀티쓰레드환경에서 개발을 하다가 node.js를 개발하다보니 궁금점들이 생긴다.</p><p>궁금점?</p><ol><li>싱글스레드다</li><li>was는 멀티스레드 환경! 노드는 어떻게 싱글스레드로 처리를 해야하는가?</li></ol><p>다양한 문서와 혼자 공부를 하면서 느낀점을 간단히 정리하면 아래와 같다</p><h3 id="싱글-스레드-이벤트-루프방식"><a href="#싱글-스레드-이벤트-루프방식" class="headerlink" title="싱글 스레드 - 이벤트 루프방식"></a>싱글 스레드 - 이벤트 루프방식</h3><p>진입점이 하나! 발생한 모든 이벤트들을 줄세워서 처리!</p><p>즉 node.js의 작동원리를 햄버거가게로 생각하면 된다.<br>아래의 조건들이 있다면</p><ol><li>주문하는사람</li><li>주문받는사람 한명 </li><li>패티굽는사람</li></ol><p>주문하는 사람을 유저로 생각하자!<br>주문받는사람 한명이 싱글스레드라 생각한다. 주문(이벤트 발생)이 들어오면 패티굽는사람(백단 스레드)로 이벤트를 넘긴다.</p><p>즉, 수많은! 주문이 들어온다하더라도 이벤트를 줄세우고 주문을 받기만 하면된다.(기본적으로 백단 스레드는 4개, but 환경변수를 통해 늘릴수 있다는 점!)</p><h3 id="좀-더-발전된-방향의-개발을-하려면"><a href="#좀-더-발전된-방향의-개발을-하려면" class="headerlink" title="좀 더 발전된 방향의 개발을 하려면?"></a>좀 더 발전된 방향의 개발을 하려면?</h3><p>서버 개발자라면! IO걱정을 하며 개발을 진행하게 된다. 데이터베이스에 접근할때도 Join을 남발을 하게 되면 IO가 더 커진다. 항상 비용을 생각하며 개발을 진행을 하는 습관을 가져야한다. 보통 하드웨어 성능을 빵빵하게 해서 하면 해결이 되긴하지만.. 그건 너무 비양심적인 행동이라 생각한다…<br>그렇다면! nodeJs로 개발을 진행하게 된다면! 좀더 서비스로직 개선에 관련하여 더 많은 생각을 해야한다 판단이된다. 노력해야할점이다…</p><p>지금까지 느낀점을.. 잠깐 적은….. 글… 더 좋은글을 쓸 수 있는 날까지… </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;NodeJs-잠깐-생각정리&quot;&gt;&lt;a href=&quot;#NodeJs-잠깐-생각정리&quot; class=&quot;headerlink&quot; title=&quot;NodeJs 잠깐 생각정리&quot;&gt;&lt;/a&gt;NodeJs 잠깐 생각정리&lt;/h1&gt;&lt;p&gt;항상 멀티쓰레드환경에서 개발을 하다가 n
+      
+    
+    </summary>
+    
+      <category term="node.js" scheme="https://beanbroker.github.io/categories/node-js/"/>
+    
+    
+      <category term="node.js" scheme="https://beanbroker.github.io/tags/node-js/"/>
+    
+  </entry>
+  
+  <entry>
     <title>RestApi with sequelize 1장</title>
     <link href="https://beanbroker.github.io/2018/08/29/nodejs/restapi1/"/>
     <id>https://beanbroker.github.io/2018/08/29/nodejs/restapi1/</id>
@@ -2122,31 +2180,6 @@
       <category term="node.js" scheme="https://beanbroker.github.io/tags/node-js/"/>
     
       <category term="sequelize" scheme="https://beanbroker.github.io/tags/sequelize/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NodeJs 생각정리</title>
-    <link href="https://beanbroker.github.io/2018/08/29/nodejs/thinknodejs/"/>
-    <id>https://beanbroker.github.io/2018/08/29/nodejs/thinknodejs/</id>
-    <published>2018-08-29T09:30:00.000Z</published>
-    <updated>2019-07-07T08:12:45.329Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="NodeJs-잠깐-생각정리"><a href="#NodeJs-잠깐-생각정리" class="headerlink" title="NodeJs 잠깐 생각정리"></a>NodeJs 잠깐 생각정리</h1><p>항상 멀티쓰레드환경에서 개발을 하다가 node.js를 개발하다보니 궁금점들이 생긴다.</p><p>궁금점?</p><ol><li>싱글스레드다</li><li>was는 멀티스레드 환경! 노드는 어떻게 싱글스레드로 처리를 해야하는가?</li></ol><p>다양한 문서와 혼자 공부를 하면서 느낀점을 간단히 정리하면 아래와 같다</p><h3 id="싱글-스레드-이벤트-루프방식"><a href="#싱글-스레드-이벤트-루프방식" class="headerlink" title="싱글 스레드 - 이벤트 루프방식"></a>싱글 스레드 - 이벤트 루프방식</h3><p>진입점이 하나! 발생한 모든 이벤트들을 줄세워서 처리!</p><p>즉 node.js의 작동원리를 햄버거가게로 생각하면 된다.<br>아래의 조건들이 있다면</p><ol><li>주문하는사람</li><li>주문받는사람 한명 </li><li>패티굽는사람</li></ol><p>주문하는 사람을 유저로 생각하자!<br>주문받는사람 한명이 싱글스레드라 생각한다. 주문(이벤트 발생)이 들어오면 패티굽는사람(백단 스레드)로 이벤트를 넘긴다.</p><p>즉, 수많은! 주문이 들어온다하더라도 이벤트를 줄세우고 주문을 받기만 하면된다.(기본적으로 백단 스레드는 4개, but 환경변수를 통해 늘릴수 있다는 점!)</p><h3 id="좀-더-발전된-방향의-개발을-하려면"><a href="#좀-더-발전된-방향의-개발을-하려면" class="headerlink" title="좀 더 발전된 방향의 개발을 하려면?"></a>좀 더 발전된 방향의 개발을 하려면?</h3><p>서버 개발자라면! IO걱정을 하며 개발을 진행하게 된다. 데이터베이스에 접근할때도 Join을 남발을 하게 되면 IO가 더 커진다. 항상 비용을 생각하며 개발을 진행을 하는 습관을 가져야한다. 보통 하드웨어 성능을 빵빵하게 해서 하면 해결이 되긴하지만.. 그건 너무 비양심적인 행동이라 생각한다…<br>그렇다면! nodeJs로 개발을 진행하게 된다면! 좀더 서비스로직 개선에 관련하여 더 많은 생각을 해야한다 판단이된다. 노력해야할점이다…</p><p>지금까지 느낀점을.. 잠깐 적은….. 글… 더 좋은글을 쓸 수 있는 날까지… </p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;NodeJs-잠깐-생각정리&quot;&gt;&lt;a href=&quot;#NodeJs-잠깐-생각정리&quot; class=&quot;headerlink&quot; title=&quot;NodeJs 잠깐 생각정리&quot;&gt;&lt;/a&gt;NodeJs 잠깐 생각정리&lt;/h1&gt;&lt;p&gt;항상 멀티쓰레드환경에서 개발을 하다가 n
-      
-    
-    </summary>
-    
-      <category term="node.js" scheme="https://beanbroker.github.io/categories/node-js/"/>
-    
-    
-      <category term="node.js" scheme="https://beanbroker.github.io/tags/node-js/"/>
     
   </entry>
   

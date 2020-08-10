@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="naver-site-verification" content="67083ed945b6af7f93ba51ef87f7f48745abe975">
+<script data-ad-client="ca-pub-7332507555012085" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<link rel="canonical" href="https://beanbroker.github.io/2020/08/09/spring/mongodb_srping1/">    
+
+    <!--Description-->
+    
+        <meta name="description" content="개발관련">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="beanbroker">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="MongoDB 2장 mlab 무료 클라우드">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="개발관련">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="beanbroker blog">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>MongoDB 2장 mlab 무료 클라우드 - beanbroker blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-86502943-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+<link rel="canonical" href="https://beanbroker.github.io/2020/08/09/spring/mongodb_srping1/">
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="beanbroker blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="beanbroker blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about.html" title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/contact.html" title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">MongoDB 2장 mlab 무료 클라우드</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2020-08-09</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a> <a class="fw3 ph1 dib" href="/tags/MongoDB/">#MongoDB</a> <a class="fw3 ph1 dib" href="/tags/mlab/">#mlab</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <h1 id="무료-몽고디비-cloud를-이용해보자"><a href="#무료-몽고디비-cloud를-이용해보자" class="headerlink" title="무료 몽고디비 cloud를 이용해보자"></a>무료 몽고디비 cloud를 이용해보자</h1><p>무료 클라우드에 가입하고 스프링 연동을 해보자! </p>
+<p>기본적으로 무료 500메가를 제공한다. 몽고디비가 4.x버전위로 업그레이드 되면서 홈페이지가 많이 리뉴얼 된 모습이다.. 엄청 헤맴</p>
+<p>아래의 사이트로 접속</p>
+<h2 id="1-홈페이지-접근"><a href="#1-홈페이지-접근" class="headerlink" title="1. 홈페이지 접근"></a>1. 홈페이지 접근</h2><p><a href="https://www.mongodb.com/cloud" rel="external nofollow noopener noreferrer" target="_blank">Mlab_Homeage</a></p>
+<p><img src="/images/mongodb/mlab_home.png" alt="Mlab_Homeage"></p>
+<p>대충 가입을 누르고 무료 클러스터를 생성해보자</p>
+<h2 id="2-Region선택"><a href="#2-Region선택" class="headerlink" title="2. Region선택"></a>2. Region선택</h2><blockquote>
+<p>선택할 때 구글 클라우드를 선택하고 일본 region을 선택하자 한국과 가장 가까움</p>
+</blockquote>
+<p><img src="/images/mongodb/mlab_cluster_region.png" alt="mlab_cluster_region"></p>
+<h2 id="3-총-3개의-노드가-생성되어-올라가고-있다"><a href="#3-총-3개의-노드가-생성되어-올라가고-있다" class="headerlink" title="3. 총 3개의 노드가 생성되어 올라가고 있다."></a>3. 총 3개의 노드가 생성되어 올라가고 있다.</h2><blockquote>
+<p>중요! 생성하는데 5분정도 걸리니 그냥 기다리자</p>
+</blockquote>
+<p>프라이머리 노드 - 세컨더리 - 세컨더리 </p>
+<p><img src="/images/mongodb/waiting.png" alt="waiting"></p>
+<h2 id="4-db-access-유저를-생성"><a href="#4-db-access-유저를-생성" class="headerlink" title="4. db access 유저를 생성"></a>4. db access 유저를 생성</h2><p><img src="/images/mongodb/create_user.png" alt="create_user"></p>
+<h2 id="5-network-access-설정"><a href="#5-network-access-설정" class="headerlink" title="5. network access 설정"></a>5. network access 설정</h2><p>0.0.0.0/0 전역으로 넣자! 물론 테스트이니가 가능한일..</p>
+<h2 id="6-노드가-전부-올라감"><a href="#6-노드가-전부-올라감" class="headerlink" title="6. 노드가 전부 올라감"></a>6. 노드가 전부 올라감</h2><p><img src="/images/mongodb/all_node_activated.png" alt="all_node_activated"></p>
+<h2 id="7-mongodb-uri-획득"><a href="#7-mongodb-uri-획득" class="headerlink" title="7. mongodb uri 획득"></a>7. mongodb uri 획득</h2><blockquote>
+<p>A. Connect 클릭<br><img src="/images/mongodb/A.png" alt="A"></p>
+</blockquote>
+<blockquote>
+<p>B. connect your application 클릭<br><img src="/images/mongodb/B.png" alt="B"></p>
+</blockquote>
+<blockquote>
+<p>C. copy 클릭<br><img src="/images/mongodb/C.png" alt="C"></p>
+</blockquote>
+<blockquote>
+<p>4번에서 설정한 username, password 기입 ( &lt;&gt; 해당 기호 제거)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongodb+srv://&lt;username&gt;:&lt;password&gt;@cluster0.yul3n.gcp.mongodb.net/&lt;dbname&gt;?retryWrites=true&amp;w=majority</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="8-Spring-설정"><a href="#8-Spring-설정" class="headerlink" title="8. Spring 설정"></a>8. Spring 설정</h2><blockquote>
+<p>build.gradle 디펜던시 추가<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">	implementation <span class="string">'org.springframework.boot:spring-boot-starter-data-mongodb'</span></span><br><span class="line">	implementation <span class="string">'org.springframework.boot:spring-boot-starter-web'</span></span><br><span class="line">	compileOnly <span class="string">'org.projectlombok:lombok'</span></span><br><span class="line">	developmentOnly <span class="string">'org.springframework.boot:spring-boot-devtools'</span></span><br><span class="line">	annotationProcessor <span class="string">'org.projectlombok:lombok'</span></span><br><span class="line">	testImplementation(<span class="string">'org.springframework.boot:spring-boot-starter-test'</span>) &#123;</span><br><span class="line">		exclude group: <span class="string">'org.junit.vintage'</span>, <span class="keyword">module</span>: <span class="string">'junit-vintage-engine'</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>application.yml 추가, 위에서 따온 mongodb uri 입력<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  data:</span></span><br><span class="line"><span class="attr">    mongodb:</span></span><br><span class="line"><span class="attr">      uri:</span> <span class="string">mongodb+srv://username:password@cluster0.yul3n.gcp.mongodb.net/test?retryWrites=true&amp;w=majority</span></span><br><span class="line"><span class="attr">      database:</span> <span class="string">test</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>application run</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">INFO <span class="number">54288</span> --- [ngodb.net:<span class="number">27017</span>] org.mongodb.driver.connection            : Opened connection [connectionId&#123;localValue:<span class="number">1</span>, serverValue:<span class="number">219779</span>&#125;] to cluster0-shard-<span class="number">00</span>-<span class="number">02</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span></span><br><span class="line">INFO <span class="number">54288</span> --- [ngodb.net:<span class="number">27017</span>] org.mongodb.driver.connection            : Opened connection [connectionId&#123;localValue:<span class="number">3</span>, serverValue:<span class="number">208437</span>&#125;] to cluster0-shard-<span class="number">00</span>-<span class="number">00</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span></span><br><span class="line">INFO <span class="number">54288</span> --- [ngodb.net:<span class="number">27017</span>] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription&#123;address=cluster0-shard-<span class="number">00</span>-<span class="number">00</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span>, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=<span class="keyword">true</span>, minWireVersion=<span class="number">0</span>, maxWireVersion=<span class="number">8</span>, maxDocumentSize=<span class="number">16777216</span>, logicalSessionTimeoutMinutes=<span class="number">30</span>, roundTripTimeNanos=<span class="number">41594384</span>, rd-<span class="number">0</span><span class="string">', canonicalAddress=cluster0-shard-00-00.yul3n.gcp.mongodb.net:27017, hosts=[cluster0-shard-00-02.yul3n.gcp.mongodb.net:27017, cluster0-shard-00-00.yul3n.gcp.mongodb.net:27017, cluster0-shard-00-01.yul3n.gcp.mongodb.net:27017], passives=[], arbiters=[], primary='</span>cluster0-shard-<span class="number">00</span>-<span class="number">01</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span><span class="string">', tagSet=TagSet&#123;[Tag&#123;name='</span>nodeType<span class="string">', value='</span>ELECTABLE<span class="string">'&#125;, Tag&#123;name='</span>provider<span class="string">', egion'</span>, value=<span class="string">'NORTHEASTERN_ASIA_PACIFIC'</span>&#125;]&#125;, electionId=<span class="keyword">null</span>, setVersion=<span class="number">4</span>, lastWriteDate=Mon Aug <span class="number">10</span> <span class="number">15</span>:<span class="number">11</span>:<span class="number">47</span> KST <span class="number">2020</span>, lastUpdateTimeNanos=<span class="number">253097206247824</span>&#125;</span><br><span class="line">INFO <span class="number">54288</span> --- [ngodb.net:<span class="number">27017</span>] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription&#123;address=cluster0-shard-<span class="number">00</span>-<span class="number">02</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span>, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=<span class="keyword">true</span>, minWireVersion=<span class="number">0</span>, maxWireVersion=<span class="number">8</span>, maxDocumentSize=<span class="number">16777216</span>, logicalSessionTimeoutMinutes=<span class="number">30</span>, roundTripTimeNanos=<span class="number">41947405</span>, rd-<span class="number">0</span><span class="string">', canonicalAddress=cluster0-shard-00-02.yul3n.gcp.mongodb.net:27017, hosts=[cluster0-shard-00-02.yul3n.gcp.mongodb.net:27017, cluster0-shard-00-00.yul3n.gcp.mongodb.net:27017, cluster0-shard-00-01.yul3n.gcp.mongodb.net:27017], passives=[], arbiters=[], primary='</span>cluster0-shard-<span class="number">00</span>-<span class="number">01</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span><span class="string">', tagSet=TagSet&#123;[Tag&#123;name='</span>nodeType<span class="string">', value='</span>ELECTABLE<span class="string">'&#125;, Tag&#123;name='</span>provider<span class="string">', egion'</span>, value=<span class="string">'NORTHEASTERN_ASIA_PACIFIC'</span>&#125;]&#125;, electionId=<span class="keyword">null</span>, setVersion=<span class="number">4</span>, lastWriteDate=Mon Aug <span class="number">10</span> <span class="number">15</span>:<span class="number">11</span>:<span class="number">47</span> KST <span class="number">2020</span>, lastUpdateTimeNanos=<span class="number">253097206247010</span>&#125;</span><br><span class="line">INFO <span class="number">54288</span> --- [ngodb.net:<span class="number">27017</span>] org.mongodb.driver.connection            : Opened connection [connectionId&#123;localValue:<span class="number">2</span>, serverValue:<span class="number">218330</span>&#125;] to cluster0-shard-<span class="number">00</span>-<span class="number">01</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span></span><br><span class="line">INFO <span class="number">54288</span> --- [ngodb.net:<span class="number">27017</span>] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription&#123;address=cluster0-shard-<span class="number">00</span>-<span class="number">01</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span>, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=<span class="keyword">true</span>, minWireVersion=<span class="number">0</span>, maxWireVersion=<span class="number">8</span>, maxDocumentSize=<span class="number">16777216</span>, logicalSessionTimeoutMinutes=<span class="number">30</span>, roundTripTimeNanos=<span class="number">40369006</span>, rd-<span class="number">0</span><span class="string">', canonicalAddress=cluster0-shard-00-01.yul3n.gcp.mongodb.net:27017, hosts=[cluster0-shard-00-02.yul3n.gcp.mongodb.net:27017, cluster0-shard-00-00.yul3n.gcp.mongodb.net:27017, cluster0-shard-00-01.yul3n.gcp.mongodb.net:27017], passives=[], arbiters=[], primary='</span>cluster0-shard-<span class="number">00</span>-<span class="number">01</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span><span class="string">', tagSet=TagSet&#123;[Tag&#123;name='</span>nodeType<span class="string">', value='</span>ELECTABLE<span class="string">'&#125;, Tag&#123;name='</span>provider<span class="string">', egion'</span>, value=<span class="string">'NORTHEASTERN_ASIA_PACIFIC'</span>&#125;]&#125;, electionId=<span class="number">7f</span>ffffff000000000000001f, setVersion=<span class="number">4</span>, lastWriteDate=Mon Aug <span class="number">10</span> <span class="number">15</span>:<span class="number">11</span>:<span class="number">47</span> KST <span class="number">2020</span>, lastUpdateTimeNanos=<span class="number">253097859619057</span>&#125;</span><br><span class="line">INFO <span class="number">54288</span> --- [ngodb.net:<span class="number">27017</span>] org.mongodb.driver.cluster               : Setting max election id to <span class="number">7f</span>ffffff000000000000001f from replica set primary cluster0-shard-<span class="number">00</span>-<span class="number">01</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span></span><br><span class="line">INFO <span class="number">54288</span> --- [ngodb.net:<span class="number">27017</span>] org.mongodb.driver.cluster               : Setting max set version to <span class="number">4</span> from replica set primary cluster0-shard-<span class="number">00</span>-<span class="number">01</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span></span><br><span class="line">INFO <span class="number">54288</span> --- [ngodb.net:<span class="number">27017</span>] org.mongodb.driver.cluster               : Discovered replica set primary cluster0-shard-<span class="number">00</span>-<span class="number">01</span>.yul3n.gcp.mongodb.net:<span class="number">27017</span></span><br></pre></td></tr></table></figure>
+<p>3개의 몽고디비 노드들이 정상적으로 붙었음을 확인</p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a> <a class="fw3 ph1 dib" href="/tags/MongoDB/">#MongoDB</a> <a class="fw3 ph1 dib" href="/tags/mlab/">#mlab</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="beanbroker">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            Good to see you! have a fun
+        </div>
+    </article>
+ <!-- vertical_google ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- vertical -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7332507555012085" data-ad-slot="7532778343" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<!-- vertical_google ads -->
+
+</div>
+
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Spring/">Spring</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Spring/MongoDB/">MongoDB</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Spring/MongoDB/mlab/">mlab</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2020/08/09/Spring/mongodb_srping1/">MongoDB 2장 mlab 무료 클라우드</a>
+        </p>
+    
+        <p>
+            <a href="/2020/08/01/MongoDb/mongodb1/">MongoDB-1</a>
+        </p>
+    
+        <p>
+            <a href="/2020/07/12/Spring/spring_mongodb_docker_replica/">Spring MongoDB Docker replica 설정</a>
+        </p>
+    
+        <p>
+            <a href="/2020/07/04/Spring/spring_es_search1/">Spring Elastic Search 연동(docker)</a>
+        </p>
+    
+        <p>
+            <a href="/2020/05/30/Spring/test_code4/">Spring Test Code 4</a>
+        </p>
+    
+        <p>
+            <a href="/2020/02/16/Spring/spring_security2/">Spring Security 2장 버젼 업그레이드</a>
+        </p>
+    
+        <p>
+            <a href="/2020/02/15/Spring/spring_security1/">Spring Security 1장 간단 구현</a>
+        </p>
+    
+        <p>
+            <a href="/2019/12/14/Kotlin/kotlin_webflux_sse/">SSE(Server-Sent Events) with Spring kotlin</a>
+        </p>
+    
+
+	<script src="https://ads-partners.coupang.com/g.js"></script>
+<script>
+	new PartnersCoupang.G({ id: AF0184271 });
+</script>
+
+
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/beanbroker" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Beanbroker blog All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/" rel="external nofollow noopener noreferrer" target="_blank">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+ <!-- horizontal_google Top -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- horizontal -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7332507555012085" data-ad-slot="3920642873" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<!-- horizontal_google Top -->
+
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
