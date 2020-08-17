@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://beanbroker.github.io/"/>
-  <updated>2020-08-10T06:58:58.965Z</updated>
+  <updated>2020-08-16T17:55:15.890Z</updated>
   <id>https://beanbroker.github.io/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MongoDB 3장 간단 CRUD with Spring</title>
+    <link href="https://beanbroker.github.io/2020/08/16/Spring/mongodb_srping2/"/>
+    <id>https://beanbroker.github.io/2020/08/16/Spring/mongodb_srping2/</id>
+    <published>2020-08-16T06:30:00.000Z</published>
+    <updated>2020-08-16T17:55:15.890Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://beanbroker.github.io/2020/08/09/Spring/mongodb_srping1/">MongoDB 2장 mlab 무료 클라우드</a></p><p>2장에 이어서 글을 간단 몽고 DB CRUD를 진행해보자</p><p><a href="https://github.com/beanbroker/sample_spring_mongo" rel="external nofollow noopener noreferrer" target="_blank">git-hub-code</a></p><h1 id="3장-MongoDB-3장-간단-CRUD-with-Spring"><a href="#3장-MongoDB-3장-간단-CRUD-with-Spring" class="headerlink" title="3장 MongoDB 3장 간단 CRUD with Spring"></a>3장 MongoDB 3장 간단 CRUD with Spring</h1><h3 id="1-UserRepository"><a href="#1-UserRepository" class="headerlink" title="1. UserRepository"></a>1. UserRepository</h3><p>아래처럼 findByUserIdAnd~~~ 이런식으로 하는 부분이.. 개인적으로 직관적이긴 하나 너무 길어지면 보기 힘들다 생각한다. 다음 4장에서 mongodb-query-dsl을 적용 할 예정</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepository</span> <span class="keyword">extends</span> <span class="title">MongoRepository</span>&lt;<span class="title">UserCollection</span>, <span class="title">String</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function">Optional&lt;UserCollection&gt; <span class="title">findByUserId</span><span class="params">(String userId)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="2-UserService"><a href="#2-UserService" class="headerlink" title="2. UserService"></a>2. UserService</h3><p>NotFoundException과 UniqueException은 CustomException임을 미리 공유</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">UserService</span><span class="params">(UserRepository userRepository)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.userRepository = userRepository;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Transactional</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createUser</span><span class="params">(UserSignUpRequest req)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    userRepository</span><br><span class="line">        .findByUserId(req.getUserId())</span><br><span class="line">        .ifPresent(</span><br><span class="line">            user -&gt; &#123;</span><br><span class="line">              <span class="keyword">throw</span> <span class="keyword">new</span> UniqueException(<span class="string">"already user"</span>);</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> String id = req.getUserType() + UUID.randomUUID().toString();</span><br><span class="line">    UserCollection userCollection =</span><br><span class="line">        UserCollection.builder()</span><br><span class="line">            .id(id)</span><br><span class="line">            .userId(req.getUserId())</span><br><span class="line">            .userName(req.getUserName())</span><br><span class="line">            .email(req.getEmail())</span><br><span class="line">            .address(req.getAddress())</span><br><span class="line">            .age(req.getAge())</span><br><span class="line">            .build();</span><br><span class="line"></span><br><span class="line">    userRepository.save(userCollection);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> UserDto <span class="title">getUserData</span><span class="params">(String userId)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    UserCollection userCollection =</span><br><span class="line">        userRepository</span><br><span class="line">            .findByUserId(userId)</span><br><span class="line">            .orElseThrow(() -&gt; <span class="keyword">new</span> NotFoundException(<span class="string">"user data is not found"</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> UserDto.toUserDto(userCollection);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Transactional</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteUser</span><span class="params">(String userId)</span> </span>&#123;</span><br><span class="line">    UserCollection userCollection =</span><br><span class="line">        userRepository</span><br><span class="line">            .findByUserId(userId)</span><br><span class="line">            .orElseThrow(() -&gt; <span class="keyword">new</span> NotFoundException(<span class="string">"user data is not found"</span>));</span><br><span class="line"></span><br><span class="line">    userCollection.setIsDeleted(<span class="number">1</span>);</span><br><span class="line">    userRepository.save(userCollection);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="3-UserController"><a href="#3-UserController" class="headerlink" title="3. UserController"></a>3. UserController</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/users"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> UserService userService;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">UserController</span><span class="params">(UserService userService)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.userService = userService;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@ResponseStatus</span>(HttpStatus.CREATED)</span><br><span class="line">  <span class="meta">@PostMapping</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createUser</span><span class="params">(@RequestBody UserSignUpRequest userSignUpRequest)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    userService.createUser(userSignUpRequest);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@GetMapping</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> UserDto <span class="title">user</span><span class="params">(@RequestParam(<span class="string">"userId"</span>)</span> String userId) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> userService.getUserData(userId);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@ResponseStatus</span>(HttpStatus.NO_CONTENT)</span><br><span class="line">  <span class="meta">@DeleteMapping</span>(<span class="string">"/&#123;userId&#125;"</span>)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateUser</span><span class="params">(@PathVariable(<span class="string">"userId"</span>)</span> String userId) </span>&#123;</span><br><span class="line"></span><br><span class="line">    userService.deleteUser(userId);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>사실.. 딱히 쓸말이 없다 빠르게. 다음 4장에서 audit config 적용과 mongodb-querydsl을 적용해보자</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://beanbroker.github.io/2020/08/09/Spring/mongodb_srping1/&quot;&gt;MongoDB 2장 mlab 무료 클라우드&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2장에 이어서 글을 간단 몽고 DB CRUD를 진행
+      
+    
+    </summary>
+    
+      <category term="Spring" scheme="https://beanbroker.github.io/categories/Spring/"/>
+    
+      <category term="MongoDB" scheme="https://beanbroker.github.io/categories/Spring/MongoDB/"/>
+    
+      <category term="mlab" scheme="https://beanbroker.github.io/categories/Spring/MongoDB/mlab/"/>
+    
+    
+      <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
+    
+      <category term="MongoDB" scheme="https://beanbroker.github.io/tags/MongoDB/"/>
+    
+      <category term="mlab" scheme="https://beanbroker.github.io/tags/mlab/"/>
+    
+  </entry>
   
   <entry>
     <title>MongoDB 2장 mlab 무료 클라우드</title>
@@ -286,9 +320,9 @@
     
       <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
     
-      <category term="kotlin" scheme="https://beanbroker.github.io/tags/kotlin/"/>
-    
       <category term="SSE" scheme="https://beanbroker.github.io/tags/SSE/"/>
+    
+      <category term="kotlin" scheme="https://beanbroker.github.io/tags/kotlin/"/>
     
   </entry>
   
@@ -625,13 +659,13 @@
     
       <category term="Spring" scheme="https://beanbroker.github.io/tags/Spring/"/>
     
+      <category term="kotlin" scheme="https://beanbroker.github.io/tags/kotlin/"/>
+    
       <category term="jpa" scheme="https://beanbroker.github.io/tags/jpa/"/>
     
       <category term="audit" scheme="https://beanbroker.github.io/tags/audit/"/>
     
       <category term="querydsl" scheme="https://beanbroker.github.io/tags/querydsl/"/>
-    
-      <category term="kotlin" scheme="https://beanbroker.github.io/tags/kotlin/"/>
     
   </entry>
   
