@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="naver-site-verification" content="67083ed945b6af7f93ba51ef87f7f48745abe975">
+<script data-ad-client="ca-pub-7332507555012085" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<link rel="canonical" href="https://beanbroker.github.io/2020/08/16/spring/mongodb_srping3/">    
+
+    <!--Description-->
+    
+        <meta name="description" content="개발관련">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="beanbroker">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="MongoDB 4장 QueryDsl with Spring">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="개발관련">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="beanbroker blog">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>MongoDB 4장 QueryDsl with Spring - beanbroker blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-86502943-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+<link rel="canonical" href="https://beanbroker.github.io/2020/08/16/spring/mongodb_srping3/">
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="beanbroker blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="beanbroker blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/tags" title="Tags">
+                    Tags
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about.html" title="About">
+                    About
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/contact.html" title="Contact">
+                    Contact
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">MongoDB 4장 QueryDsl with Spring</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2020-08-16</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+                        <div class="tags-container-vertical">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a> <a class="fw3 ph1 dib" href="/tags/MongoDB/">#MongoDB</a> <a class="fw3 ph1 dib" href="/tags/mlab/">#mlab</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Main Post Content -->
+                    <p><a href="https://beanbroker.github.io/2020/08/09/Spring/mongodb_srping1/">MongoDB 2장 mlab 무료 클라우드</a><br><a href="https://beanbroker.github.io/2020/08/16/Spring/mongodb_srping2/">MongoDB 3장 간단 CRUD with Spring</a></p>
+<p>3장에 이어서 Mongodb QueryDsl을 적용해보자</p>
+<p><a href="https://github.com/beanbroker/sample_spring_mongo" rel="external nofollow noopener noreferrer" target="_blank">git-hub-code</a></p>
+<h1 id="4장-MongoDB-4장-QueryDsl-with-Spring"><a href="#4장-MongoDB-4장-QueryDsl-with-Spring" class="headerlink" title="4장 MongoDB 4장 QueryDsl with Spring"></a>4장 MongoDB 4장 QueryDsl with Spring</h1><h2 id="1-build-gradle-설정"><a href="#1-build-gradle-설정" class="headerlink" title="1. build.gradle 설정"></a>1. build.gradle 설정</h2><p>plugins에 &lt;    <strong>id “com.ewerk.gradle.plugins.querydsl” version ‘1.0.10’</strong> &gt; 를 추가해준다</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id <span class="string">'org.springframework.boot'</span> version <span class="string">'2.3.3.RELEASE'</span></span><br><span class="line">    id <span class="string">'io.spring.dependency-management'</span> version <span class="string">'1.0.10.RELEASE'</span></span><br><span class="line">    id <span class="string">'java'</span></span><br><span class="line">	id <span class="string">"com.ewerk.gradle.plugins.querydsl"</span> version <span class="string">'1.0.10'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>아래와 같이 dependency추가 현재 가장 높은 major 버전은 4.3.1입니다.</p>
+<p><a href="https://mvnrepository.com/artifact/com.querydsl/querydsl-jpa" rel="external nofollow noopener noreferrer" target="_blank">Maven repository</a></p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">compile</span>(<span class="string">"com.querydsl:querydsl-mongodb:$querydsl_version"</span>)</span><br><span class="line"><span class="keyword">compile</span>(<span class="string">"com.querydsl:querydsl-apt:$&#123;querydsl_version&#125;"</span>)</span><br></pre></td></tr></table></figure>
+<p>gradle 하단에 아래의 코드를 붙여 넣자</p>
+<p>대충 Q클래스 생성 위치를 정하고 생성과 삭제를 담당</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> querydslSrcDir = <span class="string">'src/main/generated'</span></span><br><span class="line"></span><br><span class="line">querydsl &#123;</span><br><span class="line">    springDataMongo = <span class="keyword">true</span></span><br><span class="line">    library = <span class="string">"com.querydsl:querydsl-apt"</span></span><br><span class="line"><span class="comment">//    jpa = true</span></span><br><span class="line">    querydslSourcesDir = querydslSrcDir</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">compileQuerydsl &#123;</span><br><span class="line">    <span class="keyword">options</span>.annotationProcessorPath = <span class="keyword">configurations</span>.querydsl</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">configurations</span> &#123;</span><br><span class="line">    querydsl.extendsFrom compileClasspath</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">sourceSets</span> &#123;</span><br><span class="line">    main &#123;</span><br><span class="line">        java &#123;</span><br><span class="line">            srcDirs = [<span class="string">'src/main/java'</span>, querydslSrcDir]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> deleteGeneratedSources(type: <span class="keyword">Delete</span>) &#123;</span><br><span class="line">    <span class="keyword">delete</span> <span class="keyword">file</span>(querydslSrcDir)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tasks.withType(JavaCompile) &#123; it.dependsOn(<span class="string">'deleteGeneratedSources'</span>) &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-QCLASS를-생성해보자"><a href="#2-QCLASS를-생성해보자" class="headerlink" title="2. QCLASS를 생성해보자"></a>2. QCLASS를 생성해보자</h2><p><img src="/images/mongodb/before.png" alt="before"></p>
+<p>위처럼 현재 위에서 Qclass를 생성한 dir가 보이지 않는다</p>
+<p>아래의 사진에서 gradle tap <strong>build</strong> 클릭</p>
+<p><img src="/images/mongodb/intellij_gradle.png" alt="build_gradle"></p>
+<p><img src="/images/mongodb/after.png" alt="after"></p>
+<p>gradle build 이후에 QUserCollection이 생성되었음을 확인 할수 있다!</p>
+<p>gradle clean을 통해 생성된 dir와 QClass들을 삭제할수 있고 또는 gradle build시 기존에 생성되었떤 QClass들을 삭제하고 새로 생성하기 때문에 새로운 컬렉션을 추가하더라도 전혀 무제가 없음을 확인할수 있다.</p>
+<p>생성된 QCLASS<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * QUserCollection is a Querydsl query type for UserCollection</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Generated</span>(<span class="string">"com.querydsl.codegen.EntitySerializer"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QUserCollection</span> <span class="keyword">extends</span> <span class="title">EntityPathBase</span>&lt;<span class="title">UserCollection</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">462837480L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> QUserCollection userCollection = <span class="keyword">new</span> QUserCollection(<span class="string">"userCollection"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> StringPath address = createString(<span class="string">"address"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> NumberPath&lt;Integer&gt; age = createNumber(<span class="string">"age"</span>, Integer.class);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> StringPath createBy = createString(<span class="string">"createBy"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> DateTimePath&lt;java.time.LocalDateTime&gt; createdAt = createDateTime(<span class="string">"createdAt"</span>, java.time.LocalDateTime.class);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> StringPath email = createString(<span class="string">"email"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> StringPath id = createString(<span class="string">"id"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> NumberPath&lt;Integer&gt; isDeleted = createNumber(<span class="string">"isDeleted"</span>, Integer.class);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> DateTimePath&lt;java.time.LocalDateTime&gt; updatedAt = createDateTime(<span class="string">"updatedAt"</span>, java.time.LocalDateTime.class);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> StringPath updatedBy = createString(<span class="string">"updatedBy"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> StringPath userId = createString(<span class="string">"userId"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> StringPath userName = createString(<span class="string">"userName"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">QUserCollection</span><span class="params">(String variable)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(UserCollection.class, forVariable(variable));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">QUserCollection</span><span class="params">(Path&lt;? extends UserCollection&gt; path)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(path.getType(), path.getMetadata());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">QUserCollection</span><span class="params">(PathMetadata metadata)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(UserCollection.class, metadata);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-근데-왜-QueryDsl"><a href="#3-근데-왜-QueryDsl" class="headerlink" title="3. 근데 왜 QueryDsl?"></a>3. 근데 왜 QueryDsl?</h2><p>QueryDsl을 쓰는 이유는 해당 블로그보다 다른 블로그에서 좀더 친절하게 설명해줄것을 믿으며 간단한 샘플을 통해 적용해보고 그 후 동적(다이나믹) 쿼리를 만들어본다</p>
+<p>아래와 같이 유저 생성</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">curl --location --request POST <span class="string">'http://localhost:9000/users'</span> \</span><br><span class="line">--header <span class="string">'Content-Type: application/json'</span> \</span><br><span class="line">--header <span class="string">'Cookie: JSESSIONID=CAA019F0C3D0B5129E22A4DC86CDC7B7'</span> \</span><br><span class="line">--data-raw <span class="string">'&#123;</span></span><br><span class="line"><span class="string">    "userType": "GENERAL",</span></span><br><span class="line"><span class="string">    "userId": "test",</span></span><br><span class="line"><span class="string">    "userName": "pkj",</span></span><br><span class="line"><span class="string">    "email": "sdfsdf23asdas.com",</span></span><br><span class="line"><span class="string">    "address": "address",</span></span><br><span class="line"><span class="string">    "age": 35</span></span><br><span class="line"><span class="string">&#125;'</span></span><br></pre></td></tr></table></figure>
+<h3 id="UserRepository-변경"><a href="#UserRepository-변경" class="headerlink" title="UserRepository 변경"></a>UserRepository 변경</h3><ul>
+<li>UserRepository </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepository</span></span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">MongoRepository</span>&lt;<span class="title">UserCollection</span>, <span class="title">String</span>&gt;,</span></span><br><span class="line"><span class="class">        <span class="title">QuerydslPredicateExecutor</span>&lt;<span class="title">UserCollection</span>&gt;,</span></span><br><span class="line"><span class="class">        <span class="title">UserRepositoryWrapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function">Optional&lt;UserCollection&gt; <span class="title">findByUserId</span><span class="params">(String userId)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>UserRepositoryImpl 생성</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserRepositoryImpl</span> <span class="keyword">extends</span> <span class="title">QuerydslRepositorySupport</span> <span class="keyword">implements</span> <span class="title">UserRepositoryWrapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> QUserCollection collection = QUserCollection.userCollection;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">UserRepositoryImpl</span><span class="params">(MongoOperations operations)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(operations);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> UserCollection <span class="title">findByUserName</span><span class="params">(String userName)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> from(collection).where(collection.userName.eq(userName)).fetchOne();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>UserRepositoryWrapper 생성 </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepositoryWrapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">UserCollection <span class="title">findByUserName</span><span class="params">(String userName)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>QueryDSL에서는 JPA 메소드 명명 규칙에 따라서 커스텀 메소드를 작성하는데, 명명 규칙을 따르지 않으면 두 인터페이스를 모두 상속받는 과정에서 오류가 발생한다.</p>
+<h3 id="테스트해보자"><a href="#테스트해보자" class="headerlink" title="테스트해보자"></a>테스트해보자</h3><p>UserController에 아래와 같이 추가</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/search"</span>)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> UserDto <span class="title">findByUserName</span><span class="params">(@RequestParam(<span class="string">"userName"</span>)</span> String userName) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> userService.findByUserName(userName);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>정상작동은 하나 몬가 search기능에 부합해보이지 않는다</p>
+<p>Predicator를 생성해보자</p>
+<p>아래와 같이 생성</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserPredictor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> QUserCollection userCollection = QUserCollection.userCollection;</span><br><span class="line">  <span class="keyword">private</span> BooleanBuilder builder = <span class="keyword">new</span> BooleanBuilder();</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> UserPredictor <span class="title">userId</span><span class="params">(String userId)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!ObjectUtils.isEmpty(userId)) &#123;</span><br><span class="line"></span><br><span class="line">      builder.and(userCollection.userId.eq(userId));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> UserPredictor <span class="title">email</span><span class="params">(String email)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!ObjectUtils.isEmpty(email)) &#123;</span><br><span class="line"></span><br><span class="line">      builder.and(userCollection.email.eq(email));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> UserPredictor <span class="title">userName</span><span class="params">(String userName)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!ObjectUtils.isEmpty(userName)) &#123;</span><br><span class="line"></span><br><span class="line">      builder.and(userCollection.userId.eq(userName));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Predicate <span class="title">values</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> builder.getValue();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Controller를 바꿔보자</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/search"</span>)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> UserDto <span class="title">findByUserName</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">      @RequestParam(value = <span class="string">"userName"</span>, required = <span class="keyword">false</span>)</span> String userName,</span></span><br><span class="line"><span class="function">      @<span class="title">RequestParam</span><span class="params">(value = <span class="string">"email"</span>, required = <span class="keyword">false</span>)</span> String email,</span></span><br><span class="line"><span class="function">      @<span class="title">RequestParam</span><span class="params">(value = <span class="string">"userId"</span>, required = <span class="keyword">false</span>)</span> String userId) </span>&#123;</span><br><span class="line"></span><br><span class="line">    UserPredictor predictor = <span class="keyword">new</span> UserPredictor();</span><br><span class="line">    predictor.email(email);</span><br><span class="line">    predictor.userId(userId);</span><br><span class="line">    predictor.userName(userName);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> userService.findByUserPredictor(predictor);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>아래와 같이 쿼리스트링 추가하여 테스트 진행 정상작동확인<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl --location --request GET 'http://localhost:9000/users/search?userName=pkj&amp;userId=test' \</span><br><span class="line">--header 'Cookie: JSESSIONID=CAA019F0C3D0B5129E22A4DC86CDC7B7'</span><br></pre></td></tr></table></figure></p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Spring/">#Spring</a> <a class="fw3 ph1 dib" href="/tags/MongoDB/">#MongoDB</a> <a class="fw3 ph1 dib" href="/tags/mlab/">#mlab</a>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://tachyons.io/img/avatar_1.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="beanbroker">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            Good to see you! have a fun
+        </div>
+    </article>
+ <!-- vertical_google ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- vertical -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7332507555012085" data-ad-slot="7532778343" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<!-- vertical_google ads -->
+
+</div>
+
+
+                    <hr class="dn-l mw4 black-50 mt5">
+                    
+                    <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/categories/Spring/">Spring</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Spring/MongoDB/">MongoDB</a>
+        </p>
+    
+        <p>
+            <a href="/categories/Spring/MongoDB/mlab/">mlab</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5">
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2020/08/16/Spring/mongodb_srping3/">MongoDB 4장 QueryDsl with Spring</a>
+        </p>
+    
+        <p>
+            <a href="/2020/08/16/Spring/mongodb_srping2/">MongoDB 3장 간단 CRUD with Spring</a>
+        </p>
+    
+        <p>
+            <a href="/2020/08/09/Spring/mongodb_srping1/">MongoDB 2장 mlab 무료 클라우드</a>
+        </p>
+    
+        <p>
+            <a href="/2020/08/01/MongoDb/mongodb1/">MongoDB-1</a>
+        </p>
+    
+        <p>
+            <a href="/2020/07/12/Spring/spring_mongodb_docker_replica/">Spring MongoDB Docker replica 설정</a>
+        </p>
+    
+        <p>
+            <a href="/2020/07/04/Spring/spring_es_search1/">Spring Elastic Search 연동(docker)</a>
+        </p>
+    
+        <p>
+            <a href="/2020/05/30/Spring/test_code4/">Spring Test Code 4</a>
+        </p>
+    
+        <p>
+            <a href="/2020/02/16/Spring/spring_security2/">Spring Security 2장 버젼 업그레이드</a>
+        </p>
+    
+
+	<script src="https://ads-partners.coupang.com/g.js"></script>
+<script>
+	new PartnersCoupang.G({ id: AF0184271 });
+</script>
+
+
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/beanbroker" target="_blank" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @Beanbroker blog All right reserved | Design & Hexo <a class="link dim white" href="http://www.codeblocq.com/" rel="external nofollow noopener noreferrer" target="_blank">Jonathan Klughertz</a>
+            </div>
+        </div>
+    </div>
+
+ <!-- horizontal_google Top -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- horizontal -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7332507555012085" data-ad-slot="3920642873" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<!-- horizontal_google Top -->
+
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
